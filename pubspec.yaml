@@ -1,0 +1,68 @@
+name: nx_commerce
+description: "A new Flutter project."
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+#----------------- PACKAGES --------------------#
+dependencies:
+  flutter:
+    sdk: flutter
+
+ # Utility Packages
+  logger: ^2.3.0
+  http: ^1.2.1
+  intl: ^0.19.0
+  url_launcher: ^6.3.0
+
+ # Icons
+  iconsax: ^0.0.8
+  cupertino_icons: ^1.0.6
+
+  # State Management
+  get: ^4.6.6
+  get_storage: ^2.1.1
+
+  # Product Specific
+
+#----------------- ./ PACKAGES END --------------#
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  # -------------- LOCAL ASSETS ----------------#
+  assets:
+    - assets/logos/
+    - assets/images/
+    - assets/icons/
+
+  # -------------- LOCAL FONTS ----------------#
+  fonts:
+    - family: LexendDeca
+      fonts:
+        - asset: assets/fonts/LexendDeca-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/LexendDeca-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/LexendDeca-Light.ttf
+          weight: 300
+        - asset: assets/fonts/LexendDeca-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/LexendDeca-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/LexendDeca-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/LexendDeca-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/LexendDeca-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/LexendDeca-Black.ttf
+          weight: 900
