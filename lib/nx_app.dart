@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import 'features/authentication/screens/onboarding_screen.dart';
 import 'utils/theme/theme_data.dart';
 
 class NXApp extends StatelessWidget {
@@ -7,10 +9,11 @@ class NXApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return  GetMaterialApp(
       themeMode: ThemeMode.system,
       theme: NXAppTheme.instance.lightTheme,
       darkTheme:  NXAppTheme.instance.darkTheme,
+      home: const OnBoardingScreen(),
     );
   }
 }
