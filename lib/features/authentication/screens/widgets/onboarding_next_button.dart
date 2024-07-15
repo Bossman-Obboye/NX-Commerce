@@ -20,7 +20,7 @@ class OnboardingNextButton extends StatelessWidget {
         bottom: NxDeviceUtils.getBottomNavigationBarHeight(),
         right: NxSizes.defaultSpace,
         child: ElevatedButton(
-          onPressed: OnBoardingController.instance.goToNextPage,
+          onPressed: () => OnBoardingController.instance.goToNextPage(),
           style: ElevatedButton.styleFrom(
             shape: const CircleBorder(),
             backgroundColor: isDarkMode ? NxColors.primary : Colors.black,

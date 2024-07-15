@@ -6,7 +6,6 @@ import 'package:nx_commerce/features/authentication/screens/widgets/onboarding_p
 import 'package:nx_commerce/features/authentication/screens/widgets/skip_button.dart';
 import 'package:nx_commerce/utils/constants/image_strings.dart';
 import 'package:nx_commerce/utils/constants/text_strings.dart';
-
 import '../controllers/onboarding_controller.dart';
 
 class OnBoardingScreen extends StatelessWidget {

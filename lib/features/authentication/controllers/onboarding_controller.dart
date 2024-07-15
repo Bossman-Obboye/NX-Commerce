@@ -22,15 +22,15 @@ void goToNextPage() {
   if(currentPageIndex.value == 2){
     // Navigate to LogIn Screen
   }else{
-   currentPageIndex.value += 1;
-    pageController.jumpTo(currentPageIndex.value.toDouble());
+  currentPageIndex.value += 1;
+    pageController.jumpToPage(currentPageIndex.value);
   }
 }
 
 /// Update Current Index & jump to the last page
 void skipPage() {
   currentPageIndex.value = 2;
-  pageController.jumpTo(2);
+  pageController.jumpToPage(2);
 }
 
 }

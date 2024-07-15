@@ -16,8 +16,8 @@ class OnboardingSkip extends StatelessWidget {
       top: NxDeviceUtils.getAppBarHeight(),
       right: NxSizes.defaultSpace,
       child:  TextButton(
-        onPressed: OnBoardingController.instance.skipPage,
-        child: Text("Skip"),
+        onPressed: () => OnBoardingController.instance.skipPage(),
+        child: const Text("Skip"),
       ),
     );
   }
