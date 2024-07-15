@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:nx_commerce/features/authentication/controllers/onboarding_controller.dart';
 
-import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/sizes.dart';
-import '../../../../utils/device/device_utility.dart';
-import '../../../../utils/helpers/helpers.dart';
+import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/sizes.dart';
+import '../../../../../utils/device/device_utility.dart';
+import '../../../../../utils/helpers/helpers.dart';
 
 class OnboardingNextButton extends StatelessWidget {
   const OnboardingNextButton({

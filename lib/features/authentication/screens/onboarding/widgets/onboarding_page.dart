@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 
-import '../../../../utils/constants/sizes.dart';
-import '../../../../utils/helpers/helpers.dart';
+import '../../../../../utils/constants/sizes.dart';
+import '../../../../../utils/helpers/helpers.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({

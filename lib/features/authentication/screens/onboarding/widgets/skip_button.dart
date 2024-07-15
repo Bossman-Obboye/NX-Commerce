@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:nx_commerce/features/authentication/controllers/onboarding_controller.dart';
 
-import '../../../../utils/constants/sizes.dart';
-import '../../../../utils/device/device_utility.dart';
+import '../../../../../utils/constants/sizes.dart';
+import '../../../../../utils/device/device_utility.dart';
 
 class OnboardingSkip extends StatelessWidget {
   const OnboardingSkip({

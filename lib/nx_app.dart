@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'features/authentication/screens/onboarding_screen.dart';
+import 'features/authentication/screens/onboarding/onboarding_screen.dart';
 import 'utils/theme/theme_data.dart';
 
 class NXApp extends StatelessWidget {

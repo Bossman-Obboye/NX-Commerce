@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nx_commerce/features/authentication/screens/widgets/onboarding_dot_navigation.dart';
-import 'package:nx_commerce/features/authentication/screens/widgets/onboarding_next_button.dart';
-import 'package:nx_commerce/features/authentication/screens/widgets/onboarding_page.dart';
-import 'package:nx_commerce/features/authentication/screens/widgets/skip_button.dart';
+import 'package:nx_commerce/features/authentication/screens/onboarding/widgets/onboarding_dot_navigation.dart';
+import 'package:nx_commerce/features/authentication/screens/onboarding/widgets/onboarding_next_button.dart';
+import 'package:nx_commerce/features/authentication/screens/onboarding/widgets/onboarding_page.dart';
 import 'package:nx_commerce/utils/constants/image_strings.dart';
 import 'package:nx_commerce/utils/constants/text_strings.dart';
-import '../controllers/onboarding_controller.dart';
+import '../../controllers/onboarding_controller.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -41,7 +40,6 @@ class OnBoardingScreen extends StatelessWidget {
           ),
 
           /// Skip button
-          const OnboardingSkip(),
 
           /// Dot Navigation SmoothPageIndicator
           const OnboardingDotNavigation(),
