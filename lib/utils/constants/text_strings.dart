@@ -20,6 +20,7 @@ class NxTexts {
 
 
   // -- Authentication From text
+  static const String and = "and";
   static const String firstName = "First Name";
   static const String lastName = "Last Name";
   static const String email = "E-Mail";
@@ -38,6 +39,7 @@ class NxTexts {
   static const String verificationCode = "verificationCode";
   static const String resendEmail = "Resend Email";
   static const String resendEmailIn = "Resend Email in";
+  static const String tContinue = "Continue";
 
 
   // -- Authentication Headings Text

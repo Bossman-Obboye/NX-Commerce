@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:nx_commerce/common/styles/spacing_styles.dart';
 import 'package:nx_commerce/features/authentication/screens/log_in/widgets/login_form.dart';
 import 'package:nx_commerce/common/widgets/login_signup/login_form_divider.dart';
 import 'package:nx_commerce/features/authentication/screens/log_in/widgets/login_header.dart';
 import 'package:nx_commerce/common/widgets/login_signup/nx_social_buttons.dart';
-import 'package:nx_commerce/utils/constants/colors.dart';
-import 'package:nx_commerce/utils/constants/image_strings.dart';
 import 'package:nx_commerce/utils/constants/sizes.dart';
 import 'package:nx_commerce/utils/constants/text_strings.dart';
 import 'package:nx_commerce/utils/helpers/helpers.dart';
@@ -33,7 +30,7 @@ class LoginScreen extends StatelessWidget {
               const NxLoginForm(),
 
               /// Divider
-              NxFormDivider(isDarkMode: isDarkMode, dividerText: NxTexts.orSignInWith.capitalize!,),
+              NxFormDivider(dividerText: NxTexts.orSignInWith.capitalize!,),
 
               const SizedBox(height: NxSizes.spaceBtwSections ),
 

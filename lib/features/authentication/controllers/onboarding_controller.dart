@@ -21,7 +21,7 @@ void dotNavigationOnClick(index) {
 /// Update Current Index & jump to next page
 void goToNextPage() {
   if(currentPageIndex.value == 2){
-    Get.offAll(const LoginScreen());
+    Get.offAll(() => const LoginScreen());
   }else{
   currentPageIndex.value += 1;
     pageController.jumpToPage(currentPageIndex.value);

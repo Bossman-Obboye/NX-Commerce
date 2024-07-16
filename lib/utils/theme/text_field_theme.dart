@@ -39,8 +39,8 @@ class NxTextFormFieldTheme {
 
   final InputDecorationTheme darkInputDecorationTheme = InputDecorationTheme(
     errorMaxLines: 3,
-    prefixIconColor: Colors.grey,
-    suffixIconColor: Colors.grey,
+    // prefixIconColor: Colors.grey,
+    // suffixIconColor: Colors.grey,
     // constraints: const BoxConstraints.expand(height: 14.inputFieldHeight),
     labelStyle: const TextStyle().copyWith(fontSize: 14, color: Colors.white),
     hintStyle: const TextStyle().copyWith(fontSize: 14, color: Colors.white),

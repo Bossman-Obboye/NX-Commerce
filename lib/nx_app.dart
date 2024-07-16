@@ -10,6 +10,7 @@ class NXApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
       theme: NXAppTheme.instance.lightTheme,
       darkTheme:  NXAppTheme.instance.darkTheme,

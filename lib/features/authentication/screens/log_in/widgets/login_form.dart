@@ -2,8 +2,9 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-
+import 'package:nx_commerce/features/authentication/screens/signup/signup.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
 
@@ -88,9 +89,7 @@ class NxLoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: OutlinedButton(
-                onPressed: () {
-                  // TODO: Add function
-                },
+                onPressed: () => Get.to(() => const SignupScreen()),
                 child: const Text(NxTexts.createAccount),
               ),
             ),
