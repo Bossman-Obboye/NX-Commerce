@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:nx_commerce/features/authentication/screens/password_configuration/forgot_password_screen.dart';
 import 'package:nx_commerce/features/authentication/screens/signup/signup.dart';
+import 'package:nx_commerce/navigation_menu.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
 
@@ -67,14 +68,11 @@ class NxLoginForm extends StatelessWidget {
               ],
             ),
 
-            // const SizedBox(height: NxSizes.spaceBtwSections),
-
             /// Sign In Button
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
-                  // TODO: Add function
+                onPressed: () { Get.to(()=> const NavigationMenu() );
                 },
                 child: const Text(NxTexts.signIn),
               ),
@@ -98,3 +96,5 @@ class NxLoginForm extends StatelessWidget {
     );
   }
 }
+
+
