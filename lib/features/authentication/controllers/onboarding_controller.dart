@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nx_commerce/features/authentication/screens/log_in/login.dart';
 
 class OnBoardingController extends GetxController {
   static OnBoardingController get instance => Get.find();
@@ -20,7 +21,7 @@ void dotNavigationOnClick(index) {
 /// Update Current Index & jump to next page
 void goToNextPage() {
   if(currentPageIndex.value == 2){
-    // Navigate to LogIn Screen
+    Get.offAll(const LoginScreen());
   }else{
   currentPageIndex.value += 1;
     pageController.jumpToPage(currentPageIndex.value);

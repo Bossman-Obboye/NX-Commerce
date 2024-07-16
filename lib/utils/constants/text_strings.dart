@@ -2,7 +2,7 @@ class NxTexts {
 
   // -- GLOBAL Texts
 
-  
+
   // -- OnBoarding Texts
   static const String onBoardingTitle1 = "Choose your product";
   static const String onBoardingTitle2 = "Select Payment Method";

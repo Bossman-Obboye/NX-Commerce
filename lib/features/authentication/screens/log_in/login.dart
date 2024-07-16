@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:nx_commerce/common/styles/spacing_styles.dart';
+import 'package:nx_commerce/features/authentication/screens/log_in/widgets/login_form.dart';
+import 'package:nx_commerce/common/widgets/login_signup/login_form_divider.dart';
+import 'package:nx_commerce/features/authentication/screens/log_in/widgets/login_header.dart';
+import 'package:nx_commerce/common/widgets/login_signup/nx_social_buttons.dart';
+import 'package:nx_commerce/utils/constants/colors.dart';
 import 'package:nx_commerce/utils/constants/image_strings.dart';
 import 'package:nx_commerce/utils/constants/sizes.dart';
 import 'package:nx_commerce/utils/constants/text_strings.dart';
@@ -17,20 +24,22 @@ class LoginScreen extends StatelessWidget {
           padding: NxSpacingStyle.paddingWithAppBarHeight,
           child: Column(
             children: [
-              Column(
-                children: [
-                  Image(
-                    height: 150,
-                    image: AssetImage(
-                      isDarkMode ? NxImages.lightAppLogo : NxImages.darkAppLogo,
-                    ),
-                  ),
+              /// Header
+              /// Logo, Title and SubTitle
+              NxLoginHeader(isDarkMode: isDarkMode),
 
-                  Text(NxTexts.loginTitle, style: Theme.of(context).textTheme.headlineMedium,),
-                  const SizedBox(height: NxSizes.sm,),
-                  Text(NxTexts.loginSubTitle, style: Theme.of(context).textTheme.bodyMedium,),
-                ],
-              ),
+              /// Form
+              /// TextFields, Sign_in and Create_Account buttons
+              const NxLoginForm(),
+
+              /// Divider
+              NxFormDivider(isDarkMode: isDarkMode, dividerText: NxTexts.orSignInWith.capitalize!,),
+
+              const SizedBox(height: NxSizes.spaceBtwSections ),
+
+              /// Footer
+              /// Facebook and Google
+             const  NxSocialButton()
             ],
           ),
         ),
@@ -38,3 +47,4 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
+
