@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:nx_commerce/features/authentication/screens/password_configuration/forgot_password_screen.dart';
 import 'package:nx_commerce/features/authentication/screens/signup/signup.dart';
-import 'package:nx_commerce/navigation_menu.dart';
+import 'package:nx_commerce/common/widgets/navigation_bar/navigation_menu.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
 
@@ -61,9 +61,11 @@ class NxLoginForm extends StatelessWidget {
                 ),
 
                 /// Forgot Password
-                TextButton(
-                  onPressed: ()=> Get.to(()=> const ForgotPasswordScreen()),
-                  child: const Text(NxTexts.forgotPassword),
+                Flexible(
+                  child: TextButton(
+                    onPressed: ()=> Get.to(()=> const ForgotPasswordScreen()),
+                    child: const Text(NxTexts.forgotPassword),
+                  ),
                 ),
               ],
             ),
