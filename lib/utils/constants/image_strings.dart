@@ -22,4 +22,10 @@ class NxImages {
   static const String verifyEmailIllustration = "";
 
 
+  // -- Banners
+  static const String promoBanners1 = "assets/images/products/banners/promo_banner1.png";
+  static const String promoBanners2 = "assets/images/products/banners/promo_banner2.png";
+  static const String promoBanners3 = "assets/images/products/banners/promo_banner3.png";
+
+
 }
