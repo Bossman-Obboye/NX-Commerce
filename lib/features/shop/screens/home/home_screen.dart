@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:nx_commerce/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:nx_commerce/features/shop/screens/home/widgets/home_categories.dart';
+import 'package:nx_commerce/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:nx_commerce/utils/constants/colors.dart';
 import 'package:nx_commerce/utils/constants/image_strings.dart';
 import 'package:nx_commerce/utils/constants/sizes.dart';
-
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_containers.dart';
 import '../../../../common/widgets/text/section_heading.dart';
@@ -67,41 +67,16 @@ class HomeScreen extends StatelessWidget {
             ),
 
             /// -- Body
-            Padding(
-              padding: const EdgeInsets.all(NxSizes.defaultSpace),
-              child: NxRoundedImage(),
-            )
+
+            /// -- Promo Slider
+            const Padding(
+              padding: EdgeInsets.all(NxSizes.defaultSpace),
+              child: NxPromoSlider(banners: [NxImages.promoBanners1, NxImages.promoBanners2, NxImages.promoBanners3],),
+            ),
+
           ],
         ),
       ),
-    );
-  }
-}
-
-class NxRoundedImage extends StatelessWidget {
-  const NxRoundedImage({
-    super.key,
-  });
-  final double? width, height;
-  final String imageUrl;
-  final bool applyImageBorderRadius;
-  final BoxFit? fit;
-  final EdgeInsetsGeometry? padding;
-  final bool isNetworkImage;
-  final VoidCallback? onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(NxSizes.md),
-      ),
-      child: ClipRRect(
-          borderRadius: BorderRadius.circular(NxSizes.md),
-          child:  const Image(
-            image: AssetImage(NxImages.promoBanners1),
-            fit: BoxFit.contain,
-          ),),
     );
   }
 }
