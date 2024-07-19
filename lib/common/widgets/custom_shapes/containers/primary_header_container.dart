@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../utils/constants/colors.dart';
 import '../curve_edges/curve_edge_widget.dart';
-import 'circular_container.dart';
+import 'rounded_container.dart';
 
 
 class NxPrimaryHeaderContainer extends StatelessWidget {
@@ -26,12 +26,12 @@ class NxPrimaryHeaderContainer extends StatelessWidget {
               Positioned(
                   top: -150,
                   right: -250,
-                  child: NxCircularContainer(
+                  child: NxRoundedContainer(
                       backgroundColor: NxColors.textWhite.withOpacity(0.1))),
               Positioned(
                   top: 100,
                   right: -300,
-                  child: NxCircularContainer(
+                  child: NxRoundedContainer(
                       backgroundColor: NxColors.textWhite.withOpacity(0.1))),
               child
             ],

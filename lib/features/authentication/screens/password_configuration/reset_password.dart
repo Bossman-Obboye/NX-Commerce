@@ -21,7 +21,7 @@ class ResetPasswordScreen extends StatelessWidget {
       ),
       body:  SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(NxSizes.defaultSpace),
+          padding: const EdgeInsets.all(NxSizes.defaultSpace),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
