@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
 
-
 class NxRoundedImage extends StatelessWidget {
   const NxRoundedImage({
     super.key,
@@ -38,7 +37,7 @@ class NxRoundedImage extends StatelessWidget {
       child: Container(
         width: width,
         height: height,
-        padding: padding,
+        padding: padding ?? EdgeInsets.zero,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(borderRadius),
           color: backgroundColor,

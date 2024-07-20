@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:nx_commerce/common/widgets/text/product_text_tile.dart';
 import 'package:nx_commerce/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:nx_commerce/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:nx_commerce/features/shop/screens/home/widgets/promo_slider.dart';
@@ -86,6 +87,13 @@ class HomeScreen extends StatelessWidget {
                     height: NxSizes.spaceBtwSections,
                   ),
 
+                  // -- GridTitle
+                  const NxSectionHeading(
+                    title: "Popular Products",
+                    showActionButton: true,
+                    btnText: "View all",
+                  ),
+
                   /// -- Popular Products
                   NxGridLayout(
                     itemCount: 2,
@@ -102,4 +110,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-

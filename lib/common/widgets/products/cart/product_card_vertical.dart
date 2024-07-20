@@ -32,7 +32,7 @@ class NxProductCardVertical extends StatelessWidget {
             /// -- Thumbnail, wishlist button, discount card
             NxRoundedContainer(
               height: 180,
-              padding: const EdgeInsets.all(NxSizes.sm),
+              padding: const EdgeInsets.all(NxSizes.xs / 2),
               backgroundColor: isDarkMode ? NxColors.dark : NxColors.light,
               child: Stack(children: [
                 /// Thumbnail
@@ -101,34 +101,39 @@ class NxProductCardVertical extends StatelessWidget {
                           color: NxColors.primary, size: NxSizes.iconXs)
                     ],
                   ),
-                  // Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      /// -- Price
-                      const NxProductPriceText(
-                        price: "35.00",
-                      ),
+                ],
+              ),
+            ),
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: NxSizes.sm,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  /// -- Price
+                  const NxProductPriceText(
+                    price: "35.00",
+                  ),
 
-                      /// -- Add to Cart Button
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: NxColors.dark,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(NxSizes.cardRadiusMd),
-                            bottomRight:
-                                Radius.circular(NxSizes.productImageRadius),
-                          ),
-                        ),
-                        child: const SizedBox(
-                          height: NxSizes.iconLg * 1.20,
-                          width: NxSizes.iconLg * 1.20,
-                          child: Center(
-                            child: Icon(Iconsax.add, color: NxColors.white),
-                          ),
-                        ),
+                  /// -- Add to Cart Button
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: NxColors.dark,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(NxSizes.cardRadiusMd),
+                        bottomRight:
+                            Radius.circular(NxSizes.productImageRadius),
                       ),
-                    ],
+                    ),
+                    child: const SizedBox(
+                      height: NxSizes.iconLg * 1.20,
+                      width: NxSizes.iconLg * 1.20,
+                      child: Center(
+                        child: Icon(Iconsax.add, color: NxColors.white),
+                      ),
+                    ),
                   ),
                 ],
               ),

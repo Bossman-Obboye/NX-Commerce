@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/sizes.dart';
@@ -6,7 +5,7 @@ import '../../../utils/constants/sizes.dart';
 class NxGridLayout extends StatelessWidget {
   const NxGridLayout({
     super.key,
-    this.mainAxisExtent = 282,
+    this.mainAxisExtent = 280,
     required this.itemCount,
     required this.itemBuilder,
   });

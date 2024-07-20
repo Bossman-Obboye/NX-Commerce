@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:nx_commerce/utils/constants/sizes.dart';
 import '../../../../utils/constants/colors.dart';
 
-
 class NxRoundedContainer extends StatelessWidget {
   const NxRoundedContainer({
     super.key,
@@ -11,7 +10,7 @@ class NxRoundedContainer extends StatelessWidget {
     this.radius = NxSizes.cardRadiusLg,
     this.padding,
     this.margin,
-    this.backgroundColor = Colors.white,
+    this.backgroundColor,
     this.child,
     this.showBorder = false,
     this.borderColor = NxColors.borderPrimary,
@@ -20,7 +19,8 @@ class NxRoundedContainer extends StatelessWidget {
   /// -- Fields
   final double? height, width;
   final double radius;
-  final Color backgroundColor, borderColor;
+  final Color borderColor;
+  final Color? backgroundColor;
   final EdgeInsetsGeometry? margin, padding;
   final Widget? child;
   final bool showBorder;
@@ -31,9 +31,9 @@ class NxRoundedContainer extends StatelessWidget {
       margin: margin,
       width: width,
       height: height,
-      padding: padding,
+      padding: padding ?? EdgeInsets.zero,
       decoration: BoxDecoration(
-        border: showBorder ?  Border.all(color: borderColor) : null,
+        border: showBorder ? Border.all(color: borderColor) : null,
         borderRadius: BorderRadius.circular(radius),
         color: backgroundColor,
       ),
