@@ -8,6 +8,7 @@ import 'package:nx_commerce/utils/constants/image_strings.dart';
 import 'package:nx_commerce/utils/constants/sizes.dart';
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_containers.dart';
+import '../../../../common/widgets/layout/grid_layout.dart';
 import '../../../../common/widgets/products/cart/product_card_vertical.dart';
 import '../../../../common/widgets/text/section_heading.dart';
 
@@ -70,28 +71,35 @@ class HomeScreen extends StatelessWidget {
             /// -- Body
 
             /// -- Promo Slider
-            const Padding(
-              padding: EdgeInsets.all(NxSizes.defaultSpace),
+            Padding(
+              padding: const EdgeInsets.all(NxSizes.defaultSpace),
               child: Column(
                 children: [
-                  NxPromoSlider(banners: [NxImages.promoBanners1, NxImages.promoBanners2, NxImages.promoBanners3],),
-                  SizedBox(
+                  const NxPromoSlider(
+                    banners: [
+                      NxImages.promoBanners1,
+                      NxImages.promoBanners2,
+                      NxImages.promoBanners3
+                    ],
+                  ),
+                  const SizedBox(
                     height: NxSizes.spaceBtwSections,
                   ),
 
-                /// -- Popular Products
-                NxProductCardVertical(),
-
+                  /// -- Popular Products
+                  NxGridLayout(
+                    itemCount: 2,
+                    itemBuilder: (BuildContext _, index) {
+                      return const NxProductCardVertical();
+                    },
+                  )
                 ],
               ),
             ),
-
           ],
         ),
       ),
     );
   }
 }
-
-
 

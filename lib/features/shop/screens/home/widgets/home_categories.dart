@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../common/widgets/image_text_widget.dart';
+import '../../../../../common/widgets/images/image_text_widget.dart';
 import '../../../../../utils/constants/image_strings.dart';
 
 
