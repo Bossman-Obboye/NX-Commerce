@@ -17,6 +17,9 @@ class NxImages {
   static const String onboardingImage3 =
       "assets/images/onboarding_images/onboarding3.gif";
 
+  // -- User
+  static const String user = "assets/images/user/user.png";
+
   // -- Icons
   static const String clothIcon = "assets/icons/cloth_icon.png";
 

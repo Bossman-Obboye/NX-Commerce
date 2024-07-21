@@ -32,7 +32,7 @@ class NxProductCardVertical extends StatelessWidget {
           children: [
             /// -- Thumbnail, wishlist button, discount card
             NxRoundedContainer(
-              height: 180,
+              height: 172,
               padding: const EdgeInsets.all(NxSizes.sm),
               backgroundColor: isDarkMode ? NxColors.dark : NxColors.light,
               child: Stack(children: [

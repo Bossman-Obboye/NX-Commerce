@@ -61,7 +61,8 @@ class HomeScreen extends StatelessWidget {
                         NxHomeCategories(),
                       ],
                     ),
-                  )
+                  ),
+                  SizedBox(height: NxSizes.spaceBtwSections),
                 ],
               ),
             ),
