@@ -5,7 +5,6 @@ import '../../../../../common/widgets/products/cart/cart_menu_icon.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/text_strings.dart';
 
-
 class NxHomeAppBar extends StatelessWidget {
   const NxHomeAppBar({
     super.key,
@@ -13,7 +12,7 @@ class NxHomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-          /// -- Custom AppBar
+    /// -- Custom AppBar
     return NxAppBar(
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,16 +30,15 @@ class NxHomeAppBar extends StatelessWidget {
                   .apply(color: NxColors.white)),
         ],
       ),
-
-
       actions: [
         /// -- Icons
         NxCartCounterIcon(
           onPressed: () {},
           iconColor: NxColors.white,
+          counterBgColor: NxColors.black,
+          counterTextColor: NxColors.white,
         ),
       ],
     );
   }
 }
-

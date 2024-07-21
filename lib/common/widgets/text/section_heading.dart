@@ -8,7 +8,7 @@ class NxSectionHeading extends StatelessWidget {
     this.textColor,
     this.showActionButton = true,
     required this.title,
-    this.btnText = '',
+    this.btnText = 'View all',
     this.btnOnPressed,
   });
   final Color? textColor;

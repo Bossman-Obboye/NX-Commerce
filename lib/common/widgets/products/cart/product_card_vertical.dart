@@ -2,9 +2,11 @@ import "package:flutter/material.dart";
 import "package:iconsax/iconsax.dart";
 import "package:nx_commerce/common/widgets/icons/circular_icon.dart";
 import "package:nx_commerce/common/widgets/images/rounded_images.dart";
+import "package:nx_commerce/common/widgets/text/brand_title_text_with_verification.dart";
 import "package:nx_commerce/common/widgets/text/product_text_tile.dart";
 
 import "../../../../utils/constants/colors.dart";
+import "../../../../utils/constants/enums.dart";
 import "../../../../utils/constants/image_strings.dart";
 import "../../../../utils/constants/sizes.dart";
 import "../../../../utils/helpers/helpers.dart";
@@ -71,35 +73,23 @@ class NxProductCardVertical extends StatelessWidget {
             ),
 
             /// -- Details
-            Padding(
-              padding: const EdgeInsets.only(
+            const Padding(
+              padding: EdgeInsets.only(
                 left: NxSizes.sm,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const NxProductTitleText(
+                  NxProductTitleText(
                     title:
                         "Grey laptop backpack. Resist water and other fluid - original",
                     isSmallSize: true,
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: NxSizes.spaceBtwItems / 2,
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        "Nike",
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                      const SizedBox(
-                        width: NxSizes.xs,
-                      ),
-                      const Icon(Iconsax.verify5,
-                          color: NxColors.primary, size: NxSizes.iconXs)
-                    ],
+                  NxBrandTitleTextWithVerification(
+                    title: 'Nike',
                   ),
                 ],
               ),

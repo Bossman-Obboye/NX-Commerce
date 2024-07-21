@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
-import 'package:nx_commerce/common/widgets/text/product_text_tile.dart';
 import 'package:nx_commerce/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:nx_commerce/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:nx_commerce/features/shop/screens/home/widgets/promo_slider.dart';
@@ -23,31 +21,30 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             /// -- Header
-            NxPrimaryHeaderContainer(
+            const NxPrimaryHeaderContainer(
               child: Column(
                 children: [
                   /// -- AppBar
-                  const NxHomeAppBar(),
+                  NxHomeAppBar(),
 
                   /// Spacing
-                  const SizedBox(
+                  SizedBox(
                     height: NxSizes.spaceBtwSections,
                   ),
 
                   /// -- SearchBar
-                  const NxSearchContainer(
+                  NxSearchContainer(
                     text: "Search in Store",
-                    icon: Iconsax.search_normal,
                   ),
 
                   /// Spacing
-                  const SizedBox(
+                  SizedBox(
                     height: NxSizes.spaceBtwSections,
                   ),
 
                   /// -- Categories
                   Padding(
-                    padding: const EdgeInsets.only(left: NxSizes.defaultSpace),
+                    padding: EdgeInsets.only(left: NxSizes.defaultSpace),
                     child: Column(
                       children: [
                         /// -- Heading
@@ -56,12 +53,12 @@ class HomeScreen extends StatelessWidget {
                           textColor: NxColors.white,
                           showActionButton: false,
                         ),
-                        const SizedBox(
+                        SizedBox(
                           height: NxSizes.spaceBtwItems,
                         ),
 
                         /// -- Categories
-                        const NxHomeCategories(),
+                        NxHomeCategories(),
                       ],
                     ),
                   )
@@ -91,7 +88,10 @@ class HomeScreen extends StatelessWidget {
                   const NxSectionHeading(
                     title: "Popular Products",
                     showActionButton: true,
-                    btnText: "View all",
+                  ),
+
+                  const SizedBox(
+                    height: NxSizes.spaceBtwItems,
                   ),
 
                   /// -- Popular Products

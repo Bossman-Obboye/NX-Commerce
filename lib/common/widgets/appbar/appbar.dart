@@ -4,10 +4,8 @@ import 'package:iconsax/iconsax.dart';
 import 'package:nx_commerce/utils/constants/sizes.dart';
 import 'package:nx_commerce/utils/device/device_utility.dart';
 
-
 /// -- Custom AppBar Pattern
 class NxAppBar extends StatelessWidget implements PreferredSizeWidget {
-
   const NxAppBar(
       {super.key,
       this.title,
@@ -28,25 +26,28 @@ class NxAppBar extends StatelessWidget implements PreferredSizeWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: NxSizes.md),
       child: AppBar(
-
         /// -- Turn off Flutter_Default_Leading
         automaticallyImplyLeading: false,
 
         /// -- Leading Widget
         leading: showBackArrow
-            ? IconButton( onPressed: () => Get.back(), icon:  const Icon(Iconsax.arrow_left))
-            : leadingIcon != null ? IconButton(onPressed: leadingOnPressed, icon: Icon(leadingIcon))  : null,
+            ? IconButton(
+                onPressed: () => Get.back(),
+                icon: const Icon(Iconsax.arrow_left))
+            : leadingIcon != null
+                ? IconButton(
+                    onPressed: leadingOnPressed, icon: Icon(leadingIcon))
+                : null,
 
         /// -- Title
         title: title,
 
         /// -- Actions Icons
-        actions: actions ,
+        actions: actions,
       ),
     );
   }
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => Size.fromHeight(NxDeviceUtils.getAppBarHeight());
 }

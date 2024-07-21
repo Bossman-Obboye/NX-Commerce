@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
@@ -11,21 +12,23 @@ class NxSearchContainer extends StatelessWidget {
     this.showBackground = true,
     this.showBorder = true,
     required this.text,
-    this.icon,
+    this.icon = Iconsax.search_normal,
     this.onTap,
+    this.padding =  const EdgeInsets.symmetric(horizontal: NxSizes.defaultSpace)
   });
 
   final bool showBackground, showBorder;
   final String text;
   final IconData? icon;
   final void Function()? onTap;
+  final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {
     final bool isDarkMode = NxHelpers.isDarkMode(context);
     return GestureDetector(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: NxSizes.defaultSpace),
+        padding: padding,
         child: Container(
           width: NxDeviceUtils.getScreenWidth(),
           padding: const EdgeInsets.all(NxSizes.md),
