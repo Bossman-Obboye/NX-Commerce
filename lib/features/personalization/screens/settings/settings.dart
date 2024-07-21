@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:nx_commerce/common/widgets/appbar/appbar.dart';
 import 'package:nx_commerce/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:nx_commerce/common/widgets/list_tile/settings_menu_tile.dart';
 import 'package:nx_commerce/common/widgets/text/section_heading.dart';
+import 'package:nx_commerce/features/personalization/screens/profile/profile.dart';
 import 'package:nx_commerce/utils/constants/sizes.dart';
-
 import '../../../../common/widgets/list_tile/user_profile_tile.dart';
 import '../../../../utils/constants/colors.dart';
 
@@ -32,7 +33,9 @@ class SettingsScreen extends StatelessWidget {
                   ),
 
                   /// -- User Profile Card
-                  const NxUserProfileTile(),
+                   NxUserProfileTile(
+                    onTap: () => Get.to(()=> const ProfileScreen()),
+                  ),
                   const SizedBox(height: NxSizes.spaceBtwSections),
                 ],
               ),

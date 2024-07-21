@@ -3,6 +3,9 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:nx_commerce/utils/constants/sizes.dart';
 import 'package:nx_commerce/utils/device/device_utility.dart';
+import 'package:nx_commerce/utils/helpers/helpers.dart';
+
+import '../../../utils/constants/colors.dart';
 
 /// -- Custom AppBar Pattern
 class NxAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -33,7 +36,7 @@ class NxAppBar extends StatelessWidget implements PreferredSizeWidget {
         leading: showBackArrow
             ? IconButton(
                 onPressed: () => Get.back(),
-                icon: const Icon(Iconsax.arrow_left))
+                icon: Icon(Iconsax.arrow_left, color: NxHelpers.isDarkMode(context) ? NxColors.white : NxColors.black,))
             : leadingIcon != null
                 ? IconButton(
                     onPressed: leadingOnPressed, icon: Icon(leadingIcon))

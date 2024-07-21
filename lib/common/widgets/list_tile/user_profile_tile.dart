@@ -8,13 +8,14 @@ import "../images/circular_image.dart";
 
 class NxUserProfileTile extends StatelessWidget {
   const NxUserProfileTile({
-    super.key,
+    super.key, this.onTap,
   });
 
-   // final String title, subTitle;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: onTap,
       leading: const NxCircularImage(
         image: NxImages.user,
         height: 50,
