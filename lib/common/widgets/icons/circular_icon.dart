@@ -27,11 +27,10 @@ class NxCircularIcon extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: backgroundColor == null
-            ? isDarkMode
+        color: backgroundColor ??
+            ( isDarkMode
                 ? NxColors.black.withOpacity(0.8)
-                : NxColors.white.withOpacity(0.8)
-            : backgroundColor!,
+                : NxColors.white.withOpacity(0.8)),
         shape: BoxShape.circle,
       ),
       child: IconButton(
@@ -39,7 +38,7 @@ class NxCircularIcon extends StatelessWidget {
           icon: Icon(
             iconData,
             size: iconSize,
-            color: iconColor,
+            color: iconColor ?? (isDarkMode ? NxColors.white : NxColors.black),
           )),
     );
   }

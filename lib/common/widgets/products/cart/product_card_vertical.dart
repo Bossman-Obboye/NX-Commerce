@@ -6,7 +6,6 @@ import "package:nx_commerce/common/widgets/text/brand_title_text_with_verificati
 import "package:nx_commerce/common/widgets/text/product_text_tile.dart";
 
 import "../../../../utils/constants/colors.dart";
-import "../../../../utils/constants/enums.dart";
 import "../../../../utils/constants/image_strings.dart";
 import "../../../../utils/constants/sizes.dart";
 import "../../../../utils/helpers/helpers.dart";
@@ -34,10 +33,10 @@ class NxProductCardVertical extends StatelessWidget {
             /// -- Thumbnail, wishlist button, discount card
             NxRoundedContainer(
               height: 180,
-              padding: const EdgeInsets.all(NxSizes.xs / 2),
+              padding: const EdgeInsets.all(NxSizes.sm),
               backgroundColor: isDarkMode ? NxColors.dark : NxColors.light,
               child: Stack(children: [
-                /// Thumbnail
+                /// Thumbnail image
                 const NxRoundedImage(
                   imageUrl: NxImages.productImage1,
                   applyImageBorderRadius: true,
@@ -48,7 +47,7 @@ class NxProductCardVertical extends StatelessWidget {
                   top: 12,
                   child: NxRoundedContainer(
                     radius: NxSizes.sm,
-                    backgroundColor: NxColors.secondary.withOpacity(0.5),
+                    backgroundColor: NxColors.secondary.withOpacity(0.8),
                     padding: const EdgeInsets.symmetric(
                         horizontal: NxSizes.sm, vertical: NxSizes.xs),
                     child: Text(
@@ -72,61 +71,69 @@ class NxProductCardVertical extends StatelessWidget {
               ]),
             ),
 
+            const SizedBox(height: NxSizes.spaceBtwItems / 2,),
+
             /// -- Details
             const Padding(
               padding: EdgeInsets.only(
                 left: NxSizes.sm,
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  NxProductTitleText(
-                    title:
-                        "Grey laptop backpack. Resist water and other fluid - original",
-                    isSmallSize: true,
-                  ),
-                  SizedBox(
-                    height: NxSizes.spaceBtwItems / 2,
-                  ),
-                  NxBrandTitleTextWithVerification(
-                    title: 'Nike',
-                  ),
-                ],
+              child: SizedBox(
+                // This is to make the Colum full width
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    NxProductTitleText(
+                      title:
+                          "Grey laptop backpack. Resist water and other fluid - original",
+                      isSmallSize: true,
+                    ),
+                    SizedBox(
+                      height: NxSizes.spaceBtwItems / 2,
+                    ),
+                    NxBrandTitleTextWithVerification(
+                      title: 'Nike',
+                    ),
+                  ],
+                ),
               ),
             ),
             const Spacer(),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: NxSizes.sm,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  /// -- Price
-                  const NxProductPriceText(
+
+            /// Price Row
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                /// -- Price
+                const Padding(
+                  padding:EdgeInsets.only(
+              left: NxSizes.sm,
+            ),
+                  child: NxProductPriceText(
                     price: "35.00",
                   ),
+                ),
 
-                  /// -- Add to Cart Button
-                  Container(
-                    decoration: const BoxDecoration(
-                      color: NxColors.dark,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(NxSizes.cardRadiusMd),
-                        bottomRight:
-                            Radius.circular(NxSizes.productImageRadius),
-                      ),
-                    ),
-                    child: const SizedBox(
-                      height: NxSizes.iconLg * 1.20,
-                      width: NxSizes.iconLg * 1.20,
-                      child: Center(
-                        child: Icon(Iconsax.add, color: NxColors.white),
-                      ),
+                /// -- Add to Cart Button
+                Container(
+                  decoration: const BoxDecoration(
+                    color: NxColors.dark,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(NxSizes.cardRadiusMd),
+                      bottomRight:
+                          Radius.circular(NxSizes.productImageRadius),
                     ),
                   ),
-                ],
-              ),
+                  child: const SizedBox(
+                    height: NxSizes.iconLg * 1.20,
+                    width: NxSizes.iconLg * 1.20,
+                    child: Center(
+                      child: Icon(Iconsax.add, color: NxColors.white),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nx_commerce/utils/constants/image_strings.dart';
 
 import 'brand_card.dart';
 import '../../../utils/constants/colors.dart';
