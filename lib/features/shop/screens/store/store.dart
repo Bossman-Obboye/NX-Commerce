@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:nx_commerce/common/widgets/appbar/appbar.dart';
+import 'package:nx_commerce/common/widgets/appbar/tab_bar.dart';
 import 'package:nx_commerce/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:nx_commerce/common/widgets/custom_shapes/containers/search_containers.dart';
 import 'package:nx_commerce/common/widgets/layout/grid_layout.dart';
 import 'package:nx_commerce/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:nx_commerce/common/widgets/text/section_heading.dart';
+import 'package:nx_commerce/common/widgets/brand/brand_card.dart';
+import 'package:nx_commerce/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:nx_commerce/utils/constants/colors.dart';
-import 'package:nx_commerce/utils/constants/enums.dart';
 import 'package:nx_commerce/utils/constants/image_strings.dart';
 import 'package:nx_commerce/utils/helpers/helpers.dart';
-import '../../../../common/widgets/images/circular_image.dart';
-import '../../../../common/widgets/text/brand_title_text_with_verification.dart';
+import '../../../../common/widgets/brand/brand_showcase.dart';
 import '../../../../utils/constants/sizes.dart';
 
 class StoreScreen extends StatelessWidget {
@@ -19,30 +20,33 @@ class StoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final bool isDarkMode = NxHelpers.isDarkMode(context);
-    return Scaffold(
-      /// -- Appbar
-      appBar: NxAppBar(
-        /// -- Title
-        title: Text("Store", style: Theme.of(context).textTheme.headlineMedium),
-        actions: [
-          /// -- Icons [cart with counter]
-          NxCartCounterIcon(
-            onPressed: () {},
-          ),
-        ],
-      ),
-      body: NestedScrollView(
-        headerSliverBuilder: (_, bool innerBoxIsScrolled) {
-          return [
-            SliverAppBar(
-              automaticallyImplyLeading: false,
-              pinned: true,
-              floating: true,
-              backgroundColor: NxHelpers.isDarkMode(context)
-                  ? NxColors.black
-                  : NxColors.white,
-              expandedHeight: 440,
-              flexibleSpace: Padding(
+    return DefaultTabController(
+      length: 5,
+      child: Scaffold(
+        /// -- Appbar
+        appBar: NxAppBar(
+          /// -- Title
+          title:
+              Text("Store", style: Theme.of(context).textTheme.headlineMedium),
+          actions: [
+            /// -- Icons [cart with counter]
+            NxCartCounterIcon(
+              onPressed: () {},
+            ),
+          ],
+        ),
+        body: NestedScrollView(
+          headerSliverBuilder: (_, bool innerBoxIsScrolled) {
+            return [
+              SliverAppBar(
+                automaticallyImplyLeading: false,
+                pinned: true,
+                floating: true,
+                backgroundColor: NxHelpers.isDarkMode(context)
+                    ? NxColors.black
+                    : NxColors.white,
+                expandedHeight: 440,
+                flexibleSpace: Padding(
                   padding: const EdgeInsets.all(NxSizes.defaultSpace),
                   child: ListView(
                     physics: const NeverScrollableScrollPhysics(),
@@ -70,66 +74,43 @@ class StoreScreen extends StatelessWidget {
                         height: NxSizes.spaceBtwItems / 1.5,
                       ),
 
+                      /// Brand GRID
                       NxGridLayout(
                           itemCount: 4,
                           mainAxisExtent: 80,
                           itemBuilder: (_, index) {
-                            return GestureDetector(
-                              onTap: () {},
-                              child: NxRoundedContainer(
-                                padding: const EdgeInsets.all(NxSizes.sm),
-                                showBorder: true,
-                                backgroundColor: Colors.transparent,
-                                child: Row(
-                                  children: [
-                                    /// -- Icon
-                                    Flexible(
-                                      child: NxCircularImage(
-                                        image: NxImages.clothIcon,
-                                        backgroundColor: Colors.transparent,
-                                        overlayColor:
-                                            NxHelpers.isDarkMode(context)
-                                                ? NxColors.white
-                                                : NxColors.black,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      width: NxSizes.spaceBtwItems / 2,
-                                    ),
-
-                                    /// -- Text
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          const NxBrandTitleTextWithVerification(
-                                            title: 'Nike',
-                                            brandTextSize: TextSizes.large,
-                                          ),
-                                          Text(
-                                            "256 products",
-                                            overflow: TextOverflow.ellipsis,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .labelMedium,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
+                            return const NxBrandCard(
+                              showBorder: true,
                             );
-                          })
+                          }),
                     ],
-                  )),
-            ),
-          ];
-        },
-        body: Container(),
+                  ),
+                ),
+
+                /// Tabs
+                bottom: const NxTabBar(
+                  tabs: [
+                    Tab(child: Text("Sports")),
+                    Tab(child: Text("Furniture")),
+                    Tab(child: Text("Electronics")),
+                    Tab(child: Text("Clothes")),
+                    Tab(child: Text("Cosmetics")),
+                  ],
+                ),
+              ),
+            ];
+          },
+          body: const TabBarView(
+            /// Content of each tab
+            children: [
+              NxCateroryTab(),
+              NxCateroryTab(),
+              NxCateroryTab(),
+              NxCateroryTab(),
+              NxCateroryTab(),
+            ],
+          ),
+        ),
       ),
     );
   }

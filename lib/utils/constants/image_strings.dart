@@ -39,7 +39,7 @@ class NxImages {
 
   // -- Products Images
   static const String productImage1 = "assets/images/products/backpack.jpg";
-  static const String productImage2 = "assets/images/products/backpack_1.jpg";
+  static const String productImage2 = "assets/images/products/braces_1.jpg";
   static const String productImage3 =
       "assets/images/products/canon_scanner.jpg";
   static const String productImage4 =
