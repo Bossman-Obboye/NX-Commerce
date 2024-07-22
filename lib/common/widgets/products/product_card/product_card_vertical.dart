@@ -6,7 +6,6 @@ import "package:nx_commerce/common/widgets/images/rounded_images.dart";
 import "package:nx_commerce/common/widgets/text/brand_title_text_with_verification.dart";
 import "package:nx_commerce/common/widgets/text/product_text_tile.dart";
 import "package:nx_commerce/features/shop/screens/product_details/product_details.dart";
-
 import "../../../../utils/constants/colors.dart";
 import "../../../../utils/constants/image_strings.dart";
 import "../../../../utils/constants/sizes.dart";

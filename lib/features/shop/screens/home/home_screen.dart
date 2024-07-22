@@ -8,7 +8,7 @@ import 'package:nx_commerce/utils/constants/sizes.dart';
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_containers.dart';
 import '../../../../common/widgets/layout/grid_layout.dart';
-import '../../../../common/widgets/products/cart/product_card_vertical.dart';
+import '../../../../common/widgets/products/product_card/product_card_vertical.dart';
 import '../../../../common/widgets/text/section_heading.dart';
 
 class HomeScreen extends StatelessWidget {

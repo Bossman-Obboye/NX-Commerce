@@ -35,6 +35,11 @@ class NxImages {
   // -- Brand Images
   static const String nikeBrand = "assets/icons/brands/nike.png";
 
+  // -- Reviews Images (Profile)
+  static const String userProfileImage1 = "assets/images/reviews/reviewer_profile_image_1.png";
+  static const String userProfileImage2 = "assets/images/reviews/reviewer_profile_image_2.jpg";
+  static const String userProfileImage3 = "assets/images/reviews/reviewer_profile_image_3.png";
+
 
   // -- Banners
   static const String promoBanners1 =

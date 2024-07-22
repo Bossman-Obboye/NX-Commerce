@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nx_commerce/common/widgets/layout/grid_layout.dart';
-import 'package:nx_commerce/common/widgets/products/cart/product_card_vertical.dart';
+import 'package:nx_commerce/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:nx_commerce/common/widgets/text/section_heading.dart';
 
 import '../../../../../common/widgets/brand/brand_showcase.dart';

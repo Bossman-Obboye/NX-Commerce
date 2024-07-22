@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nx_commerce/common/widgets/appbar/appbar.dart';
-import 'package:nx_commerce/features/shop/screens/product_reviews/widgets/rating_progress_indicator.dart';
-import 'package:nx_commerce/utils/constants/colors.dart';
+import 'package:nx_commerce/features/shop/screens/product_reviews/widgets/overall_product_rating.dart';
+import 'package:nx_commerce/features/shop/screens/product_reviews/widgets/user_review_card.dart';
 import 'package:nx_commerce/utils/constants/sizes.dart';
-import 'package:nx_commerce/utils/helpers/helpers.dart';
+import '../../../../common/widgets/products/ratings/product_rating_indicator.dart';
+
+
 
 class ProductReviewsScreen extends StatelessWidget {
   const ProductReviewsScreen({super.key});
@@ -29,26 +31,17 @@ class ProductReviewsScreen extends StatelessWidget {
               const SizedBox(height: NxSizes.spaceBtwItems),
 
               /// -- Overall Product Ratings
-              Row(
-                children: [
-                  Expanded(
-                      flex: 3,
-                      child: Text("4.8",
-                          style: Theme.of(context).textTheme.displayLarge)),
-                  const Expanded(
-                    flex: 7,
-                    child: Column(
-                      children: [
-                        NxRatingProgressIndicator(text: '5', value: 1.0,),
-                        NxRatingProgressIndicator(text: '4', value: 0.8,),
-                        NxRatingProgressIndicator(text: '3', value: 0.6,),
-                        NxRatingProgressIndicator(text: '2', value: 0.4,),
-                        NxRatingProgressIndicator(text: '1', value: 0.2,),
-                      ],
-                    ),
-                  )
-                ],
-              )
+              const OverallProductRating(),
+
+              /// Rating bar
+              const NxRatingBarIndicator(rating: 3.5),
+              Text("12,611", style : Theme.of(context).textTheme.bodySmall),
+              const SizedBox(height: NxSizes.spaceBtwSections),
+
+               /// Reviews from Users
+              const UserReviewCard(),
+              const UserReviewCard(),
+              const UserReviewCard(),
             ],
           ),
         ),
@@ -56,3 +49,4 @@ class ProductReviewsScreen extends StatelessWidget {
     );
   }
 }
+

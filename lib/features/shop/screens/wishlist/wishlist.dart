@@ -4,7 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:nx_commerce/common/widgets/appbar/appbar.dart';
 import 'package:nx_commerce/common/widgets/icons/circular_icon.dart';
 import 'package:nx_commerce/common/widgets/layout/grid_layout.dart';
-import 'package:nx_commerce/common/widgets/products/cart/product_card_vertical.dart';
+import 'package:nx_commerce/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:nx_commerce/utils/constants/sizes.dart';
 
 import '../home/home_screen.dart';
