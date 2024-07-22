@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 
+import '../constants/colors.dart';
+
 class NxChipTheme {
   NxChipTheme._();
 
   static final NxChipTheme instance = NxChipTheme._();
 
   final ChipThemeData darkChipTheme = const ChipThemeData(
-    disabledColor: Colors.grey,
-    labelStyle:  TextStyle(color: Colors.white),
-    selectedColor: Colors.blue,
-    padding:  EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-    checkmarkColor: Colors.white,
+    disabledColor: NxColors.darkerGrey,
+    labelStyle:  TextStyle(color: NxColors.white),
+    selectedColor: NxColors.primary,
+    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+    checkmarkColor: NxColors.white,
   );
 
   final ChipThemeData lightChipTheme = ChipThemeData(
     disabledColor: Colors.grey.withOpacity(0.4),
-    labelStyle: const TextStyle(color: Colors.black),
-    selectedColor: Colors.blue,
+    labelStyle: const TextStyle(color: NxColors.black),
+    selectedColor: NxColors.primary,
     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-    checkmarkColor: Colors.white,
+    checkmarkColor: NxColors.white,
   );
 }
