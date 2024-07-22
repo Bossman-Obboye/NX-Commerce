@@ -36,7 +36,7 @@ class NxAppBar extends StatelessWidget implements PreferredSizeWidget {
         leading: showBackArrow
             ? IconButton(
                 onPressed: () => Get.back(),
-                icon: Icon(Iconsax.arrow_left, color: NxHelpers.isDarkMode(context) ? NxColors.white : NxColors.black,))
+                icon: Icon(Iconsax.arrow_left, color: NxHelpers.isDarkMode(context) ? NxColors.white : NxColors.dark,))
             : leadingIcon != null
                 ? IconButton(
                     onPressed: leadingOnPressed, icon: Icon(leadingIcon))

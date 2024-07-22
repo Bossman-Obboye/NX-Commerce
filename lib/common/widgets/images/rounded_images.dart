@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
 
 class NxRoundedImage extends StatelessWidget {
@@ -11,8 +9,8 @@ class NxRoundedImage extends StatelessWidget {
     required this.imageUrl,
     this.applyImageBorderRadius = true,
     this.border,
-    this.backgroundColor = NxColors.light,
-    this.fit,
+    this.backgroundColor,
+    this.fit = BoxFit.contain,
     this.padding,
     this.isNetworkImage = false,
     this.onPressed,
@@ -23,7 +21,7 @@ class NxRoundedImage extends StatelessWidget {
   final String imageUrl;
   final bool applyImageBorderRadius;
   final BoxBorder? border;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final BoxFit? fit;
   final EdgeInsetsGeometry? padding;
   final bool isNetworkImage;

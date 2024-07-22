@@ -32,6 +32,10 @@ class NxImages {
   static const String productsSaleIllustration = "";
   static const String verifyEmailIllustration = "";
 
+  // -- Brand Images
+  static const String nikeBrand = "assets/icons/brands/nike.png";
+
+
   // -- Banners
   static const String promoBanners1 =
       "assets/images/products/banners/promo_banner1.png";
