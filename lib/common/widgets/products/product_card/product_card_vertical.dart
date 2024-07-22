@@ -14,7 +14,9 @@ import "../../custom_shapes/containers/rounded_container.dart";
 import "../../text/custom_price_text.dart";
 
 class NxProductCardVertical extends StatelessWidget {
-  const NxProductCardVertical({super.key});
+  const NxProductCardVertical({super.key, this.image});
+
+  final String? image;
   @override
   Widget build(BuildContext context) {
     final bool isDarkMode = NxHelpers.isDarkMode(context);
@@ -38,8 +40,8 @@ class NxProductCardVertical extends StatelessWidget {
               backgroundColor: isDarkMode ? NxColors.dark : NxColors.light,
               child: Stack(children: [
                 /// Thumbnail image
-                const NxRoundedImage(
-                  imageUrl: NxImages.productImage36,
+                 NxRoundedImage(
+                  imageUrl: image ?? NxImages.productImage36,
                   applyImageBorderRadius: true,
                 ),
 
