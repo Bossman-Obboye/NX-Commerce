@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:nx_commerce/features/shop/screens/cart/cart_screen.dart';
 
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/helpers/helpers.dart';
@@ -8,13 +10,11 @@ class NxCartCounterIcon extends StatelessWidget {
   const NxCartCounterIcon({
     super.key,
     this.iconColor,
-    required this.onPressed,
     this.counterBgColor,
     this.counterTextColor,
   });
 
   final Color? iconColor, counterBgColor, counterTextColor;
-  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class NxCartCounterIcon extends StatelessWidget {
       children: [
         /// -- Cart Icon
         IconButton(
-          onPressed: onPressed,
+          onPressed: () => Get.to(() => CartScreen()),
           icon: const Icon(Iconsax.shopping_bag),
           color: iconColor ?? (isDarkMode ? NxColors.darkGrey : NxColors.black),
         ),

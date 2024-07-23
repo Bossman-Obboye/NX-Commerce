@@ -30,10 +30,9 @@ class NxHomeAppBar extends StatelessWidget {
                   .apply(color: NxColors.white)),
         ],
       ),
-      actions: [
+      actions: const [
         /// -- Icons
         NxCartCounterIcon(
-          onPressed: () {},
           iconColor: NxColors.white,
           counterBgColor: NxColors.black,
           counterTextColor: NxColors.white,

@@ -6,13 +6,14 @@ class NxProductTitleText extends StatelessWidget {
     required this.title,
     this.isSmallSize = false,
     this.maxLines = 2,
-    // this.textAlign = TextAlign.left,
+    this.textAlign = TextAlign.left,
   });
 
   final String title;
   final bool isSmallSize;
   final int maxLines;
-  // final TextAlign? textAlign;
+  final TextAlign? textAlign;
+
   @override
   Widget build(BuildContext context) {
     return Text(
@@ -22,7 +23,7 @@ class NxProductTitleText extends StatelessWidget {
           : Theme.of(context).textTheme.titleSmall,
       maxLines: maxLines,
       overflow: TextOverflow.ellipsis,
-      // textAlign: textAlign,
+      textAlign: textAlign,
     );
   }
 }

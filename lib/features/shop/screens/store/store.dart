@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:nx_commerce/common/widgets/appbar/appbar.dart';
 import 'package:nx_commerce/common/widgets/appbar/tab_bar.dart';
+import 'package:nx_commerce/common/widgets/brand/brand_card.dart';
 import 'package:nx_commerce/common/widgets/custom_shapes/containers/search_containers.dart';
 import 'package:nx_commerce/common/widgets/layout/grid_layout.dart';
 import 'package:nx_commerce/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:nx_commerce/common/widgets/text/section_heading.dart';
-import 'package:nx_commerce/common/widgets/brand/brand_card.dart';
 import 'package:nx_commerce/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:nx_commerce/utils/constants/colors.dart';
 import 'package:nx_commerce/utils/helpers/helpers.dart';
+
 import '../../../../utils/constants/sizes.dart';
 
 class StoreScreen extends StatelessWidget {
@@ -25,11 +26,9 @@ class StoreScreen extends StatelessWidget {
           /// -- Title
           title:
               Text("Store", style: Theme.of(context).textTheme.headlineMedium),
-          actions: [
+          actions: const [
             /// -- Icons [cart with counter]
-            NxCartCounterIcon(
-              onPressed: () {},
-            ),
+            NxCartCounterIcon(),
           ],
         ),
         body: NestedScrollView(
