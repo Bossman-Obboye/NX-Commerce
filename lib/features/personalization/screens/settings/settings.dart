@@ -8,6 +8,7 @@ import 'package:nx_commerce/common/widgets/text/section_heading.dart';
 import 'package:nx_commerce/features/personalization/screens/profile/profile.dart';
 import 'package:nx_commerce/features/shop/screens/address/address.dart';
 import 'package:nx_commerce/features/shop/screens/cart/cart_screen.dart';
+import 'package:nx_commerce/features/shop/screens/order/order.dart';
 import 'package:nx_commerce/utils/constants/sizes.dart';
 import '../../../../common/widgets/list_tile/user_profile_tile.dart';
 import '../../../../utils/constants/colors.dart';
@@ -71,13 +72,13 @@ class SettingsScreen extends StatelessWidget {
                     title: "My Orders",
                     subTitle: "In-progress and Completed Orders",
                     icon: Iconsax.bag_tick,
-                    onTap: () {},
+                    onTap: () => Get.to(() => const OrderScreen()),
                   ),
                   SettingsMenuTile(
                     title: "Bank Account",
                     subTitle: "Withdraw balance to register bank account",
                     icon: Iconsax.bank,
-                    onTap: () {},
+                    onTap:() {},
                   ),
                   SettingsMenuTile(
                     title: "My Coupons",
