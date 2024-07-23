@@ -4,6 +4,8 @@ import 'package:intl/intl.dart';
 
 //
 class NxHelpers {
+  NxHelpers._();
+
   static Color? getColor(String value) {
     final Map<String, Color> colorMap = {
       'red': Colors.red,

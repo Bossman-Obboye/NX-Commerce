@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nx_commerce/common/widgets/appbar/appbar.dart';
-import 'package:nx_commerce/common/widgets/text/custom_price_text.dart';
+import 'package:nx_commerce/features/shop/screens/cart/widgets/cart_items.dart';
+import 'package:nx_commerce/features/shop/screens/checkout/checkout.dart';
 import 'package:nx_commerce/utils/constants/sizes.dart';
 
-import '../../../../common/widgets/products/cart/cart_item.dart';
-import '../../../../common/widgets/products/cart/product_add_remove_button.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -16,35 +16,20 @@ class CartScreen extends StatelessWidget {
           showBackArrow: true,
           title:
               Text("Cart", style: Theme.of(context).textTheme.headlineSmall)),
-      body: Padding(
-        padding: const EdgeInsets.all(NxSizes.defaultSpace),
-        child: ListView.separated(
-          itemCount: 10,
-          shrinkWrap: true,
-          separatorBuilder: ((_, __) =>
-              const SizedBox(height: NxSizes.spaceBtwSections)),
-          itemBuilder: ((_, index) => const Column(
-                children: [
-                  NxCartItem(),
-                  SizedBox(height: NxSizes.spaceBtwSections),
+      body: const Padding(
+        padding: EdgeInsets.all(NxSizes.defaultSpace),
 
-                  /// -- Add, Remove Buttons
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      NxProductQuantityWithAddRemoveButton(showInitSpace: true),
-                      NxProductPriceText(price: "256"),
-                    ],
-                  ),
-                ],
-              )),
-        ),
+        /// -- Items in Cart
+        child: NxCartItems(),
       ),
+
+      /// -- Checkout Button
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(NxSizes.defaultSpace),
-        child:
-            ElevatedButton(onPressed: () {}, child: const Text("Checkout \$256.00")),
+        child: ElevatedButton(
+            onPressed: () {Get.to(()=>( const CheckoutScreen()));}, child: const Text("Checkout \$256.00")),
       ),
     );
   }
 }
+

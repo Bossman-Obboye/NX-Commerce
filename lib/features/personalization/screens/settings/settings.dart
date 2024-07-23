@@ -7,6 +7,7 @@ import 'package:nx_commerce/common/widgets/list_tile/settings_menu_tile.dart';
 import 'package:nx_commerce/common/widgets/text/section_heading.dart';
 import 'package:nx_commerce/features/personalization/screens/profile/profile.dart';
 import 'package:nx_commerce/features/shop/screens/address/address.dart';
+import 'package:nx_commerce/features/shop/screens/cart/cart_screen.dart';
 import 'package:nx_commerce/utils/constants/sizes.dart';
 import '../../../../common/widgets/list_tile/user_profile_tile.dart';
 import '../../../../utils/constants/colors.dart';
@@ -58,13 +59,13 @@ class SettingsScreen extends StatelessWidget {
                     title: "My Address",
                     subTitle: "Set shopping delivery address",
                     icon: Iconsax.safe_home,
-                    onTap: () => Get.to(()=> UserAddressScreen()),
+                    onTap: () => Get.to(()=> const UserAddressScreen()),
                   ),
                   SettingsMenuTile(
                     title: "My Cart",
                     subTitle: "Add, remove and move to checkout",
                     icon: Iconsax.shopping_cart,
-                    onTap: () {},
+                    onTap: () {Get.to(()=> const CartScreen());},
                   ),
                   SettingsMenuTile(
                     title: "My Orders",

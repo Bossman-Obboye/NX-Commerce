@@ -11,7 +11,7 @@ class NxChipTheme {
     disabledColor: NxColors.darkerGrey,
     labelStyle:  TextStyle(color: NxColors.white),
     selectedColor: NxColors.primary,
-    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
     checkmarkColor: NxColors.white,
   );
 

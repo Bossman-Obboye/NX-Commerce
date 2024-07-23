@@ -23,7 +23,7 @@ class NxCartCounterIcon extends StatelessWidget {
       children: [
         /// -- Cart Icon
         IconButton(
-          onPressed: () => Get.to(() => CartScreen()),
+          onPressed: () => Get.to(() => const CartScreen()),
           icon: const Icon(Iconsax.shopping_bag),
           color: iconColor ?? (isDarkMode ? NxColors.darkGrey : NxColors.black),
         ),

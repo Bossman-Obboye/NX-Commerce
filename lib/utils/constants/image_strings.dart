@@ -22,6 +22,15 @@ class NxImages {
 
   // -- Icons
   static const String clothIcon = "assets/icons/cloth_icon.png";
+  static const String successfulPaymentIcon = 'assets/icons/successful_payment/successful_payment_icon.png';
+
+  // -- Icons_Payment_Methods
+  static const String  applePay = 'assets/icons/payment_methods/apple_pay.png';
+  static const String  creditCard = 'assets/icons/payment_methods/credit_card.png';
+  static const String  googlePay = 'assets/icons/payment_methods/google_pay.png';
+  static const String  masterCard = 'assets/icons/payment_methods/master_card.png';
+  static const String  paypal = 'assets/icons/payment_methods/paypal.png';
+  static const String  visa = 'assets/icons/payment_methods/visa.png';
 
   // -- Animations
   static const String deliveredEmailIllustration =
