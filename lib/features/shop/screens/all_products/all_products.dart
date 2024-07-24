@@ -11,22 +11,22 @@ class AllProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NxAppBar(title: Text('Popular Products'), showBackArrow: true),
+      appBar: const NxAppBar(title: Text('Popular Products'), showBackArrow: true),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(NxSizes.defaultSpace),
+          padding: const EdgeInsets.all(NxSizes.defaultSpace),
           child: Column(
             children: [
               /// Dropdown
               DropdownButtonFormField(
-                decoration: InputDecoration(prefixIcon: Icon(Iconsax.sort)),
+                decoration: const InputDecoration(prefixIcon: Icon(Iconsax.sort)),
                 onChanged: (value) {},
                 items:
                   ['Name', 'Higher Price', 'Lower Price', 'Sale', 'Newest', 'Popularity'].map((item) => DropdownMenuItem(value: item ,child: Text(item))).toList()
               ),
               const SizedBox(height: NxSizes.spaceBtwSections),
               /// Products
-              NxGridLayout(itemCount: 8, itemBuilder: (_, index) => NxProductCardVertical())
+              NxGridLayout(itemCount: 8, itemBuilder: (_, index) => const NxProductCardVertical())
             ],
           ),
         ),
