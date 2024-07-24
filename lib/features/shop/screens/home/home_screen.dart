@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:nx_commerce/features/shop/screens/all_products/all_products.dart';
 import 'package:nx_commerce/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:nx_commerce/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:nx_commerce/features/shop/screens/home/widgets/promo_slider.dart';
@@ -87,9 +89,10 @@ class HomeScreen extends StatelessWidget {
                   ),
 
                   // -- GridTitle
-                  const NxSectionHeading(
+                   NxSectionHeading(
                     title: "Popular Products",
                     showActionButton: true,
+                    btnOnPressed: () => Get.to( () => const AllProducts()),
                   ),
 
                   const SizedBox(

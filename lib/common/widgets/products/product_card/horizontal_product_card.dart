@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:nx_commerce/common/styles/shadows.dart';
 import 'package:nx_commerce/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:nx_commerce/common/widgets/images/rounded_images.dart';
 import 'package:nx_commerce/common/widgets/text/brand_title_text_with_verification.dart';
