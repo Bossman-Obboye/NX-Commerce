@@ -12,13 +12,14 @@ import '../../../utils/helpers/helpers.dart';
 class NxBrandCard extends StatelessWidget {
   const NxBrandCard({
     super.key,
-    this.showBorder = false,
+    this.showBorder = false, this.onTap,
   });
   final bool showBorder;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: NxRoundedContainer(
         padding: const EdgeInsets.all(NxSizes.sm),
         showBorder: showBorder,

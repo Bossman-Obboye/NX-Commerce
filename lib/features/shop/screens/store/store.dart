@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nx_commerce/common/widgets/appbar/appbar.dart';
 import 'package:nx_commerce/common/widgets/appbar/tab_bar.dart';
 import 'package:nx_commerce/common/widgets/brand/brand_card.dart';
@@ -6,6 +7,7 @@ import 'package:nx_commerce/common/widgets/custom_shapes/containers/search_conta
 import 'package:nx_commerce/common/widgets/layout/grid_layout.dart';
 import 'package:nx_commerce/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:nx_commerce/common/widgets/text/section_heading.dart';
+import 'package:nx_commerce/features/shop/screens/brand/all_brands.dart';
 import 'package:nx_commerce/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:nx_commerce/utils/constants/colors.dart';
 import 'package:nx_commerce/utils/helpers/helpers.dart';
@@ -63,8 +65,9 @@ class StoreScreen extends StatelessWidget {
                       ),
 
                       /// -- Featured Brands
-                      const NxSectionHeading(
+                       NxSectionHeading(
                         title: "Featured Brands",
+                        btnOnPressed: () => Get.to(()=> const AllBrandsScreen()),
                       ),
                       const SizedBox(
                         height: NxSizes.spaceBtwItems / 1.5,
