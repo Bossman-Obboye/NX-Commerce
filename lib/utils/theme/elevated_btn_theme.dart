@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nx_commerce/utils/constants/colors.dart';
 
 class NxElevatedBtnTheme {
   NxElevatedBtnTheme._();
@@ -9,7 +10,7 @@ class NxElevatedBtnTheme {
     style: ElevatedButton.styleFrom(
       elevation: 0,
       foregroundColor: Colors.white,
-      backgroundColor: Colors.blue,
+      backgroundColor: NxColors.primary,
    disabledBackgroundColor: Colors.grey,
       disabledForegroundColor: Colors.grey,
       side: const BorderSide(color: Colors.blue),
