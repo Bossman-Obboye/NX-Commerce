@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:nx_commerce/features/authentication/screens/signup/verify_email.dart';
+import 'package:nx_commerce/features/authentication/controllers/signup/signup_controller.dart';
 import 'package:nx_commerce/features/authentication/screens/signup/widgets/terms_conditions_checkbox.dart';
+import 'package:nx_commerce/utils/validators/validators.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
@@ -14,7 +15,9 @@ class NxSignUpForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignupController());
     return Form(
+      key: controller.signupFormKey,
       child: Column(
         children: [
           Row(
@@ -22,10 +25,14 @@ class NxSignUpForm extends StatelessWidget {
               /// First Name Text field
               Expanded(
                 child: TextFormField(
+                  controller: controller.firstNameController,
                   expands: false,
                   decoration: const InputDecoration(
-                      labelText: NxTexts.firstName,
-                      prefixIcon: Icon(Icons.person)),
+                    labelText: NxTexts.firstName,
+                    prefixIcon: Icon(Icons.person),
+                  ),
+                  validator: (value) =>
+                      NxValidators.validateEmptyText('First Name', value),
                 ),
               ),
               const SizedBox(
@@ -35,10 +42,14 @@ class NxSignUpForm extends StatelessWidget {
               /// Last Name Text field
               Flexible(
                 child: TextFormField(
+                  controller: controller.lastNameController,
                   expands: false,
                   decoration: const InputDecoration(
-                      labelText: NxTexts.lastName,
-                      prefixIcon: Icon(Iconsax.user)),
+                    labelText: NxTexts.lastName,
+                    prefixIcon: Icon(Iconsax.user),
+                  ),
+                  validator: (value) =>
+                      NxValidators.validateEmptyText('Last Name', value),
                 ),
               ),
             ],
@@ -49,10 +60,13 @@ class NxSignUpForm extends StatelessWidget {
 
           /// Username Text field
           TextFormField(
+            controller: controller.userNameController,
             expands: false,
             decoration: const InputDecoration(
-                labelText: NxTexts.username,
-                prefixIcon: Icon(Iconsax.user_edit)),
+              labelText: NxTexts.username,
+              prefixIcon: Icon(Iconsax.user_edit),
+             ),
+            validator: (value) => NxValidators.validateEmptyText('Username', value),
           ),
           const SizedBox(
             height: NxSizes.spaceBtwInputFields,
@@ -60,9 +74,12 @@ class NxSignUpForm extends StatelessWidget {
 
           /// Email Text field
           TextFormField(
+            controller: controller.emailController,
             expands: false,
             decoration: const InputDecoration(
-                labelText: NxTexts.email, prefixIcon: Icon(Iconsax.direct)),
+                labelText: NxTexts.email, prefixIcon: Icon(Iconsax.direct),
+            ),
+            validator: (value) => NxValidators.validateEmail(value),
           ),
           const SizedBox(
             height: NxSizes.spaceBtwInputFields,
@@ -70,11 +87,13 @@ class NxSignUpForm extends StatelessWidget {
 
           /// Phone Number Text field
           TextFormField(
+            controller: controller.phoneNumberController,
             expands: false,
             decoration: const InputDecoration(
               labelText: NxTexts.phoneNo,
               prefixIcon: Icon(Iconsax.call),
             ),
+              validator: (value) => NxValidators.validatePhoneNumber(value)
           ),
           const SizedBox(
             height: NxSizes.spaceBtwInputFields,
@@ -82,12 +101,14 @@ class NxSignUpForm extends StatelessWidget {
 
           /// Password Text field
           TextFormField(
+            controller: controller.passwordController,
             expands: false,
             decoration: const InputDecoration(
               labelText: NxTexts.password,
               prefixIcon: Icon(Iconsax.password_check),
               suffixIcon: Icon(Iconsax.eye_slash),
             ),
+              validator: (value) => NxValidators.validatePassword(value)
           ),
           const SizedBox(
             height: NxSizes.spaceBtwSections,
@@ -103,7 +124,7 @@ class NxSignUpForm extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () => Get.to(() => const VerifyEmailScreen()),
+              onPressed: () => controller.signup(),
               child: const Text(NxTexts.createAccount),
             ),
           ),
