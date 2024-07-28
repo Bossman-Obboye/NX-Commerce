@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nx_commerce/utils/constants/image_strings.dart';
+import 'package:nx_commerce/utils/loaders/loaders.dart';
+import 'package:nx_commerce/utils/network_manager/network_manager.dart';
 import 'package:nx_commerce/utils/popups/full_screen_loader.dart';
 
 class SignupController extends GetxController {
@@ -22,11 +25,14 @@ class SignupController extends GetxController {
   Future<void> signup() async {
     try {
       // Start Loading
-      NxFullScreenLoader.openLoadingDialog('We are processing your information', '');
+      NxFullScreenLoader.openLoadingDialog('We are processing your information', NxImages.staticSuccessIllustration);
 
       // Check Internet Connectivity
+      final isConnected = await NetworkManager.instance.isConnected();
+      if(!isConnected) return;
 
       // Form Validation
+      if(!signupFormKey.currentState!.validate()) return;
 
       // Privacy Policy Check
 
@@ -40,8 +46,10 @@ class SignupController extends GetxController {
 
     } catch (e) {
       // Show some Generic Error to the user
+      NxLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally{
       // Remove Loader
+      NxFullScreenLoader.stopLoading();
     }
   }
 

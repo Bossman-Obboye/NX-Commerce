@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nx_commerce/bindings/general_bindings.dart';
+import 'package:nx_commerce/utils/constants/colors.dart';
 
-import 'features/authentication/screens/onboarding/onboarding_screen.dart';
 import 'utils/theme/theme_data.dart';
 
 class NXApp extends StatelessWidget {
@@ -14,7 +15,8 @@ class NXApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: NXAppTheme.instance.lightTheme,
       darkTheme:  NXAppTheme.instance.darkTheme,
-      home: const OnBoardingScreen(),
+      initialBinding: GeneralBindings(),
+      home: const Scaffold(backgroundColor: NxColors.primary, body: Center(child: CircularProgressIndicator(color: Colors.white),)),
     );
   }
 }
