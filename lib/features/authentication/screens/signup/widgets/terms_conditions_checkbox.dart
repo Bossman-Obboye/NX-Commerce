@@ -1,6 +1,8 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:nx_commerce/features/authentication/controllers/signup/signup_controller.dart';
 
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
@@ -17,10 +19,11 @@ class TermsAndConditionsCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = SignupController.instance;
     final bool isDarkMode = NxHelpers.isDarkMode(context);
     return Row(
       children: [
-        SizedBox(width: NxSizes.iconMd, height: NxSizes.iconMd, child: Checkbox(value: true, onChanged: (value){}),),
+        SizedBox(width: NxSizes.iconMd, height: NxSizes.iconMd, child: Obx( () => Checkbox(value: controller.policyIsAccepted.value, onChanged: (value) => controller.policyIsAccepted.value = !controller.policyIsAccepted.value)),),
         const SizedBox(width: NxSizes.spaceBtwItems,),
         Flexible(
           child: RichText(text: TextSpan(

@@ -65,8 +65,9 @@ class NxSignUpForm extends StatelessWidget {
             decoration: const InputDecoration(
               labelText: NxTexts.username,
               prefixIcon: Icon(Iconsax.user_edit),
-             ),
-            validator: (value) => NxValidators.validateEmptyText('Username', value),
+            ),
+            validator: (value) =>
+                NxValidators.validateEmptyText('Username', value),
           ),
           const SizedBox(
             height: NxSizes.spaceBtwInputFields,
@@ -77,7 +78,8 @@ class NxSignUpForm extends StatelessWidget {
             controller: controller.emailController,
             expands: false,
             decoration: const InputDecoration(
-                labelText: NxTexts.email, prefixIcon: Icon(Iconsax.direct),
+              labelText: NxTexts.email,
+              prefixIcon: Icon(Iconsax.direct),
             ),
             validator: (value) => NxValidators.validateEmail(value),
           ),
@@ -87,28 +89,34 @@ class NxSignUpForm extends StatelessWidget {
 
           /// Phone Number Text field
           TextFormField(
-            controller: controller.phoneNumberController,
-            expands: false,
-            decoration: const InputDecoration(
-              labelText: NxTexts.phoneNo,
-              prefixIcon: Icon(Iconsax.call),
-            ),
-              validator: (value) => NxValidators.validatePhoneNumber(value)
-          ),
+              controller: controller.phoneNumberController,
+              expands: false,
+              decoration: const InputDecoration(
+                labelText: NxTexts.phoneNo,
+                prefixIcon: Icon(Iconsax.call),
+              ),
+              validator: (value) => NxValidators.validatePhoneNumber(value)),
           const SizedBox(
             height: NxSizes.spaceBtwInputFields,
           ),
 
           /// Password Text field
-          TextFormField(
-            controller: controller.passwordController,
-            expands: false,
-            decoration: const InputDecoration(
-              labelText: NxTexts.password,
-              prefixIcon: Icon(Iconsax.password_check),
-              suffixIcon: Icon(Iconsax.eye_slash),
-            ),
-              validator: (value) => NxValidators.validatePassword(value)
+          Obx(
+            () => TextFormField(
+                controller: controller.passwordController,
+                expands: false,
+                obscureText: controller.hidePassword.value,
+                decoration: InputDecoration(
+                  labelText: NxTexts.password,
+                  prefixIcon: const Icon(Iconsax.password_check),
+                  suffixIcon: IconButton(
+                      onPressed: () {
+                        controller.hidePassword.value =
+                            !controller.hidePassword.value;
+                      },
+                      icon: Icon(controller.hidePassword.value ? Iconsax.eye_slash : Iconsax.eye)),
+                ),
+                validator: (value) => NxValidators.validatePassword(value)),
           ),
           const SizedBox(
             height: NxSizes.spaceBtwSections,

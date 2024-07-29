@@ -61,7 +61,7 @@ class NxLoginForm extends StatelessWidget {
                 ),
 
                 /// Forgot Password
-                Flexible(
+                Expanded(
                   child: TextButton(
                     onPressed: ()=> Get.to(()=> const ForgotPasswordScreen()),
                     child: const Text(NxTexts.forgotPassword),
