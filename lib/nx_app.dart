@@ -17,7 +17,9 @@ class NXApp extends StatelessWidget {
       theme: NXAppTheme.instance.lightTheme,
       darkTheme:  NXAppTheme.instance.darkTheme,
       initialBinding: GeneralBindings(),
-      home: const OnBoardingScreen(),  //const Scaffold(backgroundColor: NxColors.primary, body: Center(child: CircularProgressIndicator(color: Colors.white),)),
+      /// -- Show Loader or Circular Progress Indicator meanwhile Authentication Repository is deciding
+      /// to show relevant screen. 
+      home: const Scaffold(backgroundColor: NxColors.primary, body: Center(child: CircularProgressIndicator(color: Colors.white))),
     );
   }
 }

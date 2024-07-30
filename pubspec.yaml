@@ -29,7 +29,7 @@ dependencies:
 
 
   # State Management
-  get: ^4.6.6
+  get: ^4.6.5
   get_storage: ^2.1.1
 
 
@@ -42,8 +42,8 @@ dependencies:
 
   # Firebase
   firebase_core: ^2.23.0
-  firebase_auth: ^4.14.0
-  cloud_firestore: ^4.13.1
+  # firebase_auth: ^4.14.0
+  # cloud_firestore: ^4.13.1
 
 
 
@@ -56,6 +56,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  
 
   # -------------- LOCAL ASSETS ----------------#
   assets:
