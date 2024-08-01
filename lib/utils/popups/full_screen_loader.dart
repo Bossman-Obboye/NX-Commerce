@@ -19,23 +19,24 @@ class NxFullScreenLoader {
       // Use Get.overlayContext to overlay dialogs
       barrierDismissible: false,
       // The dialog can't be dismissed by tapping outside it
-      builder: (_) => PopScope(
-        canPop: false, // Disable popping with the back button
-        child: Container(
-          color: NxHelpers.isDarkMode(Get.context!)
-              ? NxColors.dark
-              : NxColors.white,
-          height: double.infinity,
-          width: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // const SizedBox(height: 250),
-              NxAnimationLoaderWidget(text: text, animation: animation),
-            ],
-          ),
-        ),
-      ),
+      builder: (_) =>  Container(color: NxColors.primary, child: const Center(child: CircularProgressIndicator(),))
+      // PopScope(
+      //   canPop: false, // Disable popping with the back button
+      //   child: Container(
+      //     color: NxHelpers.isDarkMode(Get.context!)
+      //         ? NxColors.dark
+      //         : NxColors.white,
+      //     height: double.infinity,
+      //     width: double.infinity,
+      //     child: Column(
+      //       mainAxisAlignment: MainAxisAlignment.center,
+      //       children: [
+      //         // const SizedBox(height: 250),
+      //         NxAnimationLoaderWidget(text: text, animation: animation),
+      //       ],
+      //     ),
+      //   ),
+      // ),
     );
   }
 

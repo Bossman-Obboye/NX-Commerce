@@ -1,5 +1,3 @@
-// import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nx_commerce/data/repositories/auth_repo/auth_repository.dart';
@@ -11,6 +9,7 @@ import 'package:nx_commerce/utils/network_manager/network_manager.dart';
 import 'package:nx_commerce/utils/popups/full_screen_loader.dart';
 
 import '../../models/user/user_model.dart';
+
 
 class SignupController extends GetxController {
   static SignupController get instance => Get.find();
@@ -35,7 +34,7 @@ class SignupController extends GetxController {
   GlobalKey<FormState> signupFormKey =
       GlobalKey<FormState>(); // Form key for for validation
 
-  /// --- SIGNUP
+   /// --- SIGNUP
   void signup() async {
     try {
       // Start Loading
@@ -102,5 +101,4 @@ class SignupController extends GetxController {
       // Show some Generic Error to the user
       NxLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
-  }
-}
+  }}
