@@ -1,3 +1,5 @@
+// import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nx_commerce/data/repositories/auth_repo/auth_repository.dart';
@@ -43,15 +45,13 @@ class SignupController extends GetxController {
       // Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
-        
         // Remove Loader
         NxFullScreenLoader.stopLoading();
         return;
       }
 
       // Form Validation
-      if (!signupFormKey.currentState!.validate()){
-        
+      if (!signupFormKey.currentState!.validate()) {
         // Remove Loader
         NxFullScreenLoader.stopLoading();
         return;
