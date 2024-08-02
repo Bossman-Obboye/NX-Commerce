@@ -1,25 +1,16 @@
 
-import 'package:firebase_auth/firebase_auth.dart';
+class NxFirebaseException implements Exception {
+  /// The error code associated with the exception.
+  final String code;
 
-class NxFirebaseException extends FirebaseException {
-  NxFirebaseException({required String code, String? message})
-      : super(
-            plugin: 'Firebase',
-            code: code,
-            message: message ?? _firebaseErrorMessage(code));
+  /// Constructor that takes on error code.
+  NxFirebaseException(this.code);
 
-  static String _firebaseErrorMessage(String code) {
+  /// Get the corresponding error message base on the error code.
+  String get message {
     switch (code) {
-      case 'permission-denied':
-        return 'Permission to create the account has been denied! Try again.';
-      case 'unavailable':
-        return 'Please try again later. Sevice is currently unavailable';
-      default:
-        return 'An unexpected error occurred while creating the account';
+      default: return '';
     }
   }
 
-  @override
-  String toString() => 'NxFirebaseException: $message';
 }
-
