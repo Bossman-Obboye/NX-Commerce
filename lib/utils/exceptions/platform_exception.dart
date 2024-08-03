@@ -1,6 +1,5 @@
 
 
-import 'package:nx_commerce/utils/exceptions/generic_exception.dart';
 
 class NxPlatformException implements Exception {
   /// The error code associated with the exception.

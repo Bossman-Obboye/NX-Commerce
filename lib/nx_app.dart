@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nx_commerce/bindings/general_bindings.dart';
-import 'package:nx_commerce/features/authentication/screens/onboarding/onboarding_screen.dart';
 import 'package:nx_commerce/utils/constants/colors.dart';
 
 import 'utils/theme/theme_data.dart';

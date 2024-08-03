@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nx_commerce/utils/constants/colors.dart';
-import 'package:nx_commerce/utils/helpers/helpers.dart';
 
-import '../../common/widgets/loaders/animation_loader.dart';
 
 /// A utility class for managing a full-screen loading dialog.
 class NxFullScreenLoader {
