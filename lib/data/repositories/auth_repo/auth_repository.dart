@@ -5,6 +5,9 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:nx_commerce/features/authentication/screens/onboarding/onboarding_screen.dart';
+import 'package:nx_commerce/utils/exceptions/firebase_auth_exception.dart';
+import 'package:nx_commerce/utils/exceptions/firebase_exception.dart';
+import 'package:nx_commerce/utils/exceptions/format_exception.dart';
 
 import '../../../features/authentication/screens/log_in/login.dart';
 
@@ -49,7 +52,11 @@ class AuthenticationRepository extends GetxController {
       return await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
     } on FirebaseAuthException catch (e) {
-      rethrow;
+      throw NxFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw NxFirebaseException(e.code).message;
+    } on FormatException catch (e) {
+      throw NxFormatException(e).message;
     }
   }
 

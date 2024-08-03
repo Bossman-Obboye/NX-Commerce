@@ -1,3 +1,5 @@
+
+
 class NxFirebaseAuthException implements Exception {
   /// The error code associated with the exception.
   final String code;
@@ -38,8 +40,6 @@ class NxFirebaseAuthException implements Exception {
         return 'The email address already exists. Please enter a different email.';
       case 'unavailable':
         return 'Please try again later. Service is currently unavailable';
-      
-      // New Cases
       case 'operation-not-allowed':
         return 'This operation is not allowed. Please contact support for further assistance.';
       case 'timeout':
@@ -83,7 +83,9 @@ class NxFirebaseAuthException implements Exception {
       
       // Default case
       default:
-        return 'An unexpected error occurred while creating the account';
+        return 'An unexpected error occurred while perform user authentications. Please try again.';
     }
   }
 }
+
+

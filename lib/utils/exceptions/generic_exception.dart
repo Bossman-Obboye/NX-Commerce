@@ -1,5 +1,8 @@
 
 class NxGenericException implements Exception {
-  final String message;
-  NxGenericException([this.message = 'Something went wrong. Please try again.']);
+  final String message = 'Something went wrong. Please try again.';
+
+  NxGenericException._();
+
+  static final NxGenericException instance = NxGenericException._();
 }
