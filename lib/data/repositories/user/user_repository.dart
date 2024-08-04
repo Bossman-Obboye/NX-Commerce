@@ -28,7 +28,7 @@ class UserRepository extends GetxController {
     } on PlatformException catch (e) {
       throw NxPlatformException(code: e.code);
     } catch (e) {
-      throw NxGenericException().message;
+      throw NxGenericException.instance.message;
     }
   }
 }
