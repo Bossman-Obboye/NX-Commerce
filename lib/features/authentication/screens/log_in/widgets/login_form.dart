@@ -8,6 +8,7 @@ import 'package:nx_commerce/utils/validators/validators.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
 import '../../../controllers/login/login_controller.dart';
+import '../../password_configuration/forgot_password_screen.dart';
 
 class NxLoginForm extends StatelessWidget {
   const NxLoginForm({
@@ -37,14 +38,24 @@ class NxLoginForm extends StatelessWidget {
             const SizedBox(height: NxSizes.spaceBtwInputFields),
 
             /// Password
-            TextFormField(
-              controller: controller.passwordController,
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Iconsax.password_check),
-                labelText: NxTexts.password,
-                suffix: Icon(Iconsax.eye_slash),
-              ),
-              validator: (value) => NxValidators.validateEmail(value),
+            Obx(
+              () => TextFormField(
+                  controller: controller.passwordController,
+                  expands: false,
+                  obscureText: controller.showPassword.value,
+                  decoration: InputDecoration(
+                    labelText: NxTexts.password,
+                    prefixIcon: const Icon(Iconsax.password_check),
+                    suffixIcon: IconButton(
+                        onPressed: () {
+                          controller.showPassword.value =
+                              !controller.showPassword.value;
+                        },
+                        icon: Icon(controller.showPassword.value
+                            ? Iconsax.eye_slash
+                            : Iconsax.eye)),
+                  ),
+                  validator: (value) => NxValidators.validatePassword(value)),
             ),
 
             const SizedBox(height: NxSizes.spaceBtwInputFields / 2),
@@ -57,7 +68,7 @@ class NxLoginForm extends StatelessWidget {
                 Row(
                   children: [
                     Obx(
-                () => Checkbox(
+                      () => Checkbox(
                           value: controller.rememberMe.value,
                           onChanged: (value) => controller.rememberMe.value =
                               !controller.rememberMe.value),
@@ -67,25 +78,11 @@ class NxLoginForm extends StatelessWidget {
                 ),
 
                 /// Forgot Password
-                Obx(
-                  () => TextFormField(
-                      controller: controller.passwordController,
-                      expands: false,
-                      obscureText: controller.showPassword.value,
-                      decoration: InputDecoration(
-                        labelText: NxTexts.password,
-                        prefixIcon: const Icon(Iconsax.password_check),
-                        suffixIcon: IconButton(
-                            onPressed: () {
-                              controller.showPassword.value =
-                                  !controller.showPassword.value;
-                            },
-                            icon: Icon(controller.showPassword.value
-                                ? Iconsax.eye_slash
-                                : Iconsax.eye)),
-                      ),
-                      validator: (value) =>
-                          NxValidators.validatePassword(value)),
+                Expanded(
+                  child: TextButton(
+                    onPressed: () => Get.to(() => const ForgotPasswordScreen()),
+                    child: const Text(NxTexts.forgotPassword),
+                  ),
                 ),
               ],
             ),
