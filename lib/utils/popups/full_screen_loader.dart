@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nx_commerce/utils/constants/colors.dart';
 
+import '../../common/widgets/loaders/animation_loader.dart';
+import '../helpers/helpers.dart';
+
 
 /// A utility class for managing a full-screen loading dialog.
 class NxFullScreenLoader {
@@ -17,24 +20,24 @@ class NxFullScreenLoader {
       // Use Get.overlayContext to overlay dialogs
       barrierDismissible: false,
       // The dialog can't be dismissed by tapping outside it
-      builder: (_) =>  Container(color: NxColors.primary, child: const Center(child: CircularProgressIndicator(),))
-      // PopScope(
-      //   canPop: false, // Disable popping with the back button
-      //   child: Container(
-      //     color: NxHelpers.isDarkMode(Get.context!)
-      //         ? NxColors.dark
-      //         : NxColors.white,
-      //     height: double.infinity,
-      //     width: double.infinity,
-      //     child: Column(
-      //       mainAxisAlignment: MainAxisAlignment.center,
-      //       children: [
-      //         // const SizedBox(height: 250),
-      //         NxAnimationLoaderWidget(text: text, animation: animation),
-      //       ],
-      //     ),
-      //   ),
-      // ),
+      builder: (_) =>  //Container(color: NxColors.primary, child: const Center(child: CircularProgressIndicator(),))
+      PopScope(
+        canPop: false, // Disable popping with the back button
+        child: Container(
+          color: NxHelpers.isDarkMode(Get.context!)
+              ? NxColors.dark
+              : NxColors.white,
+          height: MediaQuery.of(Get.context!).size.height,
+          width: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // const SizedBox(height: 250),
+              NxAnimationLoaderWidget(text: text, animation: animation),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
