@@ -31,7 +31,7 @@ class NxLoginForm extends StatelessWidget {
                 labelText: NxTexts.email,
               ),
               validator: (value) =>
-                  NxValidators.validateEmptyText('Password', value),
+                  NxValidators.validateEmail(value),
             ),
 
             const SizedBox(height: NxSizes.spaceBtwInputFields),
@@ -54,8 +54,9 @@ class NxLoginForm extends StatelessWidget {
                             ? Iconsax.eye_slash
                             : Iconsax.eye)),
                   ),
-                  validator: (value) => NxValidators.validatePassword(value)),
-            ),
+                validator: (value) =>
+                    NxValidators.validateEmptyText('Password', value),),
+              ),
 
             const SizedBox(height: NxSizes.spaceBtwInputFields / 2),
 

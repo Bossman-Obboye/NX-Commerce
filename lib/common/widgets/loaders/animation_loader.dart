@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:nx_commerce/utils/constants/sizes.dart';
 
 import '../../../utils/constants/colors.dart';

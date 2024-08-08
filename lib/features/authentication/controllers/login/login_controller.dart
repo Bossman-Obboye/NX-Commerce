@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -21,6 +23,7 @@ class LoginController extends GetxController {
 
   Future<void> emailAndPasswordSignIn() async {
     try {
+      log('Just Started');
       // Start Loading
       NxFullScreenLoader.openLoadingDialog('Logging you in...',
           NxImages.staticSuccessIllustration);
@@ -28,37 +31,43 @@ class LoginController extends GetxController {
       // Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
+        log('No Internet');
         // Remove Loader
         NxFullScreenLoader.stopLoading();
         return;
       }
-
+      log("Internet is available");
       // Form Validation
       if (!loginFormKey.currentState!.validate()) {
+        log('Form is not valid');
         // Remove Loader
         NxFullScreenLoader.stopLoading();
         return;
       }
 
+      log('Form is valid');
       // Save Date if Remember Me is selected
       if (rememberMe.value) {
+        log("Remember me : ${rememberMe.value}");
         storage.write('REMEMBER_ME_EMAIL', emailController.text.trim());
         storage.write('REMEMBER_ME_PASSWORD', passwordController.text.trim());
-        return;
       }
 
       // Login user using Email & Password Authentication
+      log('Logging in user');
       final userCredentials = await AuthenticationRepository.instance
           .loginWithEmailAndPassword(
           emailController.text.trim(), passwordController.text.trim());
-
+       log('Log in successful');
       // Remove Loader
       NxFullScreenLoader.stopLoading();
 
       // Redirect
+      log("Redirecting Screen");
       AuthenticationRepository.instance.screenRedirect();
 
     } catch (e) {
+      log('Error Catch');
     // Remove Loader
     NxFullScreenLoader.stopLoading();
 
