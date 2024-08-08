@@ -33,7 +33,7 @@ class NxAnimationLoaderWidget extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          Lottie.asset(animation,
+          Image.asset(animation,
               width: MediaQuery.of(context).size.width *
                   0.8), // Display Lottie animation.
           const SizedBox(height: NxSizes.defaultSpace),

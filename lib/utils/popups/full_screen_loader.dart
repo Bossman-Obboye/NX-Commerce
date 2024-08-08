@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nx_commerce/utils/constants/colors.dart';
+import 'package:nx_commerce/utils/constants/image_strings.dart';
 
 import '../../common/widgets/loaders/animation_loader.dart';
 import '../helpers/helpers.dart';
@@ -32,8 +33,8 @@ class NxFullScreenLoader {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // const SizedBox(height: 250),
-              NxAnimationLoaderWidget(text: text, animation: animation),
+              const SizedBox(height: 250),
+              NxAnimationLoaderWidget(text: text, animation: NxImages.darkAppLogo),
             ],
           ),
         ),

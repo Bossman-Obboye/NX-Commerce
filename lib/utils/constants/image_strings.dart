@@ -33,6 +33,8 @@ class NxImages {
   static const String  visa = 'assets/icons/payment_methods/visa.png';
 
   // -- Animations
+  static const String loading = 'assets/images/animations/loading.gif';
+  static const String loader = 'assets/images/animations/loder_rm_bg.gif';
   static const String deliveredEmailIllustration =
       "assets/images/animations/email_delivery_illustration.png";
   static const String staticSuccessIllustration =
