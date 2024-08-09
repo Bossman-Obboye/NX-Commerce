@@ -70,7 +70,7 @@ class VerifyEmailScreen extends StatelessWidget {
                     log('Proceeding to Navigation menu....');
 
                   },
-                  child: const Text(NxTexts.tContinue),
+                  child: const Text(NxTexts.nxContinue),
                 ),
               ),
               const SizedBox(

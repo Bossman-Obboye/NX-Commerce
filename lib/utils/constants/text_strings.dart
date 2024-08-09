@@ -39,7 +39,7 @@ class NxTexts {
   static const String verificationCode = "verificationCode";
   static const String resendEmail = "Resend Email";
   static const String resendEmailIn = "Resend Email in";
-  static const String tContinue = "Continue";
+  static const String nxContinue = "Continue";
   static const String submit = "Submit";
   static const String done = "Done";
 
