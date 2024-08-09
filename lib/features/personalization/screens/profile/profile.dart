@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:nx_commerce/common/widgets/appbar/appbar.dart';
@@ -53,9 +54,11 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: NxSizes.spaceBtwItems),
 
               /// -- Heading Profile Info
-              const NxSectionHeading(
-                title: "Profile Information",
-                showActionButton: false,
+              const Flexible(
+                child:  NxSectionHeading(
+                  title: "Profile Information",
+                  showActionButton: false,
+                ),
               ),
               const SizedBox(
                 height: NxSizes.spaceBtwItems,

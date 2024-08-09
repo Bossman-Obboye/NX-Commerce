@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nx_commerce/data/repositories/auth_repo/auth_repository.dart';
 import 'package:nx_commerce/features/authentication/controllers/signup/verify_email_controller.dart';
+import 'package:nx_commerce/utils/constants/colors.dart';
 import 'package:nx_commerce/utils/helpers/helpers.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
@@ -24,7 +27,7 @@ class VerifyEmailScreen extends StatelessWidget {
               onPressed: () => AuthenticationRepository.instance.logout(),
               icon:
                   // TODO: Check the Icon's Colors in both light and dork mode
-                  const Icon(CupertinoIcons.clear))
+                  Icon(CupertinoIcons.clear, color: NxHelpers.isDarkMode(context) ? NxColors.white : NxColors.dark))
         ],
       ),
       body: SingleChildScrollView(
@@ -62,7 +65,11 @@ class VerifyEmailScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => controller.checkEmailVerificationStatus(),
+                  onPressed: () {
+                    controller.checkEmailVerificationStatus();
+                    log('Proceeding to Navigation menu....');
+
+                  },
                   child: const Text(NxTexts.tContinue),
                 ),
               ),
@@ -72,7 +79,10 @@ class VerifyEmailScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: () => controller.sendEmailVerification(),
+                  onPressed: () {
+                    log('Resending Email Verification Message...');
+                    controller.sendEmailVerification();
+                  },
                   child: const Text(NxTexts.resendEmail),
                 ),
               ),

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:nx_commerce/common/widgets/success_screen/success_screen.dart';
@@ -49,15 +50,22 @@ class VerifyEmailController extends GetxController {
 
   /// -- Manually Check if Email Verified
   checkEmailVerificationStatus() async {
+    print('Inside the check email verification status functions');
     final currentUser = FirebaseAuth.instance.currentUser;
+    log((currentUser != null).toString());
+    log((currentUser?.emailVerified).toString());
     if (currentUser != null && currentUser.emailVerified) {
+      print('$currentUser');
       Get.off(
         () => SuccessScreen(
             image: NxImages.staticSuccessIllustration,
             title: NxTexts.yourAccountCreatedTitle,
             subTitle: NxTexts.yourAccountCreatedSubTitle,
-            onPressed: () =>
-                AuthenticationRepository.instance.screenRedirect()),
+            onPressed: () {
+              log('Calling');
+
+              // AuthenticationRepository.instance.screenRedirect();
+            }),
       );
     }
   }

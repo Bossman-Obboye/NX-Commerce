@@ -16,7 +16,7 @@ import 'package:nx_commerce/utils/exceptions/platform_exception.dart';
 
 import '../../../features/authentication/screens/log_in/login.dart';
 
-class AuthenticationRepository extends GetxController {
+class  AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
 
   /// -- Variables
