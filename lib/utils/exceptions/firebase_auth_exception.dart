@@ -48,9 +48,7 @@ class NxFirebaseAuthException implements Exception {
         return 'You have made too many requests in a short period. Please try again later.';
       case 'network-request-failed':
         return 'A network error occurred. Please check your connection and try again.';
-      case 'invalid-credential':
-        return 'The credential provided is invalid. Please try again with a valid credential.';
-      case 'account-exists-with-different-credential':
+       case 'account-exists-with-different-credential':
         return 'An account already exists with the same email but different sign-in credentials. Please use a different sign-in method.';
       case 'missing-email':
         return 'No email was provided. Please enter your email and try again.';
@@ -58,6 +56,8 @@ class NxFirebaseAuthException implements Exception {
         return 'No password was provided. Please enter your password and try again.';
       case 'invalid-api-key':
         return 'The API key provided is invalid. Please check your configuration.';
+      case 'invalid-credential':
+        return 'The credential provided is invalid. Please try again with a valid credential.';
       case 'invalid-user-token':
         return 'The user token is invalid or has expired. Please log in again.';
       case 'multi-factor-auth-required':
