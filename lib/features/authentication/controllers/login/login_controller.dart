@@ -14,11 +14,20 @@ class LoginController extends GetxController {
 
   /// Variables
   final Rx<bool> rememberMe = false.obs;
-  final Rx<bool> showPassword = false.obs;
-  final storage = GetStorage();
+  final Rx<bool> showPassword = true.obs;
+  final localStorage = GetStorage();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final loginFormKey = GlobalKey<FormState>();
+
+
+  @override
+  void onInit() {
+    emailController.text = localStorage.read('REMEMBER_ME_EMAIL');
+    passwordController.text = localStorage.read('REMEMBER_ME_PASSWORD');
+
+    super.onInit();
+  }
 
 
   Future<void> emailAndPasswordSignIn() async {
@@ -49,8 +58,8 @@ class LoginController extends GetxController {
       // Save Date if Remember Me is selected
       if (rememberMe.value) {
         log("Remember me : ${rememberMe.value}");
-        storage.write('REMEMBER_ME_EMAIL', emailController.text.trim());
-        storage.write('REMEMBER_ME_PASSWORD', passwordController.text.trim());
+        localStorage.write('REMEMBER_ME_EMAIL', emailController.text.trim());
+        localStorage.write('REMEMBER_ME_PASSWORD', passwordController.text.trim());
       }
 
       // Login user using Email & Password Authentication
@@ -74,48 +83,6 @@ class LoginController extends GetxController {
     // Show some Generic Error to the user
     NxLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   }
 

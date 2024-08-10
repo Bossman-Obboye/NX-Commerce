@@ -5,6 +5,7 @@ import 'package:nx_commerce/common/widgets/appbar/appbar.dart';
 import 'package:nx_commerce/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:nx_commerce/common/widgets/list_tile/settings_menu_tile.dart';
 import 'package:nx_commerce/common/widgets/text/section_heading.dart';
+import 'package:nx_commerce/data/repositories/auth_repo/auth_repository.dart';
 import 'package:nx_commerce/features/personalization/screens/profile/profile.dart';
 import 'package:nx_commerce/features/shop/screens/address/address.dart';
 import 'package:nx_commerce/features/shop/screens/cart/cart_screen.dart';
@@ -136,7 +137,9 @@ class SettingsScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        AuthenticationRepository.instance.logout();
+                      },
                       child: const Text("Logout"),
                     ),
                   ),
