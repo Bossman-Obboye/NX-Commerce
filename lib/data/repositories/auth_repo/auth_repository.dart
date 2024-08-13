@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
@@ -166,7 +167,10 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw NxPlatformException(code: e.code).message;
     } catch (e) {
-      throw NxGenericException.instance.message;
+      if(kDebugMode){
+        print('Something went wrong: $e');
+      }
+      return null;
     }
   }
 
