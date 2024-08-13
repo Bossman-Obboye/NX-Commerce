@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:nx_commerce/data/repositories/user/user_repository.dart';
@@ -7,7 +9,29 @@ import 'package:nx_commerce/utils/loaders/loaders.dart';
 class UserController extends GetxController {
   static UserController get instance => Get.find();
 
+  /// Variables
   final userRepository = Get.put(UserRepository());
+  final Rx<UserModel> user = UserModel.empty().obs;
+  final RxBool profileLoading = false.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    fetchUserRecord();
+  }
+
+  /// Fetch user record
+  Future<void> fetchUserRecord() async {
+    try {
+      profileLoading.value = true;
+      final user = await userRepository.fetchUserDetails();
+      this.user(user);
+    } catch (e) {
+      user(UserModel.empty());
+    }finally{
+      profileLoading.value = false;
+    }
+  }
 
   /// Save user Record from any Registration provider.
   Future<void> saveUserRecord(UserCredential? userCredentials) async {

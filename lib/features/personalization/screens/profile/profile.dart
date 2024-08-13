@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:nx_commerce/common/widgets/appbar/appbar.dart';
 import 'package:nx_commerce/common/widgets/images/circular_image.dart';
 import 'package:nx_commerce/common/widgets/text/section_heading.dart';
+import 'package:nx_commerce/features/personalization/controllers/user_controller.dart';
 import 'package:nx_commerce/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:nx_commerce/utils/constants/image_strings.dart';
 import '../../../../utils/constants/colors.dart';
@@ -15,6 +16,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     final bool isDarkMode = NxHelpers.isDarkMode(context);
     return Scaffold(
       appBar: NxAppBar(
@@ -47,18 +49,16 @@ class ProfileScreen extends StatelessWidget {
                   ],
                 ),
               ),
-
-              /// -- Details
+      //
+      //         /// -- Details
               const SizedBox(height: NxSizes.spaceBtwItems / 2),
               const Divider(),
               const SizedBox(height: NxSizes.spaceBtwItems),
-
+      //
               /// -- Heading Profile Info
-              const Flexible(
-                child:  NxSectionHeading(
-                  title: "Profile Information",
-                  showActionButton: false,
-                ),
+              const NxSectionHeading(
+                title: "Profile Information",
+                showActionButton: false,
               ),
               const SizedBox(
                 height: NxSizes.spaceBtwItems,
@@ -66,12 +66,12 @@ class ProfileScreen extends StatelessWidget {
 
               ProfileMenu(
                 title: "Name",
-                value: "Nx Generation",
+                value: controller.user.value.fullName,
                 onPressed: () {},
               ),
               ProfileMenu(
                 title: "Username",
-                value: "nxted_life",
+                value: controller.user.value.username,
                 onPressed: () {},
               ),
 
@@ -88,45 +88,45 @@ class ProfileScreen extends StatelessWidget {
                 height: NxSizes.spaceBtwItems,
               ),
 
-              ProfileMenu(
-                title: "User ID",
-                value: "63631",
-                onPressed: () {},
-                icon: Iconsax.copy,
-              ),
-              ProfileMenu(
-                title: "E-mail",
-                value: "nxted024@gmail.com",
-                onPressed: () {},
-              ),
-              ProfileMenu(
-                title: "Phone Number",
-                value: "+233-593-529509",
-                onPressed: () {},
-              ),
-              ProfileMenu(
-                title: "Gender",
-                value: "Male",
-                onPressed: () {},
-              ),
-              ProfileMenu(
-                title: "Date of Birth",
-                value: "02 Jul, 2000",
-                onPressed: () {},
-              ),
-              const Divider(),
-              const SizedBox(
-                height: NxSizes.spaceBtwItems,
-              ),
-              TextButton(
-                onPressed: () {},
-                child: const Text(
-                  "Close Account",
-                  style: TextStyle(
-                    color: Colors.red,
-                  ),
-                ),
-              ),
+               ProfileMenu(
+                 title: "User ID",
+                 value: controller.user.value.id,
+                 onPressed: () {},
+                 icon: Iconsax.copy,
+               ),
+               ProfileMenu(
+                 title: "E-mail",
+                 value: controller.user.value.email,
+                 onPressed: () {},
+               ),
+               ProfileMenu(
+                 title: "Phone Number",
+                 value: controller.user.value.phoneNumber.isEmpty ? 'Empty' : controller.user.value.phoneNumber,
+                 onPressed: () {},
+               ),
+               ProfileMenu(
+                 title: "Gender",
+                 value: "Male",
+                 onPressed: () {},
+               ),
+               ProfileMenu(
+                 title: "Date of Birth",
+                 value: "02 Jul, 2000",
+                 onPressed: () {},
+               ),
+               const Divider(),
+               const SizedBox(
+                 height: NxSizes.spaceBtwItems,
+               ),
+               TextButton(
+                 onPressed: () {},
+                 child: const Text(
+                   "Close Account",
+                   style: TextStyle(
+                     color: Colors.red,
+                   ),
+                 ),
+               ),
             ],
           ),
         ),
