@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:nx_commerce/features/authentication/controllers/forgot_passsword_controller/forgot_password_controller.dart';
-import 'package:nx_commerce/features/authentication/screens/password_configuration/reset_password.dart';
+import 'package:nx_commerce/features/authentication/controllers/forgot_password_controller/forgot_password_controller.dart';
 import 'package:nx_commerce/utils/constants/sizes.dart';
 import 'package:nx_commerce/utils/constants/text_strings.dart';
 import 'package:nx_commerce/utils/validators/validators.dart';

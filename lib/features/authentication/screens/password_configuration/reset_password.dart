@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nx_commerce/features/authentication/controllers/forgot_passsword_controller/forgot_password_controller.dart';
+import 'package:nx_commerce/features/authentication/controllers/forgot_password_controller/forgot_password_controller.dart';
 import 'package:nx_commerce/features/authentication/screens/log_in/login.dart';
 import 'package:nx_commerce/utils/constants/image_strings.dart';
 import 'package:nx_commerce/utils/constants/sizes.dart';
