@@ -121,7 +121,7 @@ class ProfileScreen extends StatelessWidget {
                  height: NxSizes.spaceBtwItems,
                ),
                TextButton(
-                 onPressed: () {},
+                 onPressed: () => controller.deleteAccountWarningPopup(),
                  child: const Text(
                    "Close Account",
                    style: TextStyle(

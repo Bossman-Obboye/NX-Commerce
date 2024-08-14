@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nx_commerce/common/widgets/navigation_bar/navigation_menu.dart';
+import 'package:nx_commerce/data/repositories/user/user_repository.dart';
 import 'package:nx_commerce/features/authentication/screens/onboarding/onboarding_screen.dart';
 import 'package:nx_commerce/features/authentication/screens/signup/verify_email.dart';
 import 'package:nx_commerce/utils/exceptions/firebase_auth_exception.dart';
@@ -108,7 +109,7 @@ class AuthenticationRepository extends GetxController {
   /// [EmailVerification] - Mail Verification
   Future<void> sendEmailVerification() async {
     try {
-      return await _auth.currentUser?.sendEmailVerification();
+      await _auth.currentUser?.sendEmailVerification();
     } on FirebaseAuthException catch (e) {
       throw NxFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
@@ -123,11 +124,15 @@ class AuthenticationRepository extends GetxController {
   }
 
   /// [ReAuthentication] - ReAuthenticate User
-
-  /// [EmailAuthentication] - Forget Password
-  Future<void> sendPasswordResetEmail({required String email}) async {
+  Future<void> reAuthenticateWithEmailAndPassword(
+      String email, String password) async {
     try {
-      return await _auth.sendPasswordResetEmail(email: email);
+      // Create a credential
+      AuthCredential credential =
+          EmailAuthProvider.credential(email: email, password: password);
+
+      // ReAuthenticate
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
     } on FirebaseAuthException catch (e) {
       throw NxFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
@@ -141,6 +146,22 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+  /// [EmailAuthentication] - Forget Password
+  Future<void> sendPasswordResetEmail({required String email}) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      throw NxFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw NxFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw NxFormatException();
+    } on PlatformException catch (e) {
+      throw NxPlatformException(code: e.code).message;
+    } catch (e) {
+      throw NxGenericException.instance.message;
+    }
+  }
 
 /* ------------------------------ Federated identity & social sign-in ----------------------------- */
 
@@ -160,7 +181,6 @@ class AuthenticationRepository extends GetxController {
 
       // Once signed in, return the UserCredential
       return await _auth.signInWithCredential(credentials);
-
     } on FirebaseAuthException catch (e) {
       throw NxFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
@@ -170,7 +190,7 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw NxPlatformException(code: e.code).message;
     } catch (e) {
-      if(kDebugMode){
+      if (kDebugMode) {
         print('Something went wrong: $e');
       }
       return null;
@@ -201,4 +221,23 @@ class AuthenticationRepository extends GetxController {
   }
 
   /// [DeleteUser] - Remove user Auth and Firestore Account.
+  Future<void> deleteAccount() async {
+    try {
+      // Remove User's data from the repository
+      await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+
+      // Delete the User's Account.
+      await _auth.currentUser?.delete();
+    } on FirebaseAuthException catch (e) {
+      throw NxFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw NxFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw NxFormatException();
+    } on PlatformException catch (e) {
+      throw NxPlatformException(code: e.code).message;
+    } catch (e) {
+      throw NxGenericException.instance.message;
+    }
+  }
 }
