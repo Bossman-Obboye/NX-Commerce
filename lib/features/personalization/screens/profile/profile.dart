@@ -1,10 +1,12 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:nx_commerce/common/widgets/appbar/appbar.dart';
 import 'package:nx_commerce/common/widgets/images/circular_image.dart';
 import 'package:nx_commerce/common/widgets/text/section_heading.dart';
 import 'package:nx_commerce/features/personalization/controllers/user_controller.dart';
+import 'package:nx_commerce/features/personalization/screens/profile/change_name.dart';
 import 'package:nx_commerce/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:nx_commerce/utils/constants/image_strings.dart';
 import '../../../../utils/constants/colors.dart';
@@ -67,7 +69,7 @@ class ProfileScreen extends StatelessWidget {
               ProfileMenu(
                 title: "Name",
                 value: controller.user.value.fullName,
-                onPressed: () {},
+                onPressed: () => Get.to(() => const ChangeName()),
               ),
               ProfileMenu(
                 title: "Username",

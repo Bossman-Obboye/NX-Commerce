@@ -1,5 +1,6 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:nx_commerce/data/repositories/user/user_repository.dart';
 import 'package:nx_commerce/features/authentication/models/user/user_model.dart';
@@ -12,6 +13,10 @@ class UserController extends GetxController {
   final userRepository = Get.put(UserRepository());
   final Rx<UserModel> user = UserModel.empty().obs;
   final RxBool profileLoading = false.obs;
+  final RxBool hidePassword = false.obs;
+  final TextEditingController verifyPassword = TextEditingController();
+  final TextEditingController verifyEmail = TextEditingController();
+  GlobalKey<FormState> reAuthFormKey = GlobalKey<FormState>();
 
   @override
   void onInit() {
