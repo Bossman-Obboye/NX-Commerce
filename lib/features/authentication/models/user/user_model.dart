@@ -28,15 +28,15 @@ class UserModel {
   /// Static function to split full name into first and last name.
   static List<String> nameParts(String fullName) => fullName.split(' ');
 
-  /// Static function to genetate a username from the full name.
+  /// Static function to generate a username from the full name.
   static String generateUsername(String fullName) {
     List<String> nameParts = fullName.split(' ');
     String firstName = nameParts[0].toLowerCase();
     String lastName = nameParts.length > 1 ? nameParts[1].toLowerCase() : '';
 
-    String camemCaseUsername =
-        '$firstName$lastName'; // Combine first and last naem
-    String usernameWithPrefix = 'cwt_$camemCaseUsername'; // Add 'cwt_' prefix
+    String camelCaseUsername =
+        '$firstName$lastName'; // Combine first and last name
+    String usernameWithPrefix = 'cwt_$camelCaseUsername'; // Add 'cwt_' prefix
     return usernameWithPrefix;
   }
 
@@ -75,7 +75,7 @@ class UserModel {
           username: data['Username'] ?? '',
           email: data['Email'] ?? '',
           phoneNumber: data['PhoneNumber'] ?? '',
-          profilePicture: data['ProfilePicture  '] ?? '');
+          profilePicture: data['ProfilePicture'] ?? '');
     } else {
       return empty();
     }

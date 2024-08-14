@@ -1,6 +1,10 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:nx_commerce/data/repositories/auth_repo/auth_repository.dart';
 import 'package:nx_commerce/data/repositories/user/user_repository.dart';
 import 'package:nx_commerce/features/authentication/models/user/user_model.dart';
@@ -182,5 +186,37 @@ class UserController extends GetxController {
       // Show some Generic Error to the user
       NxLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
+  }
+
+  Future<void> uploadUserProfilePicture() async {
+    log('uploadUserProfilePicture');
+   try {
+      /// Implementing the Image_Picker Package.
+      /// All the user to access the images for the gallery and choose the one to upload.
+      final image = await ImagePicker().pickImage(
+          source: ImageSource.gallery,
+          imageQuality: 70,
+          maxHeight: 512,
+          maxWidth: 512);
+      if (image != null) {
+        // Upload Image
+        final String imageUrl =
+            await userRepository.uploadImage('Users/Images/Profile/', image);
+
+        // Update User Image Record
+        Map<String, dynamic> json = {'ProfilePicture': imageUrl};
+
+        // Update the ProfilePicture Field
+        await userRepository.updateSingleField(json);
+
+        // Change the User Profile Pic Path in the UserRepository.
+        user.value.profilePicture = imageUrl;
+        
+        // Show a success pop-up note
+        NxLoaders.successSnackBar(title: 'Congratulations', message: 'Your profile Image has been updated!');
+      }
+    }catch(e) {
+     NxLoaders.errorSnackBar(title: 'Oh Snap!', message: 'Something went wrong: $e');
+   }
   }
 }

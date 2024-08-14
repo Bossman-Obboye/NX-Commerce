@@ -32,15 +32,18 @@ class NxCircularImage extends StatelessWidget {
         color: backgroundColor,
         shape: BoxShape.circle,
       ),
-      child: Center(
-        child: isNetworkImage ? CachedNetworkImage(fit: fit, color: overlayColor,imageUrl: image,
-        progressIndicatorBuilder: (context, url, downloadProgress) => const NxShimmer(width: 55, height: 55, radius: 55,),
-        errorWidget: (context, url, error) => const Icon(Icons.error),):
-        
-        Image(
-          fit: fit,
-          image: AssetImage(image),
-          color: overlayColor,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(56),
+        child: Center(
+          child: isNetworkImage ? CachedNetworkImage(fit: fit, color: overlayColor,imageUrl: image,
+          progressIndicatorBuilder: (context, url, downloadProgress) => const NxShimmer(width: 55, height: 55, radius: 55,),
+          errorWidget: (context, url, error) => const Icon(Icons.error),):
+          
+          Image(
+            fit: fit,
+            image: AssetImage(image),
+            color: overlayColor,
+          ),
         ),
       ),
     );
