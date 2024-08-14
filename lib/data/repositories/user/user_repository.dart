@@ -1,8 +1,12 @@
 
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:nx_commerce/data/repositories/auth_repo/auth_repository.dart';
 import 'package:nx_commerce/features/authentication/models/user/user_model.dart';
 import 'package:nx_commerce/utils/exceptions/format_exception.dart';
@@ -116,6 +120,30 @@ class UserRepository extends GetxController {
       throw NxFirebaseAuthException(
         e.code,
       );
+    } on FirebaseException catch (e) {
+      throw NxFirebaseException(e.code);
+    } on FormatException catch (_) {
+      throw NxFormatException().message;
+    } on PlatformException catch (e) {
+      throw NxPlatformException(code: e.code);
+    } catch (e) {
+      throw NxGenericException.instance.message;
+    }
+  }
+
+  /// Upload any Image
+  Future<String> uploadImage(String path, XFile image) async {
+    try {
+      // Reference to the Image-[Image-Path]
+      final ref = FirebaseStorage.instance.ref(path).child(image.name);
+
+      // Storing Image to the Reference -[ref]
+      await ref.putFile(File(image.path));
+
+      // Get the URL of the uploaded file.
+      final url = await ref.getDownloadURL();
+
+      return url;
     } on FirebaseException catch (e) {
       throw NxFirebaseException(e.code);
     } on FormatException catch (_) {

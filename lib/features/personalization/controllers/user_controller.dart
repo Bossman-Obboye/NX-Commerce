@@ -1,7 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:get/get.dart';
 import 'package:nx_commerce/data/repositories/auth_repo/auth_repository.dart';
 import 'package:nx_commerce/data/repositories/user/user_repository.dart';
@@ -49,26 +47,33 @@ class UserController extends GetxController {
   /// Save user Record from any Registration provider.
   Future<void> saveUserRecord(UserCredential? userCredentials) async {
     try {
-      if (userCredentials != null) {
-        // Convert Name to First and Last Name
-        final nameParts =
-            UserModel.nameParts(userCredentials.user!.displayName ?? '');
-        final username =
-            UserModel.generateUsername(userCredentials.user!.displayName ?? '');
+      // First Update Rx User and then check if user data is already stored. If not store new data
+      await fetchUserRecord();
 
-        // Map Data
-        final user = UserModel(
-          id: userCredentials.user!.uid,
-          firstName: nameParts[0],
-          lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
-          username: username,
-          email: userCredentials.user!.email ?? '',
-          phoneNumber: userCredentials.user!.phoneNumber ?? '',
-          profilePicture: userCredentials.user!.photoURL ?? '',
-        );
+      // If no record already stored.
+      if (user.value.id.isEmpty) {
+        if (userCredentials != null) {
+          // Convert Name to First and Last Name
+          final nameParts =
+              UserModel.nameParts(userCredentials.user!.displayName ?? '');
+          final username = UserModel.generateUsername(
+              userCredentials.user!.displayName ?? '');
 
-        // Save user data
-        await userRepository.saveUserRecord(user);
+          // Map Data
+          final user = UserModel(
+            id: userCredentials.user!.uid,
+            firstName: nameParts[0],
+            lastName:
+                nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
+            username: username,
+            email: userCredentials.user!.email ?? '',
+            phoneNumber: userCredentials.user!.phoneNumber ?? '',
+            profilePicture: userCredentials.user!.photoURL ?? '',
+          );
+
+          // Save user data
+          await userRepository.saveUserRecord(user);
+        }
       }
     } catch (_) {
       NxLoaders.warningSnackBar(
@@ -105,10 +110,11 @@ class UserController extends GetxController {
 
       /// First re-authenticate user
       final auth = AuthenticationRepository.instance;
-      final provider = auth.authUser!.providerData.map((e) => e.providerId).first;
-      if(provider.isNotEmpty) {
+      final provider =
+          auth.authUser!.providerData.map((e) => e.providerId).first;
+      if (provider.isNotEmpty) {
         // Re-Verify Auth Email
-        if (provider == 'google.com')  {
+        if (provider == 'google.com') {
           // Sign in with Google
           await auth.signInWithGoogle();
           // Delete the account of the user
@@ -119,22 +125,20 @@ class UserController extends GetxController {
 
           // Navigate to LoginScreen
           Get.offAll(() => const LoginScreen());
+        } else if (provider == 'password') {
+          // Stop Loading
+          NxFullScreenLoader.stopLoading();
 
-        }else if( provider == 'password') {
-        // Stop Loading
-        NxFullScreenLoader.stopLoading();
-
-        // Navigate to Re-Authenticate the user.
-        Get.to(() => const ReAuthLoginForm());
+          // Navigate to Re-Authenticate the user.
+          Get.to(() => const ReAuthLoginForm());
+        }
       }
-      }
-    }catch (e) {
+    } catch (e) {
       NxFullScreenLoader.stopLoading();
       // Stop Loading
 
       // Show the error message
       NxLoaders.warningSnackBar(title: 'Oh Snap!', message: e.toString);
-
     }
   }
 
@@ -159,7 +163,9 @@ class UserController extends GetxController {
       }
 
       // Re-Authenticate User with Email and Password
-      await AuthenticationRepository.instance.reAuthenticateWithEmailAndPassword(verifyEmail.text.trim(), verifyPassword.text.trim());
+      await AuthenticationRepository.instance
+          .reAuthenticateWithEmailAndPassword(
+              verifyEmail.text.trim(), verifyPassword.text.trim());
 
       // Delete the User's account
       await AuthenticationRepository.instance.deleteAccount();

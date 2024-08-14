@@ -39,13 +39,20 @@ class ProfileScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     /// -- Profile Picture
-                    const NxCircularImage(
-                      image: NxImages.user,
-                      width: 80,
-                      height: 80,
+                    Obx(
+                    () {
+                      final networkImage = controller.user.value.profilePicture;
+                      final image = networkImage.isNotEmpty ? networkImage : NxImages.user;
+                      return NxCircularImage(
+                        isNetworkImage: networkImage.isNotEmpty,
+                        image: image,
+                        width: 80,
+                        height: 80,
+                      );
+                    },
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () => controller.uploadUserProfilePicture(),
                       child: const Text("Change Profile Picture"),
                     ),
                   ],
