@@ -4,7 +4,6 @@ import 'package:nx_commerce/features/shop/controllers/category_controller.dart';
 import 'package:nx_commerce/features/shop/screens/sub_category/sub_categories.dart';
 
 import '../../../../../common/widgets/images/image_text_widget.dart';
-import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/shimmer_effect/categories_shimmer.dart';
 
 
