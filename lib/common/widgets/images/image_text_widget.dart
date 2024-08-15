@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nx_commerce/common/widgets/images/circular_image.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
@@ -12,13 +13,14 @@ class NxVerticalImageText extends StatelessWidget {
     required this.title,
     this.textColor = NxColors.white,
     this.backgroundColor,
-    this.onTap,
+    this.onTap, this.isNetworkImage = true,
   });
 
   final String image, title;
   final Color textColor;
   final Color? backgroundColor;
   final void Function()? onTap;
+  final bool isNetworkImage;
 
   @override
   Widget build(BuildContext context) {
@@ -30,21 +32,7 @@ class NxVerticalImageText extends StatelessWidget {
         child: Column(
           children: [
             /// Circular Icon
-            Container(
-              width: 56,
-              height: 56,
-              padding: const EdgeInsets.all(NxSizes.sm),
-              decoration: BoxDecoration(
-                  color: backgroundColor ??
-                      (isDarkMode ? NxColors.black : NxColors.white),
-                  borderRadius: BorderRadius.circular(100)),
-              child: Center(
-                child: Image(
-                    image: AssetImage(image),
-                    fit: BoxFit.cover,
-                    color: isDarkMode ? NxColors.light : NxColors.dark),
-              ),
-            ),
+           NxCircularImage(image: image, fit: BoxFit.fitWidth, padding: NxSizes.sm *1.4, isNetworkImage: isNetworkImage,backgroundColor: backgroundColor, overlayColor: isDarkMode ? NxColors.light : NxColors.dark),
             const SizedBox(
               height: NxSizes.spaceBtwItems * 0.5,
             ),

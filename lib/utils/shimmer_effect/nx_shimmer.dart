@@ -3,8 +3,8 @@ import 'package:nx_commerce/utils/constants/colors.dart';
 import 'package:nx_commerce/utils/helpers/helpers.dart';
 import 'package:shimmer/shimmer.dart';
 
-class NxShimmer extends StatelessWidget {
-  const NxShimmer({super.key, required this.width, required this.height, this.radius = 15.00, this.color});
+class NxShimmerEffect extends StatelessWidget {
+  const NxShimmerEffect({super.key, required this.width, required this.height, this.radius = 15.00, this.color});
 
   final double width, height, radius;
   final Color? color;

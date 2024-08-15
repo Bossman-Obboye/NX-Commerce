@@ -30,7 +30,7 @@ class NxHomeAppBar extends StatelessWidget {
           Obx(
             () {
               if(controller.profileLoading.value){
-                return const NxShimmer(width: 40, height: 15);
+                return const NxShimmerEffect(width: 40, height: 15);
               }else {
                 return Text(controller.user.value.fullName,
                     style: Theme.of(context)
