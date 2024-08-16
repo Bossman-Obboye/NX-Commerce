@@ -7,6 +7,7 @@ import 'package:nx_commerce/common/widgets/custom_shapes/containers/search_conta
 import 'package:nx_commerce/common/widgets/layout/grid_layout.dart';
 import 'package:nx_commerce/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:nx_commerce/common/widgets/text/section_heading.dart';
+import 'package:nx_commerce/features/shop/controllers/category_controller.dart';
 import 'package:nx_commerce/features/shop/screens/brand/all_brands.dart';
 import 'package:nx_commerce/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:nx_commerce/utils/constants/colors.dart';
@@ -19,9 +20,9 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final bool isDarkMode = NxHelpers.isDarkMode(context);
+    final categories = CategoryController.instance.featuredCategories;
     return DefaultTabController(
-      length: 5,
+      length: categories.length,
       child: Scaffold(
         /// -- Appbar
         appBar: NxAppBar(
@@ -87,27 +88,15 @@ class StoreScreen extends StatelessWidget {
                 ),
 
                 /// Tabs
-                bottom: const NxTabBar(
-                  tabs: [
-                    Tab(child: Text("Sports")),
-                    Tab(child: Text("Furniture")),
-                    Tab(child: Text("Electronics")),
-                    Tab(child: Text("Clothes")),
-                    Tab(child: Text("Cosmetics")),
-                  ],
+                bottom:  NxTabBar(
+                  tabs: categories.map((category) => Tab(child: Text(category.name))).toList(),
                 ),
               ),
             ];
           },
-          body: const TabBarView(
+          body: TabBarView(
             /// Content of each tab
-            children: [
-              NxCateroryTab(),
-              NxCateroryTab(),
-              NxCateroryTab(),
-              NxCateroryTab(),
-              NxCateroryTab(),
-            ],
+            children: categories.map((category) => NxCategoryTab(category: category)).toList(),
           ),
         ),
       ),

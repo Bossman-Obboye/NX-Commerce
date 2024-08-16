@@ -6,10 +6,12 @@ import 'package:nx_commerce/common/widgets/text/section_heading.dart';
 import '../../../../../common/widgets/brand/brand_showcase.dart';
 import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
+import '../../../models/category_model.dart';
 
-class NxCateroryTab extends StatelessWidget {
-  const NxCateroryTab({super.key});
+class NxCategoryTab extends StatelessWidget {
+  const NxCategoryTab({super.key, required this.category});
 
+  final CategoryModel category;
   @override
   Widget build(BuildContext context) {
     return ListView(

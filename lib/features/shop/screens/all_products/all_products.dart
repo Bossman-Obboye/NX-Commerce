@@ -4,8 +4,8 @@ import 'package:nx_commerce/utils/constants/sizes.dart';
 
 import '../../../../common/widgets/products/sortable/sortable_product.dart';
 
-class AllProducts extends StatelessWidget {
-  const AllProducts({super.key});
+class AllProductsScreen extends StatelessWidget {
+  const AllProductsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
