@@ -40,6 +40,7 @@ class CategoryController extends GetxController {
 
     }finally{
       // Remove Loader
+      isLoading.value = false;
     }
   }
 

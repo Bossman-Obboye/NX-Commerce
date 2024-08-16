@@ -64,8 +64,6 @@ class CategoryRepository extends GetxController {
   } catch (e) {
   throw NxGenericException.instance.message;
   }
-
-
   }
 
 }
