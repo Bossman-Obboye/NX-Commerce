@@ -1,7 +1,10 @@
 import 'package:get/get.dart';
+<<<<<<< HEAD
 import 'package:nx_commerce/features/authentication/screens/log_in/login.dart';
 import 'package:nx_commerce/features/authentication/screens/onboarding/onboarding_screen.dart';
 import 'package:nx_commerce/features/authentication/screens/password_configuration/forgot_password_screen.dart';
+=======
+>>>>>>> origin/main
 import 'package:nx_commerce/features/authentication/screens/signup/signup.dart';
 import 'package:nx_commerce/features/authentication/screens/signup/verify_email.dart';
 import 'package:nx_commerce/features/personalization/screens/profile/profile.dart';
