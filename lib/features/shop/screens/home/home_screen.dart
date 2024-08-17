@@ -6,18 +6,21 @@ import 'package:nx_commerce/features/shop/screens/home/widgets/home_categories.d
 import 'package:nx_commerce/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:nx_commerce/utils/constants/colors.dart';
 import 'package:nx_commerce/utils/constants/sizes.dart';
+import 'package:nx_commerce/utils/shimmer_effect/vertical_product_shimmer.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_containers.dart';
 import '../../../../common/widgets/layout/grid_layout.dart';
 import '../../../../common/widgets/products/product_card/product_card_vertical.dart';
 import '../../../../common/widgets/text/section_heading.dart';
+import '../../controllers/product_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -93,10 +96,19 @@ class HomeScreen extends StatelessWidget {
                   ),
 
                   /// -- Popular Products
-                  NxGridLayout(
-                    itemCount: 6,
-                    itemBuilder: (BuildContext _, index) {
-                      return const NxProductCardVertical();
+                  Obx(
+                    () {
+                      if(controller.isLoading.value) return const NxVerticalProductShimmer();
+                        
+                      if(controller.featuredProducts.isEmpty){
+                        return Center(child: Text('No Data Found!', style: Theme.of(context).textTheme.bodyMedium,));
+                      }
+                      return NxGridLayout(
+                      itemCount: controller.featuredProducts.length,
+                      itemBuilder: (BuildContext _, index) =>
+                         NxProductCardVertical(product: controller.featuredProducts[index]),
+
+                    );
                     },
                   )
                 ],

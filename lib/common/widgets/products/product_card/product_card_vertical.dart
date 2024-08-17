@@ -5,6 +5,7 @@ import "package:nx_commerce/common/widgets/icons/circular_icon.dart";
 import "package:nx_commerce/common/widgets/images/rounded_images.dart";
 import "package:nx_commerce/common/widgets/text/brand_title_text_with_verification.dart";
 import "package:nx_commerce/common/widgets/text/product_text_tile.dart";
+import "package:nx_commerce/features/shop/models/product_model/product_model.dart";
 import "package:nx_commerce/features/shop/screens/product_details/product_details.dart";
 import "../../../../utils/constants/colors.dart";
 import "../../../../utils/constants/image_strings.dart";
@@ -14,9 +15,9 @@ import "../../custom_shapes/containers/rounded_container.dart";
 import "../../text/custom_price_text.dart";
 
 class NxProductCardVertical extends StatelessWidget {
-  const NxProductCardVertical({super.key, this.image});
+  const NxProductCardVertical({super.key, required this.product});
 
-  final String? image;
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     final bool isDarkMode = NxHelpers.isDarkMode(context);

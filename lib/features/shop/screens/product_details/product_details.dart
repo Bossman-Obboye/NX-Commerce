@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:iconsax/iconsax.dart";
 import "package:nx_commerce/common/widgets/text/section_heading.dart";
+import "package:nx_commerce/features/shop/models/product_model/product_model.dart";
 import "package:nx_commerce/features/shop/screens/product_details/widgets/bottom_add_to_cart.dart";
 import "package:nx_commerce/features/shop/screens/product_details/widgets/product_attributes.dart";
 import "package:nx_commerce/features/shop/screens/product_details/widgets/product_image_slider.dart";
@@ -12,8 +13,9 @@ import "package:nx_commerce/utils/constants/sizes.dart";
 import "package:readmore/readmore.dart";
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key});
+  const ProductDetailsScreen({super.key, required this.product});
 
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     return   Scaffold(

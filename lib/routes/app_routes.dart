@@ -1,10 +1,7 @@
 import 'package:get/get.dart';
-<<<<<<< HEAD
 import 'package:nx_commerce/features/authentication/screens/log_in/login.dart';
 import 'package:nx_commerce/features/authentication/screens/onboarding/onboarding_screen.dart';
 import 'package:nx_commerce/features/authentication/screens/password_configuration/forgot_password_screen.dart';
-=======
->>>>>>> origin/main
 import 'package:nx_commerce/features/authentication/screens/signup/signup.dart';
 import 'package:nx_commerce/features/authentication/screens/signup/verify_email.dart';
 import 'package:nx_commerce/features/personalization/screens/profile/profile.dart';
@@ -16,7 +13,6 @@ import 'package:nx_commerce/features/shop/screens/cart/cart_screen.dart';
 import 'package:nx_commerce/features/shop/screens/checkout/checkout.dart';
 import 'package:nx_commerce/features/shop/screens/home/home_screen.dart';
 import 'package:nx_commerce/features/shop/screens/order/order.dart';
-import 'package:nx_commerce/features/shop/screens/product_details/product_details.dart';
 import 'package:nx_commerce/features/shop/screens/product_reviews/product_reviews_screen.dart';
 import 'package:nx_commerce/features/shop/screens/store/store.dart';
 import 'package:nx_commerce/features/shop/screens/sub_category/sub_categories.dart';
@@ -43,10 +39,9 @@ class NxAppRoutes {
     GetPage(name: NxRoutes.subCategories, page: () => const SubCategoriesScreen()),
     // TODO : Uncomment this after SearchScreen is created
     // GetPage(name: NxRoutes.search, page: () => const SearchScreen()),
-    GetPage(name: NxRoutes.productDetails, page: () => const ProductDetailsScreen()),
     GetPage(name: NxRoutes.brand, page: () => const BrandProductsScreen()),
     GetPage(name: NxRoutes.allProducts, page: () => const AllProductsScreen()),
-    // NxRoutes.signUpSuccess and NxRoutes.resetPassword aren't added because they are
+    // NxRoutes.signUpSuccess, NxRoutes.productDetails and NxRoutes.resetPassword aren't added because they are
     // dependent on other parameters. Not that they cannot be add here.
   ];
 }
