@@ -5,10 +5,11 @@ import "package:nx_commerce/common/widgets/icons/circular_icon.dart";
 import "package:nx_commerce/common/widgets/images/rounded_images.dart";
 import "package:nx_commerce/common/widgets/text/brand_title_text_with_verification.dart";
 import "package:nx_commerce/common/widgets/text/product_text_tile.dart";
+import "package:nx_commerce/features/shop/controllers/product_controller.dart";
 import "package:nx_commerce/features/shop/models/product_model/product_model.dart";
 import "package:nx_commerce/features/shop/screens/product_details/product_details.dart";
+import "package:nx_commerce/utils/constants/enums.dart";
 import "../../../../utils/constants/colors.dart";
-import "../../../../utils/constants/image_strings.dart";
 import "../../../../utils/constants/sizes.dart";
 import "../../../../utils/helpers/helpers.dart";
 import "../../custom_shapes/containers/rounded_container.dart";
@@ -21,10 +22,12 @@ class NxProductCardVertical extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isDarkMode = NxHelpers.isDarkMode(context);
+    final controller = ProductController.instance;
+    final salePercentage = controller.calculateSalePercentage(product.price, product.salePrice);
 
     /// -- Container with side padding,color, edges, radius and shadow
     return GestureDetector(
-      onTap: () => Get.to(() => const ProductDetailsScreen()),
+      onTap: () => Get.to(() => ProductDetailsScreen(product: product)),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
@@ -36,15 +39,19 @@ class NxProductCardVertical extends StatelessWidget {
           children: [
             /// -- Thumbnail, wishlist button, discount card
             NxRoundedContainer(
-              height: 172,
+              height: 180,
+              width: 180,
               padding: const EdgeInsets.all(NxSizes.sm),
               backgroundColor: isDarkMode ? NxColors.dark : NxColors.light,
               child: Stack(children: [
                 /// Thumbnail image
-                 NxRoundedImage(
-                  imageUrl: image ?? NxImages.productImage36,
-                  applyImageBorderRadius: true,
-                ),
+                 Center(
+                   child: NxRoundedImage(
+                    imageUrl: product.thumbnail,
+                    isNetworkImage: true,
+                    applyImageBorderRadius: true
+                                   )
+                 ),
 
                 /// -- Sales Tag
                 Positioned(
@@ -55,7 +62,7 @@ class NxProductCardVertical extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         horizontal: NxSizes.sm, vertical: NxSizes.xs),
                     child: Text(
-                      "25%",
+                      "$salePercentage%",
                       style: Theme.of(context)
                           .textTheme
                           .labelLarge!
@@ -78,9 +85,9 @@ class NxProductCardVertical extends StatelessWidget {
             const SizedBox(height: NxSizes.spaceBtwItems / 2,),
 
             /// -- Details
-            const Padding(
-              padding: EdgeInsets.only(
-                left: NxSizes.sm,
+             Padding(
+              padding: const EdgeInsets.only(
+                left: NxSizes.sm
               ),
               child: SizedBox(
                 // This is to make the Colum full width
@@ -89,15 +96,14 @@ class NxProductCardVertical extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     NxProductTitleText(
-                      title:
-                          "Grey laptop backpack. Resist water and other fluid - original",
+                      title: product.title,
                       isSmallSize: true,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: NxSizes.spaceBtwItems / 2,
                     ),
                     NxBrandTitleTextWithVerification(
-                      title: 'Nike',
+                      title: product.brand!.name
                     ),
                   ],
                 ),
@@ -110,14 +116,32 @@ class NxProductCardVertical extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 /// -- Price
-                const Padding(
-                  padding:EdgeInsets.only(
-              left: NxSizes.sm,
-            ),
-                  child: NxProductPriceText(
-                    price: "35.00",
-                  ),
-                ),
+                 Flexible(
+                   child: Column(
+                     children: [
+                       if(product.productType == ProductType.single.toString() && product.salePrice > 0)
+                         Padding(
+                           padding: const EdgeInsets.only(
+                             left: NxSizes.sm
+                           ),
+                           child: Text(
+                             '\$${product.price}',
+                             style: Theme.of(context).textTheme.labelMedium!.apply(decoration: TextDecoration.lineThrough),
+                           ),
+                         ),
+
+                       /// Price, Show sale price as main price if sale exist.
+                       Padding(
+                        padding: const EdgeInsets.only(
+                                     left: NxSizes.sm
+                                   ),
+                        child: NxProductPriceText(
+                          price:  controller.getProductPrice(product)
+                        ),
+                                       ),
+                     ],
+                   ),
+                 ),
 
                 /// -- Add to Cart Button
                 Container(
