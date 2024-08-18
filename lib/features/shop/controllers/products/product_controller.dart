@@ -3,7 +3,7 @@ import 'package:nx_commerce/features/shop/models/product_model/product_model.dar
 import 'package:nx_commerce/utils/constants/enums.dart';
 import 'package:nx_commerce/utils/loaders/loaders.dart';
 
-import '../../../data/repositories/product_repository/product_repository.dart';
+import '../../../../data/repositories/product_repository/product_repository.dart';
 
 class ProductController extends GetxController {
   static ProductController get instance => Get.find();

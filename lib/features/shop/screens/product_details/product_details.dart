@@ -24,7 +24,7 @@ class ProductDetailsScreen extends StatelessWidget {
             child: Column(
       children: [
         /// -- Product Image Slider
-        const NxProductImageSlider(),
+        NxProductImageSlider(product: product),
 
         /// -- Product Details
         Padding(
@@ -35,7 +35,7 @@ class ProductDetailsScreen extends StatelessWidget {
               const NxRatingAndShareBar(),
 
               /// -- Price, Title, Stock, & Brand
-              const ProductMetaData(),
+              NxProductMetaData(product: product ,),
               
               /// -- Attributes
               const NxProductAttributes(),

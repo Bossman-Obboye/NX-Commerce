@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nx_commerce/common/widgets/layout/grid_layout.dart';
 import 'package:nx_commerce/common/widgets/products/product_card/product_card_vertical.dart';
 import 'package:nx_commerce/common/widgets/text/section_heading.dart';
+import 'package:nx_commerce/features/shop/models/product_model/product_model.dart';
 
 import '../../../../../common/widgets/brand/brand_showcase.dart';
 import '../../../../../utils/constants/image_strings.dart';
@@ -44,7 +45,7 @@ class NxCategoryTab extends StatelessWidget {
               NxGridLayout(
                   itemCount: 4,
                   itemBuilder: (_, index) {
-                    return const NxProductCardVertical();
+                    return NxProductCardVertical(product: ProductModel.empty());
                   }),
               const SizedBox(
                 height: NxSizes.spaceBtwSections,

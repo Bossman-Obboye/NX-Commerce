@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:nx_commerce/features/shop/models/product_model/product_model.dart';
 
 import '../../../../utils/constants/sizes.dart';
 import '../../layout/grid_layout.dart';
@@ -25,7 +26,7 @@ class NxSortableProducts extends StatelessWidget {
         ),
         const SizedBox(height: NxSizes.spaceBtwSections),
         /// Products
-        NxGridLayout(itemCount: 8, itemBuilder: (_, index) => const NxProductCardVertical())
+        NxGridLayout(itemCount: 8, itemBuilder: (_, index) => NxProductCardVertical(product: ProductModel.empty()))
       ],
     );
   }

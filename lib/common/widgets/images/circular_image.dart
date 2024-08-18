@@ -43,6 +43,7 @@ class NxCircularImage extends StatelessWidget {
             fit: fit,
             image: AssetImage(image),
             color: overlayColor,
+            errorBuilder: (_,__,___) => const Icon(Icons.error),
           ),
         ),
       ),
