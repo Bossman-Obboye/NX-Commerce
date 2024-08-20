@@ -14,7 +14,7 @@ import 'package:nx_commerce/utils/loaders/loaders.dart';
 import 'package:nx_commerce/utils/popups/full_screen_loader.dart';
 
 import '../../../utils/constants/sizes.dart';
-import '../../../utils/network_manager/network_manager.dart';
+import '../../../utils/helpers/network_manager.dart';
 
 class UserController extends GetxController {
   static UserController get instance => Get.find();

@@ -23,7 +23,7 @@ class BrandProductsScreen extends StatelessWidget {
 
 
                   /// Products
-                  NxSortableProducts(),
+                  NxSortableProducts(products: []),
                 ],
               ))),
     );

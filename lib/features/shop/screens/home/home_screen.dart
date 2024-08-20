@@ -88,7 +88,10 @@ class HomeScreen extends StatelessWidget {
                   NxSectionHeading(
                     title: "Popular Products",
                     showActionButton: true,
-                    btnOnPressed: () => Get.to(() => const AllProductsScreen()),
+                    btnOnPressed: () => Get.to(() => AllProductsScreen(
+                          title: 'Popular Products',
+                      futureMethod: controller.fetchAllFeaturedProducts(),
+                        )),
                   ),
 
                   const SizedBox(
@@ -98,17 +101,23 @@ class HomeScreen extends StatelessWidget {
                   /// -- Popular Products
                   Obx(
                     () {
-                      if(controller.isLoading.value) return const NxVerticalProductShimmer();
-                        
-                      if(controller.featuredProducts.isEmpty){
-                        return Center(child: Text('No Data Found!', style: Theme.of(context).textTheme.bodyMedium,));
+                      if (controller.isLoading.value) {
+                        return const NxVerticalProductShimmer();
+                      }
+
+                      if (controller.featuredProducts.isEmpty) {
+                        return Center(
+                            child: Text(
+                          'No Data Found!',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ));
                       }
                       return NxGridLayout(
-                      itemCount: controller.featuredProducts.length,
-                      itemBuilder: (BuildContext _, index) =>
-                         NxProductCardVertical(product: controller.featuredProducts[index]),
-
-                    );
+                        itemCount: controller.featuredProducts.length,
+                        itemBuilder: (BuildContext _, index) =>
+                            NxProductCardVertical(
+                                product: controller.featuredProducts[index]),
+                      );
                     },
                   )
                 ],

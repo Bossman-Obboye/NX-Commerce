@@ -5,7 +5,7 @@ import 'package:nx_commerce/data/repositories/user/user_repository.dart';
 import 'package:nx_commerce/features/authentication/screens/signup/verify_email.dart';
 import 'package:nx_commerce/utils/constants/image_strings.dart';
 import 'package:nx_commerce/utils/loaders/loaders.dart';
-import 'package:nx_commerce/utils/network_manager/network_manager.dart';
+import 'package:nx_commerce/utils/helpers/network_manager.dart';
 import 'package:nx_commerce/utils/popups/full_screen_loader.dart';
 
 import '../../models/user/user_model.dart';

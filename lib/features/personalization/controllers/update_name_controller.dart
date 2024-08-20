@@ -5,7 +5,7 @@ import 'package:nx_commerce/features/personalization/controllers/user_controller
 import 'package:nx_commerce/features/personalization/screens/profile/profile.dart';
 import 'package:nx_commerce/utils/constants/image_strings.dart';
 import 'package:nx_commerce/utils/loaders/loaders.dart';
-import 'package:nx_commerce/utils/network_manager/network_manager.dart';
+import 'package:nx_commerce/utils/helpers/network_manager.dart';
 import 'package:nx_commerce/utils/popups/full_screen_loader.dart';
 
 class UpdateNameController extends GetxController {

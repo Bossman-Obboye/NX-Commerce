@@ -5,7 +5,7 @@ import 'package:nx_commerce/data/repositories/auth_repo/auth_repository.dart';
 
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/loaders/loaders.dart';
-import '../../../../utils/network_manager/network_manager.dart';
+import '../../../../utils/helpers/network_manager.dart';
 import '../../../../utils/popups/full_screen_loader.dart';
 import '../../../personalization/controllers/user_controller.dart';
 
