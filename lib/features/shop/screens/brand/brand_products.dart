@@ -7,7 +7,7 @@ import 'package:nx_commerce/utils/shimmer_effect/vertical_product_shimmer.dart';
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/products/sortable/sortable_product.dart';
 import '../../../../utils/constants/sizes.dart';
-import '../../models/brand_model/brand_model.dart';
+import '../../models/brand_model.dart';
 
 class BrandProductsScreen extends StatelessWidget {
   const BrandProductsScreen({super.key, required this.brand});
@@ -30,7 +30,7 @@ class BrandProductsScreen extends StatelessWidget {
 
                   /// Products
                  FutureBuilder(
-                    future: controller.getBrandProducts(brand.id),
+                    future: controller.getBrandProducts(brandId:  brand.id),
                     builder: (context, snapshot) {
                       /// Handle Loader, No Record or Error Message
                       const loader = NxVerticalProductShimmer();

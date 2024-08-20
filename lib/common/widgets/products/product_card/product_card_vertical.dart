@@ -6,7 +6,7 @@ import "package:nx_commerce/common/widgets/images/rounded_images.dart";
 import "package:nx_commerce/common/widgets/text/brand_title_text_with_verification.dart";
 import "package:nx_commerce/common/widgets/text/product_text_tile.dart";
 import "package:nx_commerce/features/shop/controllers/products/product_controller.dart";
-import "package:nx_commerce/features/shop/models/product_model/product_model.dart";
+import "package:nx_commerce/features/shop/models/product_model.dart";
 import "package:nx_commerce/features/shop/screens/product_details/product_details.dart";
 import "package:nx_commerce/utils/constants/enums.dart";
 import "../../../../utils/constants/colors.dart";

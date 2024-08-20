@@ -1,7 +1,9 @@
 
 import 'package:get/get.dart';
 import 'package:nx_commerce/data/repositories/category/category_repository.dart';
+import 'package:nx_commerce/data/repositories/product_repository/product_repository.dart';
 import 'package:nx_commerce/features/shop/models/category_model.dart';
+import 'package:nx_commerce/features/shop/models/product_model.dart';
 import 'package:nx_commerce/utils/loaders/loaders.dart';
 
 class CategoryController extends GetxController {
@@ -48,6 +50,10 @@ class CategoryController extends GetxController {
 
 
   /// Get Category or Sub-Category Products.
-
+  Future<List<ProductModel>> getCategoryProducts({required String categoryId, int limit = 4}) async {
+    // Fetch limited (4) products against each subCategory;
+    final products = await ProductRepository.instance.getProductsForCategory(categoryId: categoryId, limit : limit);
+    return products;
+  }
 
 }

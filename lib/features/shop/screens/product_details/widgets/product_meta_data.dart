@@ -5,7 +5,7 @@ import 'package:nx_commerce/common/widgets/text/brand_title_text_with_verificati
 import 'package:nx_commerce/common/widgets/text/custom_price_text.dart';
 import 'package:nx_commerce/common/widgets/text/product_text_tile.dart';
 import 'package:nx_commerce/features/shop/controllers/products/product_controller.dart';
-import 'package:nx_commerce/features/shop/models/product_model/product_model.dart';
+import 'package:nx_commerce/features/shop/models/product_model.dart';
 import 'package:nx_commerce/utils/constants/colors.dart';
 import 'package:nx_commerce/utils/constants/enums.dart';
 

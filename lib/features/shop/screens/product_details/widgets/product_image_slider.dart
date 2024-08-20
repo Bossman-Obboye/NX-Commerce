@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:nx_commerce/features/shop/controllers/products/image_controller.dart';
-import 'package:nx_commerce/features/shop/models/product_model/product_model.dart';
+import 'package:nx_commerce/features/shop/models/product_model.dart';
 import 'package:nx_commerce/utils/helpers/helpers.dart';
 
 import '../../../../../common/widgets/appbar/appbar.dart';

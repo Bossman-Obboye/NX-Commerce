@@ -8,7 +8,7 @@ import 'package:nx_commerce/utils/helpers/cloud_helper_functions.dart';
 import 'package:nx_commerce/utils/shimmer_effect/vertical_product_shimmer.dart';
 
 import '../../../../common/widgets/products/sortable/sortable_product.dart';
-import '../../models/product_model/product_model.dart';
+import '../../models/product_model.dart';
 
 class AllProductsScreen extends StatelessWidget {
   const AllProductsScreen({super.key, required this.title, this.query, this.futureMethod});

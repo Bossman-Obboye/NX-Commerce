@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:nx_commerce/features/shop/models/product_model/product_model.dart';
+import 'package:nx_commerce/features/shop/models/product_model.dart';
 import 'package:nx_commerce/utils/constants/enums.dart';
 import 'package:nx_commerce/utils/loaders/loaders.dart';
 

@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 import 'package:nx_commerce/data/repositories/product_repository/product_repository.dart';
-import 'package:nx_commerce/features/shop/models/brand_model/brand_model.dart';
+import 'package:nx_commerce/features/shop/models/brand_model.dart';
 
 import '../../../data/repositories/brand_repository/brand_repository.dart';
 import '../../../utils/loaders/loaders.dart';
-import '../models/product_model/product_model.dart';
+import '../models/product_model.dart';
 
 class BrandController extends GetxController {
   static BrandController get instance => Get.find();
@@ -44,12 +44,20 @@ class BrandController extends GetxController {
 
 
   /// -- Get Brands for Category
-
+  Future<List<BrandModel>> getBrandForCategory(String categoryId) async {
+    try {
+      final brands = await brandRepository.getBrandsForCategory(categoryId);
+      return brands;
+    } catch (e) {
+      NxLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
+    }
+  }
 
   /// -- Get Brand Specific Products form your data source.
-  Future<List<ProductModel>> getBrandProducts(String brandId) async {
+  Future<List<ProductModel>> getBrandProducts({required String brandId, int limit = -1}) async {
     try {
-      final products = await ProductRepository.instance.getProductsForBrand(brandId: brandId);
+      final products = await ProductRepository.instance.getProductsForBrand(brandId: brandId, limit: limit);
       return products;
     } catch (e) {
       NxLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());

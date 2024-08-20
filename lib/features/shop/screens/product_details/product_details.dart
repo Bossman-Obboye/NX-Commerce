@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:iconsax/iconsax.dart";
 import "package:nx_commerce/common/widgets/text/section_heading.dart";
-import "package:nx_commerce/features/shop/models/product_model/product_model.dart";
+import "package:nx_commerce/features/shop/models/product_model.dart";
 import "package:nx_commerce/features/shop/screens/product_details/widgets/bottom_add_to_cart.dart";
 import "package:nx_commerce/features/shop/screens/product_details/widgets/product_attributes.dart";
 import "package:nx_commerce/features/shop/screens/product_details/widgets/product_image_slider.dart";

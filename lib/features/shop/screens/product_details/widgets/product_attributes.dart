@@ -4,7 +4,7 @@ import 'package:nx_commerce/common/widgets/text/custom_price_text.dart';
 import 'package:nx_commerce/common/widgets/text/product_text_tile.dart';
 import 'package:nx_commerce/common/widgets/text/section_heading.dart';
 import 'package:nx_commerce/features/shop/controllers/products/variation_controller.dart';
-import 'package:nx_commerce/features/shop/models/product_model/product_model.dart';
+import 'package:nx_commerce/features/shop/models/product_model.dart';
 import 'package:nx_commerce/utils/constants/colors.dart';
 import 'package:nx_commerce/utils/helpers/helpers.dart';
 

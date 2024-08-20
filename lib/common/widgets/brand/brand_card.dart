@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../features/shop/models/brand_model/brand_model.dart';
+import '../../../features/shop/models/brand_model.dart';
 import '../custom_shapes/containers/rounded_container.dart';
 import '../images/circular_image.dart';
 import '../text/brand_title_text_with_verification.dart';

@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../brand_model/brand_model.dart';
-import '../product_attribute_model/product_attribute_model.dart';
-import '../product_variation_model/product_variation_model.dart';
+import 'brand_model.dart';
+import 'product_attribute_model.dart';
+import 'product_variation_model.dart';
 
 class ProductModel {
   String id;

@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-import '../../../features/shop/models/product_model/product_model.dart';
+import '../../../features/shop/models/product_model.dart';
 import '../../../utils/exceptions/firebase_exception.dart';
 import '../../../utils/exceptions/generic_exception.dart';
 import '../../../utils/exceptions/platform_exception.dart';
 
-class ProductRepository extends GetxController {
+class  ProductRepository extends GetxController {
   static ProductRepository get instance => Get.find();
 
   /// FireStore instance for database interactions
@@ -90,6 +90,43 @@ class ProductRepository extends GetxController {
       throw NxGenericException.instance.message;
     }
   }
+
+    Future<List<ProductModel>> getProductsForCategory(
+      {required String categoryId, int limit = -1}) async {
+    try {
+      final productCategoryQuery = limit == -1
+          ? await _db
+              .collection('ProductCategory')
+              .where('categoryId', isEqualTo: categoryId)
+              .get()
+          : await _db
+              .collection('ProductCategory')
+              .where('categoryId', isEqualTo: categoryId)
+              .limit(limit)
+              .get();
+
+      // Extract productIds for all the documents
+      List<String> productIds = productCategoryQuery.docs.map((doc) => doc['productId'] as String).toList();
+
+      // Query to get all documents where the brandId is in the list of brandIds, FieldPath.documentId to query document in collection.
+      final productsQuery = await _db.collection('Products').where(FieldPath.documentId, whereIn: productIds).get();
+
+      // Extract brand names or other relevant data from the documents
+      final List<ProductModel> products = productsQuery.docs
+          .map((doc) => ProductModel.fromQuerySnapshot(doc))
+          .toList();
+
+      return products;
+
+    } on FirebaseException catch (e) {
+      throw NxFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw NxPlatformException(code: e.code).message;
+    } catch (e) {
+      throw NxGenericException.instance.message;
+    }
+  }
+
 
 // /// Upload dummy data to the Cloud Firebase
 // Future<void> uploadDummyData>(List<ProductModel> products) async {

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:nx_commerce/features/shop/controllers/products/image_controller.dart';
-import 'package:nx_commerce/features/shop/models/product_model/product_model.dart';
-import 'package:nx_commerce/features/shop/models/product_variation_model/product_variation_model.dart';
+import 'package:nx_commerce/features/shop/models/product_model.dart';
+import 'package:nx_commerce/features/shop/models/product_variation_model.dart';
 
 class VariationController extends GetxController {
   static VariationController get instance => Get.find();
