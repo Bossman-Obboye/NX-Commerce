@@ -6,7 +6,7 @@ import '../exceptions/firebase_exception.dart';
 import '../exceptions/generic_exception.dart';
 import '../exceptions/platform_exception.dart';
 
-class CloudHelperFunctions {
+class NxCloudHelperFunctions {
 
   /// Helper functions to check the state of a single database record.
   ///

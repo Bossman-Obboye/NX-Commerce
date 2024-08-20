@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nx_commerce/features/shop/models/brand_model/brand_model.dart';
 
 import 'brand_card.dart';
 import '../../../utils/constants/colors.dart';
@@ -26,7 +27,7 @@ class NxBrandShowcase extends StatelessWidget {
       child: Column(
         children: [
           /// -- Brand with Products Count
-          const NxBrandCard(showBorder: false),
+          NxBrandCard(showBorder: false, brand: BrandModel.empty()),
           const SizedBox(height: NxSizes.spaceBtwItems),
 
           /// Brand Top 3 Product Images

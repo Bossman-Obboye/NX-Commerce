@@ -31,7 +31,7 @@ class AllProductsScreen extends StatelessWidget {
 
               ///Check the state of the FutureBuilder snapshot
               const loader = NxVerticalProductShimmer();
-             final widget = CloudHelperFunctions.checkMultiRecordState(snapshot: snapshot,loader: loader);
+             final widget = NxCloudHelperFunctions.checkMultiRecordState(snapshot: snapshot,loader: loader);
 
              // Return appropriate widget base on snapshot status
               if(widget != null) return widget;

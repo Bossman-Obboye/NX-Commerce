@@ -52,8 +52,8 @@ class NxProductCardVertical extends StatelessWidget {
                     applyImageBorderRadius: true
                                    )
                  ),
-
                 /// -- Sales Tag
+                if(salePercentage != null)
                 Positioned(
                   top: 12,
                   child: NxRoundedContainer(
