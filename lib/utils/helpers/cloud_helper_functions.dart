@@ -46,7 +46,7 @@ class NxCloudHelperFunctions {
       return loader ?? const Center(child: CircularProgressIndicator());
     }
 
-    if (!snapshot.hasData || snapshot.data == null) {
+    if (!snapshot.hasData || snapshot.data == null || snapshot.data!.isEmpty) {
       return nothingFound ?? const Center(child: Text('No Data Found'));
     }
 

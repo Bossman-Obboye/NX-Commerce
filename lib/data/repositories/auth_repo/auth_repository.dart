@@ -16,6 +16,7 @@ import 'package:nx_commerce/utils/exceptions/firebase_exception.dart';
 import 'package:nx_commerce/utils/exceptions/format_exception.dart';
 import 'package:nx_commerce/utils/exceptions/generic_exception.dart';
 import 'package:nx_commerce/utils/exceptions/platform_exception.dart';
+import 'package:nx_commerce/utils/local_storage/storage_utils.dart';
 
 import '../../../features/authentication/screens/log_in/login.dart';
 
@@ -44,6 +45,10 @@ class AuthenticationRepository extends GetxController {
     if (user != null) {
       // If the user is logged in
       if (user.emailVerified) {
+
+        // Initialize User Specific Storage
+        await NxLocalStorage.onInit(user.uid);
+
         // If the email is verified, navigate to NavigationMenu
         Get.offAll(const NavigationMenu());
       } else {

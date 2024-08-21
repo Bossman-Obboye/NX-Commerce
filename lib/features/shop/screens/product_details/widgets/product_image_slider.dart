@@ -1,17 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:nx_commerce/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:nx_commerce/features/shop/controllers/products/image_controller.dart';
 import 'package:nx_commerce/features/shop/models/product_model.dart';
 import 'package:nx_commerce/utils/helpers/helpers.dart';
 
 import '../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../common/widgets/custom_shapes/curve_edges/curve_edge_widget.dart';
-import '../../../../../common/widgets/icons/circular_icon.dart';
 import '../../../../../common/widgets/images/rounded_images.dart';
 import '../../../../../utils/constants/colors.dart';
-import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
 
 class NxProductImageSlider extends StatelessWidget {
@@ -42,7 +40,10 @@ class NxProductImageSlider extends StatelessWidget {
                       onTap: () => controller.showEnlargedImage(image),
                       child: CachedNetworkImage(
                         imageUrl: image,
-                        progressIndicatorBuilder: (_, __, downloadProgress) => CircularProgressIndicator(value: downloadProgress.progress, color: NxColors.primary),
+                        progressIndicatorBuilder: (_, __, downloadProgress) =>
+                            CircularProgressIndicator(
+                                value: downloadProgress.progress,
+                                color: NxColors.primary),
                       ),
                     );
                   }),
@@ -67,16 +68,23 @@ class NxProductImageSlider extends StatelessWidget {
                       )),
                   itemBuilder: (_, index) => Obx(
                     () {
-                      final bool imageSelected = controller .selectedProductImage.value == images[index];
+                      final bool imageSelected =
+                          controller.selectedProductImage.value ==
+                              images[index];
                       return NxRoundedImage(
-                      width: 80,
-                      isNetworkImage: true,
-                      imageUrl: images[index],
-                      padding: const EdgeInsets.all(NxSizes.sm),
-                      backgroundColor: isDarkMode ? NxColors.dark : NxColors.white,
-                      onPressed: () => controller.selectedProductImage.value = images[index],
-                      border: Border.all(color: imageSelected ? NxColors.primary : Colors.transparent),
-                    );
+                        width: 80,
+                        isNetworkImage: true,
+                        imageUrl: images[index],
+                        padding: const EdgeInsets.all(NxSizes.sm),
+                        backgroundColor:
+                            isDarkMode ? NxColors.dark : NxColors.white,
+                        onPressed: () => controller.selectedProductImage.value =
+                            images[index],
+                        border: Border.all(
+                            color: imageSelected
+                                ? NxColors.primary
+                                : Colors.transparent),
+                      );
                     },
                   ),
                 ),
@@ -84,14 +92,9 @@ class NxProductImageSlider extends StatelessWidget {
             ),
 
             /// -- Appbar Icons
-            const NxAppBar(
+            NxAppBar(
               showBackArrow: true,
-              actions: [
-                NxCircularIcon(
-                  iconData: Iconsax.heart5,
-                  iconColor: Colors.red,
-                ),
-              ],
+              actions: [NxFavouriteIcon(productId: product.id)],
             )
           ],
         ),

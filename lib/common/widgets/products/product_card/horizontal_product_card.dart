@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:nx_commerce/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:nx_commerce/common/widgets/images/rounded_images.dart';
+import 'package:nx_commerce/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:nx_commerce/common/widgets/text/brand_title_text_with_verification.dart';
 import 'package:nx_commerce/common/widgets/text/custom_price_text.dart';
 import 'package:nx_commerce/common/widgets/text/product_text_tile.dart';
@@ -9,8 +10,6 @@ import 'package:nx_commerce/utils/constants/colors.dart';
 import 'package:nx_commerce/utils/constants/image_strings.dart';
 import 'package:nx_commerce/utils/constants/sizes.dart';
 import 'package:nx_commerce/utils/helpers/helpers.dart';
-
-import '../../icons/circular_icon.dart';
 
 class NxProductCardHorizontal extends StatelessWidget {
   const NxProductCardHorizontal({super.key});
@@ -59,28 +58,25 @@ class NxProductCardHorizontal extends StatelessWidget {
               ),
 
               /// Favourite Icon Button
-              const Positioned(
-                right: 0,
-                child: NxCircularIcon(
-                  iconData: Iconsax.heart5,
-                  iconColor: Colors.red,
-                ),
-              )
+              Positioned(
+                  right: 0, child: NxFavouriteIcon(productId: 'product.id'))
             ]),
           ),
 
           /// Details
-           SizedBox(
-             height: 120,
+          SizedBox(
+            height: 120,
             width: 172,
             child: Padding(
               padding: const EdgeInsets.only(top: NxSizes.sm, left: NxSizes.sm),
               child: Column(
                 children: [
-                   const Column(
+                  const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      NxProductTitleText(title: 'Grey Nike Laptop Backpack', isSmallSize: true),
+                      NxProductTitleText(
+                          title: 'Grey Nike Laptop Backpack',
+                          isSmallSize: true),
                       SizedBox(height: NxSizes.spaceBtwItems / 2),
                       NxBrandTitleTextWithVerification(title: 'Nike'),
                     ],
@@ -90,8 +86,8 @@ class NxProductCardHorizontal extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       /// Pricing
-                      const  Flexible(child: NxProductPriceText(price: '256.00')),
-
+                      const Flexible(
+                          child: NxProductPriceText(price: '256.00')),
 
                       /// -- Add to Cart Button
                       Container(
@@ -100,7 +96,7 @@ class NxProductCardHorizontal extends StatelessWidget {
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(NxSizes.cardRadiusMd),
                             bottomRight:
-                            Radius.circular(NxSizes.productImageRadius),
+                                Radius.circular(NxSizes.productImageRadius),
                           ),
                         ),
                         child: const SizedBox(
