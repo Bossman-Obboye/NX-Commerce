@@ -6,17 +6,26 @@ import 'package:nx_commerce/common/widgets/products/favourite_icon/favourite_ico
 import 'package:nx_commerce/common/widgets/text/brand_title_text_with_verification.dart';
 import 'package:nx_commerce/common/widgets/text/custom_price_text.dart';
 import 'package:nx_commerce/common/widgets/text/product_text_tile.dart';
+import 'package:nx_commerce/features/shop/models/product_model.dart';
 import 'package:nx_commerce/utils/constants/colors.dart';
 import 'package:nx_commerce/utils/constants/image_strings.dart';
 import 'package:nx_commerce/utils/constants/sizes.dart';
 import 'package:nx_commerce/utils/helpers/helpers.dart';
 
-class NxProductCardHorizontal extends StatelessWidget {
-  const NxProductCardHorizontal({super.key});
+import '../../../../features/shop/controllers/products/product_controller.dart';
+import '../../../../utils/constants/enums.dart';
 
+class NxProductCardHorizontal extends StatelessWidget {
+  const NxProductCardHorizontal({super.key, required this.product});
+
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     final bool isDarkMode = NxHelpers.isDarkMode(context);
+    final controller = ProductController.instance;
+    final salePercentage =
+    controller.calculateSalePercentage(product.price, product.salePrice);
+
     return Container(
       width: 310,
       padding: const EdgeInsets.all(1),
@@ -32,14 +41,16 @@ class NxProductCardHorizontal extends StatelessWidget {
             padding: const EdgeInsets.all(NxSizes.sm),
             backgroundColor: isDarkMode ? NxColors.dark : NxColors.light,
             child: Stack(children: [
-              const SizedBox(
+               SizedBox(
                   height: 120,
                   width: 120,
                   child: NxRoundedImage(
-                      imageUrl: NxImages.productImage1,
+                    isNetworkImage: true,
+                      imageUrl: product.thumbnail,
                       applyImageBorderRadius: true)),
 
               /// -- Sales Tag
+              if(salePercentage != null)
               Positioned(
                 top: 12,
                 child: NxRoundedContainer(
@@ -48,7 +59,7 @@ class NxProductCardHorizontal extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                       horizontal: NxSizes.sm, vertical: NxSizes.xs),
                   child: Text(
-                    "25%",
+                    "$salePercentage%",
                     style: Theme.of(context)
                         .textTheme
                         .labelLarge!
@@ -59,7 +70,7 @@ class NxProductCardHorizontal extends StatelessWidget {
 
               /// Favourite Icon Button
               Positioned(
-                  right: 0, child: NxFavouriteIcon(productId: 'product.id'))
+                  right: 0, child: NxFavouriteIcon(productId: product.id))
             ]),
           ),
 
@@ -70,24 +81,51 @@ class NxProductCardHorizontal extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(top: NxSizes.sm, left: NxSizes.sm),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Column(
+                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       NxProductTitleText(
-                          title: 'Grey Nike Laptop Backpack',
+                          title: product.title,
                           isSmallSize: true),
-                      SizedBox(height: NxSizes.spaceBtwItems / 2),
-                      NxBrandTitleTextWithVerification(title: 'Nike'),
+                      const SizedBox(height: NxSizes.spaceBtwItems / 2),
+                      NxBrandTitleTextWithVerification(title: product.brand!.name),
                     ],
                   ),
                   const Spacer(),
+
+                  /// Price Row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      /// Pricing
-                      const Flexible(
-                          child: NxProductPriceText(price: '256.00')),
+                      /// -- Price
+                      Flexible(
+                        child: Column(
+                          children: [
+                            if (product.productType ==
+                                ProductType.single.toString() &&
+                                product.salePrice > 0)
+                              Padding(
+                                padding: const EdgeInsets.only(left: NxSizes.sm),
+                                child: Text(
+                                  '\$${product.price}',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelMedium!
+                                      .apply(decoration: TextDecoration.lineThrough),
+                                ),
+                              ),
+
+                            /// Price, Show sale price as main price if sale exist.
+                            Padding(
+                              padding: const EdgeInsets.only(left: NxSizes.sm),
+                              child: NxProductPriceText(
+                                  price: controller.getProductPrice(product)),
+                            ),
+                          ],
+                        ),
+                      ),
 
                       /// -- Add to Cart Button
                       Container(
@@ -95,8 +133,7 @@ class NxProductCardHorizontal extends StatelessWidget {
                           color: NxColors.dark,
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(NxSizes.cardRadiusMd),
-                            bottomRight:
-                                Radius.circular(NxSizes.productImageRadius),
+                            bottomRight: Radius.circular(NxSizes.productImageRadius),
                           ),
                         ),
                         child: const SizedBox(
@@ -108,7 +145,7 @@ class NxProductCardHorizontal extends StatelessWidget {
                         ),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

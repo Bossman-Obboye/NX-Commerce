@@ -34,12 +34,13 @@ class NxAppRoutes {
     GetPage(name: NxRoutes.signIn, page: () => const LoginScreen()),
     GetPage(name: NxRoutes.forgetPassword, page: () => const ForgotPasswordScreen()),
     GetPage(name: NxRoutes.onBoarding, page: () => const OnBoardingScreen()),
-    GetPage(name: NxRoutes.subCategories, page: () => const SubCategoriesScreen()),
     // TODO : Uncomment this after SearchScreen is created
     // GetPage(name: NxRoutes.search, page: () => const SearchScreen()),
+    // GetPage(name: NxRoutes.subCategories, page: () => const SubCategoriesScreen()),
     // GetPage(name: NxRoutes.brand, page: () => const BrandProductsScreen()),
     // GetPage(name: NxRoutes.allProducts, page: () => const AllProductsScreen()),
-    // NxRoutes.signUpSuccess, NxRoutes.brand, NxRoutes.allProducts, NxRoutes.productDetails and NxRoutes.resetPassword aren't added because they are
+    // NxRoutes.signUpSuccess, NxRoutes.subCategories, NxRoutes.brand, NxRoutes.allProducts,
+    // NxRoutes.productDetails and NxRoutes.resetPassword aren't added because they are
     // dependent on other parameters. Not that they cannot be add here.
   ];
 }
