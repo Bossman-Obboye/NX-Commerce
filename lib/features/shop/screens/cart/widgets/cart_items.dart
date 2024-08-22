@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:nx_commerce/features/shop/controllers/products/cart_controller.dart';
 
 import '../../../../../common/widgets/products/cart/cart_item.dart';
 import '../../../../../common/widgets/products/cart/product_add_remove_button.dart';
@@ -14,30 +16,40 @@ class NxCartItems extends StatelessWidget {
   final bool showAddRemoveButtons;
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: 2,
-      shrinkWrap: true,
-      separatorBuilder: ((_, __) =>
-      const SizedBox(height: NxSizes.spaceBtwSections)),
-      itemBuilder: ((_, index) =>  Column(
-        children: [
-          /// -- Cart Item
-           const NxCartItem(),
-         if(showAddRemoveButtons) const SizedBox(height: NxSizes.spaceBtwSections),
-
-          /// -- Add, Remove Buttons
-          if(showAddRemoveButtons) const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    final cartController = CartController.instance;
+    return Obx(
+      ()=> ListView.separated(
+        itemCount: cartController.cartItems.length,
+        shrinkWrap: true,
+        separatorBuilder: ((_, __) =>
+        const SizedBox(height: NxSizes.spaceBtwSections)),
+        itemBuilder: ((_, index) =>  Obx(
+            () {
+              final item = cartController.cartItems[index];
+              return Column(
             children: [
-              NxProductQuantityWithAddRemoveButton(
-                /// -- Extra Space
-                showInitSpace: true,
+              /// -- Cart Item
+               NxCartItem(cartItem : item),
+             if(showAddRemoveButtons) const SizedBox(height: NxSizes.spaceBtwSections),
+
+              /// -- Add, Remove Buttons
+              if(showAddRemoveButtons)  Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  NxProductQuantityWithAddRemoveButton(
+                    /// -- Extra Space
+                    showInitSpace: true, quantity: item.quantity,
+                    add: () => cartController.addOneItemToCart(item),
+                    remove: ()=> cartController.removeOneItemFromCart(item),
+                  ),
+                  NxProductPriceText(price: (item.price * item.quantity).toStringAsFixed(1)),
+                ],
               ),
-              NxProductPriceText(price: "256"),
             ],
-          ),
-        ],
-      )),
+          );
+            },
+        )),
+      ),
     );
   }
 }

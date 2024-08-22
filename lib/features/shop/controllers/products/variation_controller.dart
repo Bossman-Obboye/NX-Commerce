@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:nx_commerce/features/shop/controllers/products/cart_controller.dart';
 import 'package:nx_commerce/features/shop/controllers/products/image_controller.dart';
 import 'package:nx_commerce/features/shop/models/product_model.dart';
 import 'package:nx_commerce/features/shop/models/product_variation_model.dart';
@@ -27,8 +28,16 @@ class VariationController extends GetxController {
         orElse: () => ProductVariationModel.empty());
 
     // Show  the selected Variations image as a Main Image
-    if(selectedVariation.image.isNotEmpty) {
-      ImageController.instance.selectedProductImage.value = selectedVariation.image;
+    if (selectedVariation.image.isNotEmpty) {
+      ImageController.instance.selectedProductImage.value =
+          selectedVariation.image;
+    }
+
+    // Show selected variation quantity already in the cart
+    if (selectedVariation.id.isNotEmpty) {
+      final cartController = CartController.instance;
+      cartController.productQuantityInCart.value = cartController
+          .getVariationQuantityInCart(product.id, selectedVariation.id);
     }
 
     // Assign Selected Variation
@@ -36,7 +45,6 @@ class VariationController extends GetxController {
 
     // Update selected product variation status
     getProductVariationStockStatus();
-
   }
 
   /// -- Check if selected attributes matches any variation attributes
@@ -57,18 +65,24 @@ class VariationController extends GetxController {
   /// -- Check Product availability / Stock in Variation
   Set<String?> getAttributesAvailabilityInVariation(
       List<ProductVariationModel> variations, String attributeName) {
-      // Pass the variations to check which attributes are available and stock is not 0.
-      final availableVariationAttributes = variations.where((variation) => variation.attributeValues[attributeName] != null && variation.attributeValues[attributeName]!.isNotEmpty && variation.stock > 0)
-          .map((variation) => variation.attributeValues[attributeName])
-          .toSet();
+    // Pass the variations to check which attributes are available and stock is not 0.
+    final availableVariationAttributes = variations
+        .where((variation) =>
+            variation.attributeValues[attributeName] != null &&
+            variation.attributeValues[attributeName]!.isNotEmpty &&
+            variation.stock > 0)
+        .map((variation) => variation.attributeValues[attributeName])
+        .toSet();
 
-      return availableVariationAttributes;
+    return availableVariationAttributes;
   }
 
   String getVariationPrice() {
-    return (selectedVariation.value.salePrice > 0 ? selectedVariation.value.salePrice : selectedVariation.value.price).toString();
+    return (selectedVariation.value.salePrice > 0
+            ? selectedVariation.value.salePrice
+            : selectedVariation.value.price)
+        .toString();
   }
-
 
   /// -- Check Product Variation Stock Status
   void getProductVariationStockStatus() {

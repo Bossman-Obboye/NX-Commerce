@@ -20,7 +20,7 @@ class NxProductAttributes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isDarkMode = NxHelpers.isDarkMode(context);
-    final controller = Get.put(VariationController());
+    final controller = VariationController.instance;
     return Obx(
         () => Column(
         /// -- Selected Attribute Pricing & Description

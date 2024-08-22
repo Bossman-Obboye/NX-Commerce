@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:iconsax/iconsax.dart";
 import "package:nx_commerce/common/widgets/images/rounded_images.dart";
 import "package:nx_commerce/common/widgets/products/favourite_icon/favourite_icon.dart";
 import "package:nx_commerce/common/widgets/text/brand_title_text_with_verification.dart";
@@ -15,6 +14,7 @@ import "../../../../utils/constants/sizes.dart";
 import "../../../../utils/helpers/helpers.dart";
 import "../../custom_shapes/containers/rounded_container.dart";
 import "../../text/custom_price_text.dart";
+import "../product_add_to_cart_buttons.dart";
 
 class NxProductCardVertical extends StatelessWidget {
   const NxProductCardVertical({super.key, required this.product});
@@ -139,22 +139,7 @@ class NxProductCardVertical extends StatelessWidget {
                 ),
 
                 /// -- Add to Cart Button
-                Container(
-                  decoration: const BoxDecoration(
-                    color: NxColors.dark,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(NxSizes.cardRadiusMd),
-                      bottomRight: Radius.circular(NxSizes.productImageRadius),
-                    ),
-                  ),
-                  child: const SizedBox(
-                    height: NxSizes.iconLg * 1.20,
-                    width: NxSizes.iconLg * 1.20,
-                    child: Center(
-                      child: Icon(Iconsax.add, color: NxColors.white),
-                    ),
-                  ),
-                ),
+                ProductAddToCartButtons(product: product),
               ],
             ),
           ],
@@ -163,3 +148,4 @@ class NxProductCardVertical extends StatelessWidget {
     );
   }
 }
+
