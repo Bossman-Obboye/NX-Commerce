@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nx_commerce/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:nx_commerce/common/widgets/text/section_heading.dart';
+import 'package:nx_commerce/features/shop/controllers/products/checkout_controller.dart';
 import 'package:nx_commerce/utils/constants/colors.dart';
-import 'package:nx_commerce/utils/constants/image_strings.dart';
 import 'package:nx_commerce/utils/constants/sizes.dart';
 
 import '../../../../../utils/helpers/helpers.dart';
@@ -13,22 +14,32 @@ class NxBillingPaymentSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isDarkMode = NxHelpers.isDarkMode(context);
-    return  Column(
+    final controller = CheckoutController.instance;
+    return Column(
       children: [
-        NxSectionHeading(title: 'Payment Method', btnText: 'Change', btnOnPressed: (){},),
+        NxSectionHeading(
+            title: 'Payment Method',
+            btnText: 'Change',
+            btnOnPressed: () => controller.selectPaymentMethod(context)),
         const SizedBox(height: NxSizes.spaceBtwItems / 2),
-        Row(
-          children: [
-            NxRoundedContainer(
-              width: 60,
-              height: 35,
-              backgroundColor: isDarkMode ? NxColors.light : NxColors.white,
-              padding: const EdgeInsets.all(NxSizes.sm),
-              child: const Image(image: AssetImage(NxImages.paypal), fit: BoxFit.contain),
-            ),
-            const SizedBox(width: NxSizes.spaceBtwItems / 2),
-            Text('Paypal', style: Theme.of(context).textTheme.bodyLarge,)
-          ],
+        Obx(
+          ()=> Row(
+            children: [
+              NxRoundedContainer(
+                width: 60,
+                height: 35,
+                backgroundColor: isDarkMode ? NxColors.light : NxColors.white,
+                padding: const EdgeInsets.all(NxSizes.sm),
+                child: Image(
+                    image: AssetImage(controller.selectedPaymentMethod.value.image), fit: BoxFit.contain),
+              ),
+              const SizedBox(width: NxSizes.spaceBtwItems / 2),
+              Text(
+                controller.selectedPaymentMethod.value.name,
+                style: Theme.of(context).textTheme.bodyLarge,
+              )
+            ],
+          ),
         ),
       ],
     );

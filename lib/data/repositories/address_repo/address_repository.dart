@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:nx_commerce/data/repositories/auth_repo/auth_repository.dart';
 
-import '../../features/personalization/models/address_model.dart';
+import '../../../features/personalization/models/address_model.dart';
 
 class AddressRepository extends GetxController {
   static AddressRepository get instance => Get.find();

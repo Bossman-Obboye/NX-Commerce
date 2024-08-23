@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:nx_commerce/data/repositories/product_repository/product_repository.dart';
+import 'package:nx_commerce/data/repositories/product_repo/product_repository/product_repository.dart';
 import 'package:nx_commerce/features/shop/models/brand_model.dart';
 
-import '../../../data/repositories/brand_repository/brand_repository.dart';
+import '../../../data/repositories/product_repo/brand_repository/brand_repository.dart';
 import '../../../utils/loaders/loaders.dart';
 import '../models/product_model.dart';
 

@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-import '../../../features/shop/models/product_model.dart';
-import '../../../utils/exceptions/firebase_exception.dart';
-import '../../../utils/exceptions/generic_exception.dart';
-import '../../../utils/exceptions/platform_exception.dart';
+import '../../../../features/shop/models/product_model.dart';
+import '../../../../utils/exceptions/firebase_exception.dart';
+import '../../../../utils/exceptions/generic_exception.dart';
+import '../../../../utils/exceptions/platform_exception.dart';
 
 class  ProductRepository extends GetxController {
   static ProductRepository get instance => Get.find();

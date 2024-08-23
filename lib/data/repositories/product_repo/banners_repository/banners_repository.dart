@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:nx_commerce/features/shop/models/banner_model.dart';
 
-import '../../../utils/exceptions/firebase_exception.dart';
-import '../../../utils/exceptions/generic_exception.dart';
-import '../../../utils/exceptions/platform_exception.dart';
+import '../../../../utils/exceptions/firebase_exception.dart';
+import '../../../../utils/exceptions/generic_exception.dart';
+import '../../../../utils/exceptions/platform_exception.dart';
 
 class BannersRepository extends GetxController {
   static BannersRepository get instance => Get.find();

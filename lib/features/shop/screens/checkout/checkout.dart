@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nx_commerce/common/widgets/custom_shapes/containers/rounded_container.dart';
-import 'package:nx_commerce/common/widgets/navigation_bar/navigation_menu.dart';
-import 'package:nx_commerce/common/widgets/success_screen/success_screen.dart';
+import 'package:nx_commerce/features/shop/controllers/products/cart_controller.dart';
 import 'package:nx_commerce/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:nx_commerce/features/shop/screens/checkout/widgets/billing_amount_section.dart';
 import 'package:nx_commerce/features/shop/screens/checkout/widgets/billing_payment_section.dart';
 import 'package:nx_commerce/utils/constants/colors.dart';
-import 'package:nx_commerce/utils/constants/image_strings.dart';
 import 'package:nx_commerce/utils/helpers/helpers.dart';
+import 'package:nx_commerce/utils/helpers/pricing_calc.dart';
+import 'package:nx_commerce/utils/loaders/loaders.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/products/cart/coupon_code.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../controllers/products/order_controller.dart';
 import '../cart/widgets/cart_items.dart';
 
 class CheckoutScreen extends StatelessWidget {
@@ -20,6 +21,10 @@ class CheckoutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = CartController.instance;
+    final subTotal = controller.totalCartPrice.value;
+    final orderController = Get.put(OrderController());
+    final totalAmount = NxPricingCalculator.calculateTotalPrice(subTotal, 'US');
     final bool isDarkMode = NxHelpers.isDarkMode(context);
     return Scaffold(
       appBar: NxAppBar(
@@ -74,18 +79,12 @@ class CheckoutScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(NxSizes.defaultSpace),
         child: ElevatedButton(
-            onPressed: () => Get.offAll(()=>
-
-                  SuccessScreen(
-                    image: NxImages.successfulPaymentIcon,
-                    title: 'Payment Success!',
-                    subTitle: 'Your item will be shipped soon!',
-                    onPressed: () => Get.offAll( () => const NavigationMenu() ),
-                  ),
+            onPressed:
+            subTotal > 0 ? ()=> orderController.processOrder(totalAmount) :
+            () => NxLoaders.warningSnackBar(title: 'Empty Cart', message: 'Add items in the cart in order to proceed'
                 ),
-
-
-            child: const Text("Checkout \$256.00")),
+            child: Text(
+                "Checkout \$${NxPricingCalculator.calculateTotalPrice(subTotal, 'US')}")),
       ),
     );
   }

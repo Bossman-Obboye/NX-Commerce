@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
-import 'package:nx_commerce/data/repositories/product_repository/product_repository.dart';
+import 'package:nx_commerce/data/repositories/product_repo/product_repository/product_repository.dart';
 import 'package:nx_commerce/features/shop/models/product_model.dart';
 import 'package:nx_commerce/utils/loaders/loaders.dart';
 import 'package:nx_commerce/utils/local_storage/storage_utils.dart';

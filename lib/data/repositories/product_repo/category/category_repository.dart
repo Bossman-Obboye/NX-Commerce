@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:nx_commerce/data/repositories/product_repository/product_repository.dart';
+import 'package:nx_commerce/data/repositories/product_repo/product_repository/product_repository.dart';
 import 'package:nx_commerce/features/shop/models/category_model.dart';
 
-import '../../../utils/exceptions/firebase_exception.dart';
-import '../../../utils/exceptions/generic_exception.dart';
-import '../../../utils/exceptions/platform_exception.dart';
+import '../../../../utils/exceptions/firebase_exception.dart';
+import '../../../../utils/exceptions/generic_exception.dart';
+import '../../../../utils/exceptions/platform_exception.dart';
 // import '../../services/firebase_service/nx_firebase_storage_service.dart';
 
 class CategoryRepository extends GetxController {

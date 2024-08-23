@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:nx_commerce/data/repositories/banners_repository/banners_repository.dart';
+import 'package:nx_commerce/data/repositories/product_repo/banners_repository/banners_repository.dart';
 import 'package:nx_commerce/features/shop/models/banner_model.dart';
 
 import '../../../utils/loaders/loaders.dart';

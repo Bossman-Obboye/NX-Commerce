@@ -15,7 +15,7 @@ class UserAddressScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(AddressController());
+    final controller = AddressController.instance;
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () => Get.to(() => const AddNewAddressScreen()),
@@ -33,9 +33,9 @@ class UserAddressScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(NxSizes.defaultSpace),
           child: Obx(
-              ()=> FutureBuilder(
-              // Use key to trigger refresh
-              key: Key(controller.refreshData.value.toString()),
+            () => FutureBuilder(
+                // Use key to trigger refresh
+                key: Key(controller.refreshData.value.toString()),
                 future: controller.getAllUserAddresses(),
                 builder: (context, snapshot) {
                   /// Helper Functions: Handle Loader, No Record, or Error Message
@@ -45,13 +45,14 @@ class UserAddressScreen extends StatelessWidget {
 
                   final addresses = snapshot.data!;
                   return ListView.builder(
-                    itemCount: addresses.length,
-                    itemBuilder: (_, index) {
-                      final currentAddress = addresses[index];
-                      return
-                        NxSingleAddress(address: currentAddress, onTap: () => controller.selectAddress(currentAddress));
-
-                    });
+                      itemCount: addresses.length,
+                      itemBuilder: (_, index) {
+                        final currentAddress = addresses[index];
+                        return NxSingleAddress(
+                            address: currentAddress,
+                            onTap: () =>
+                                controller.selectAddress(currentAddress));
+                      });
                 }),
           ),
         ),
