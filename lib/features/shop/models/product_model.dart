@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:nx_commerce/utils/constants/enums.dart';
+import 'package:nx_commerce/utils/constants/image_strings.dart';
 
 import 'brand_model.dart';
 import 'product_attribute_model.dart';
@@ -74,20 +76,20 @@ class ProductModel {
     final data = document.data()!;
     return ProductModel(
         id: document.id,
-        sku: data['SKU'],
         title: data['Title'],
         stock: data['Stock'] ?? 0,
-        isFeatured: data['IsFeatured'] ?? false,
         price: double.parse((data['Price'] ?? 0.0).toString()),
-        salePrice: double.parse((data['SalePrice'] ?? 0.0).toString()),
+        isFeatured: data['IsFeatured'] ?? false,
         thumbnail: data['Thumbnail'] ?? '',
-        categoryId: data['CategoryId'] ?? '',
         description : data['Description'] ?? '',
-        productType: data['ProductType'] ?? '',
         brand: BrandModel.fromJson(data['Brand']),
         images: data['Images'] != null ? List<String>.from(data['Images']) : [],
+        salePrice: double.parse((data['SalePrice'] ?? 0.0).toString()),
+        sku: data['SKU'],
+        categoryId: data['CategoryId'] ?? '',
         productAttributes: (data['ProductAttributes'] as List<dynamic>).map((e) => ProductAttributeModel.fromJson(e)).toList(),
         productVariations: (data['ProductVariations'] as List<dynamic>).map((e) => ProductVariationModel.fromJson(e)).toList(),
+        productType: data['ProductType'] ?? '',
     );
   }
 
@@ -115,3 +117,22 @@ class ProductModel {
   }
 
 }
+
+
+final productsToUpload = [ProductModel(
+id: '001',
+sku: '',
+title: 'Wiersoon Large Business Laptop Backpack- Black',
+stock: 15,
+price: 120,
+isFeatured: true,
+salePrice: 27,
+thumbnail: NxImages.productImage36,
+categoryId: '1',
+description : 'Wiersoon Large Business Laptop Backpack- Black',
+productType: 'single',
+brand: BrandModel(id: '1', image: NxImages.wiersoonBrand, name: "Wiersoon", productsCount: 321, isFeatured: true ),
+images: [NxImages.productImage36, NxImages.productImage37, NxImages.productImage38, NxImages.productImage39, NxImages.productImage40],
+productAttributes: [],
+productVariations: [],
+),];

@@ -33,7 +33,7 @@ class NxPromoSlider extends StatelessWidget {
                       (banner) => NxRoundedImage(
                         imageUrl: banner.imageUrl,
                         isNetworkImage: true,
-                        onPressed: () => Get.toNamed(banner.targetScreen),
+                        // onPressed: () => Get.toNamed(banner.targetScreen),
                       ),
                     )
                     .toList(),

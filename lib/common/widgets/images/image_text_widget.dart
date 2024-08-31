@@ -32,7 +32,7 @@ class NxVerticalImageText extends StatelessWidget {
         child: Column(
           children: [
             /// Circular Icon
-           NxCircularImage(image: image, fit: BoxFit.fitWidth, padding: NxSizes.sm *1.4, isNetworkImage: isNetworkImage,backgroundColor: backgroundColor, overlayColor: isDarkMode ? NxColors.light : NxColors.dark),
+           NxCircularImage(image: image, fit: BoxFit.contain, padding: NxSizes.sm *1.4, isNetworkImage: isNetworkImage,backgroundColor: backgroundColor),
             const SizedBox(
               height: NxSizes.spaceBtwItems * 0.5,
             ),
@@ -42,6 +42,7 @@ class NxVerticalImageText extends StatelessWidget {
               width: 55,
               child: Text(
                 title,
+                textAlign: TextAlign.center,
                 style: Theme.of(context)
                     .textTheme
                     .labelMedium!

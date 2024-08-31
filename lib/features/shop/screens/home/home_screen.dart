@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nx_commerce/features/shop/models/product_model.dart';
 import 'package:nx_commerce/features/shop/screens/all_products/all_products.dart';
 import 'package:nx_commerce/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:nx_commerce/features/shop/screens/home/widgets/home_categories.dart';
@@ -123,6 +124,13 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
+            ElevatedButton(onPressed: () async{
+              controller.uploadDummyProducts(productsToUpload);
+
+            }, child: const Padding(
+              padding:  EdgeInsets.all(8.0),
+              child:  Text('Fetch Banners'),
+            )),
           ],
         ),
       ),

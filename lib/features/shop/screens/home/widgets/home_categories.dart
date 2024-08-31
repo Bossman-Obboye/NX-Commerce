@@ -34,7 +34,7 @@ class NxHomeCategories extends StatelessWidget {
               final category = categoryController.featuredCategories[index];
               return  NxVerticalImageText(
                 
-                image: category.image,
+                image: category.image,//category.image,
                 title: category.name,
                 onTap: () => Get.to(()=> SubCategoriesScreen(category: category)),
               );

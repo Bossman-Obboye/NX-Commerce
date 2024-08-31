@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:nx_commerce/utils/shimmer_effect/nx_shimmer.dart';
+
 import '../../../utils/constants/sizes.dart';
 
 class NxCircularImage extends StatelessWidget {
@@ -35,16 +36,27 @@ class NxCircularImage extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(56),
         child: Center(
-          child: isNetworkImage ? CachedNetworkImage(fit: fit, color: overlayColor,imageUrl: image,
-          progressIndicatorBuilder: (context, url, downloadProgress) => const NxShimmerEffect(width: 55, height: 55, radius: 55,),
-          errorWidget: (context, url, error) => const Icon(Icons.error),):
-          
-          Image(
-            fit: fit,
-            image: AssetImage(image),
-            color: overlayColor,
-            errorBuilder: (_,__,___) => const Icon(Icons.error),
-          ),
+          child: isNetworkImage
+              ?
+              // Image(image: NetworkImage(image))
+          CachedNetworkImage(
+                  fit: fit,
+                  color: overlayColor,
+                  imageUrl: image,
+                  progressIndicatorBuilder: (context, url, downloadProgress) =>
+                      const NxShimmerEffect(
+                    width: 55,
+                    height: 55,
+                    radius: 55,
+                  ),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                )
+              : Image(
+                  fit: fit,
+                  image: AssetImage(image),
+                  color: overlayColor,
+                  errorBuilder: (_, __, ___) => const Icon(Icons.error),
+                ),
         ),
       ),
     );

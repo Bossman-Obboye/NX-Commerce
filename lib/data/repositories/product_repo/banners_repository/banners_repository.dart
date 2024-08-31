@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -18,11 +20,14 @@ class BannersRepository extends GetxController {
   Future<List<BannerModel>> fetchBanners() async {
     try {
       final result = await _db.collection('Banners').where('Active', isEqualTo: true).get();
+      print('************************************');
+      log(result.toString());
 
       final list = result.docs.map((documentSnapshot) => BannerModel.fromSnapshot(documentSnapshot)).toList();
 
       return list;
     } on FirebaseException catch (e) {
+      print(e);
       throw NxFirebaseException(e.code).message;
     } on FormatException catch (_) {
       throw const FormatException();

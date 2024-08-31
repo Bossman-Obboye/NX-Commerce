@@ -1,16 +1,20 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:nx_commerce/features/shop/models/product_model.dart';
 import 'package:nx_commerce/utils/constants/enums.dart';
 import 'package:nx_commerce/utils/loaders/loaders.dart';
+import 'package:nx_commerce/utils/popups/full_screen_loader.dart';
 
 import '../../../../data/repositories/product_repo/product_repository/product_repository.dart';
+import '../../../../utils/constants/image_strings.dart';
 
 class ProductController extends GetxController {
   static ProductController get instance => Get.find();
 
   @override
   void onInit() {
-    featuredProducts();
+    fetchFeaturedProducts();
     super.onInit();
   }
 
@@ -37,6 +41,30 @@ class ProductController extends GetxController {
     } finally {
       /// Stop Loading
       isLoading.value = false;
+    }
+  }
+
+  Future<void> uploadDummyProducts(List<ProductModel> prod) async {
+    try{
+      /// Start Loading
+      NxFullScreenLoader.openLoadingDialog('Uploading Data', NxImages.darkAppLogo);
+
+      /// Upload Products
+      await productRepository.uploadDummyData(prod);
+
+      /// Fetch Products
+      await fetchAllFeaturedProducts();
+
+      /// Display success
+      NxLoaders.successSnackBar(title: 'Congratulations');
+
+    }catch (e) {
+      print('------------------------------------------');
+      log(e.toString());
+     NxLoaders.errorSnackBar(title: 'Oh Snap', message: e.toString());
+    } finally {
+      /// Stop Loading
+      NxFullScreenLoader.stopLoading();
     }
   }
 

@@ -21,18 +21,21 @@ class CategoryRepository extends GetxController {
       // Get all the data from the Firebase Store.
       final snapshot = await _db.collection('Categories').get();
 
+
       // Convert all the data to -CategoryModel- and then to -List-
       final list = snapshot.docs
           .map((document) => CategoryModel.fromSnapshot(document))
           .toList();
 
+
       return list;
-    } on FirebaseException catch (e) {
+    } on FirebaseException catch (e) {print('Error Occurred');
       throw NxFirebaseException(e.code).message;
     } on PlatformException catch (e) {
       throw NxPlatformException(code: e.code).message;
     } catch (e) {
       throw NxGenericException.instance.message;
+    }finally{
     }
   }
 

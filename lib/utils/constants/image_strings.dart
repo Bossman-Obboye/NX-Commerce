@@ -43,6 +43,7 @@ class NxImages {
 
   // -- Brand Images
   static const String nikeBrand = "assets/icons/brands/nike.png";
+  static const String wiersoonBrand = "assets/icons/brands/wiersoon.png";
 
   // -- Reviews Images (Profile)
   static const String userProfileImage1 = "assets/images/reviews/reviewer_profile_image_1.png";
@@ -57,6 +58,14 @@ class NxImages {
       "assets/images/products/banners/promo_banner2.png";
   static const String promoBanners3 =
       "assets/images/products/banners/promo_banner3.png";
+
+  // -- Product One Images
+  static const String p1Thumbnail = 'assets/images/products/p1_backpack/thumbnail.jpg';
+  static const String p1image2 = 'assets/images/products/p1_backpack/2.jpg';
+  static const String p1image3 = 'assets/images/products/p1_backpack/3.jpg';
+  static const String p1image4 = 'assets/images/products/p1_backpack/4.jpg';
+  static const String p1image5 = 'assets/images/products/p1_backpack/5.jpg';
+
 
   // -- Products Images
   static const String productImage1 = "assets/images/products/backpack.jpg";
