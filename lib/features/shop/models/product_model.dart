@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:nx_commerce/utils/constants/enums.dart';
 import 'package:nx_commerce/utils/constants/image_strings.dart';
 
 import 'brand_model.dart';
@@ -136,3 +135,12 @@ images: [NxImages.productImage36, NxImages.productImage37, NxImages.productImage
 productAttributes: [],
 productVariations: [],
 ),];
+
+
+final Map<String, dynamic> demoModel = {
+  'Id' : '001',
+  'Title' : 'Json for Demonstration',
+  'Value' : 5,
+  'Time' : DateTime.now(),
+  'Usage' : ['Testing', 3, 33.09, DateTime.now()]
+};
