@@ -13,7 +13,6 @@ import 'package:nx_commerce/features/shop/screens/home/home_screen.dart';
 import 'package:nx_commerce/features/shop/screens/order/order.dart';
 import 'package:nx_commerce/features/shop/screens/product_reviews/product_reviews_screen.dart';
 import 'package:nx_commerce/features/shop/screens/store/store.dart';
-import 'package:nx_commerce/features/shop/screens/sub_category/sub_categories.dart';
 import 'package:nx_commerce/features/shop/screens/wishlist/wishlist.dart';
 import 'package:nx_commerce/routes/routes.dart';
 

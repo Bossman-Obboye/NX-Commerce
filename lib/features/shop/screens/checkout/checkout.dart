@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nx_commerce/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:nx_commerce/features/shop/controllers/products/cart_controller.dart';
-import 'package:nx_commerce/features/shop/models/product_category_model.dart';
 import 'package:nx_commerce/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:nx_commerce/features/shop/screens/checkout/widgets/billing_amount_section.dart';
 import 'package:nx_commerce/features/shop/screens/checkout/widgets/billing_payment_section.dart';

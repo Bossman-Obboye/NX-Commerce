@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:nx_commerce/data/repositories/product_repo/product_repository/product_repository.dart';
 import 'package:nx_commerce/features/shop/models/category_model.dart';
 
 import '../../../../utils/exceptions/firebase_exception.dart';
