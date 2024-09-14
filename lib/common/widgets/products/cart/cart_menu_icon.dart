@@ -19,7 +19,7 @@ class NxCartCounterIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(CartController());
+    final controller = CartController.instance;;
     final bool isDarkMode = NxHelpers.isDarkMode(context);
     return Stack(
       children: [

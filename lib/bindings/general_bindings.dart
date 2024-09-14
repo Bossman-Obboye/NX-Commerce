@@ -1,6 +1,7 @@
 
 import 'package:get/get.dart';
 import 'package:nx_commerce/features/personalization/controllers/address_controller.dart';
+import 'package:nx_commerce/features/shop/controllers/products/cart_controller.dart';
 import 'package:nx_commerce/features/shop/controllers/products/checkout_controller.dart';
 import 'package:nx_commerce/features/shop/controllers/products/variation_controller.dart';
 
@@ -13,6 +14,7 @@ class GeneralBindings extends Bindings{
     Get.put(VariationController());
     Get.put(AddressController());
     Get.put(CheckoutController());
+    Get.put(CartController());
   }
 
 }

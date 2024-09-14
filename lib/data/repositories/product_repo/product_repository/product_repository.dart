@@ -4,8 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:nx_commerce/data/services/firebase_service/nx_firebase_storage_service.dart';
+import 'package:nx_commerce/features/shop/models/brand_model.dart';
 import 'package:nx_commerce/utils/constants/enums.dart';
-import 'package:nx_commerce/utils/constants/image_strings.dart';
 import 'package:nx_commerce/utils/popups/full_screen_loader.dart';
 
 import '../../../../features/shop/models/product_model.dart';
@@ -25,9 +25,10 @@ class ProductRepository extends GetxController {
       final snapshot = await _db
           .collection('Products')
           .where('IsFeatured', isEqualTo: true)
-          .limit(4)
+          // .limit(8)
           .get();
-      return snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
+      final products = snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
+      return products;
     } on FirebaseException catch (e) {
       throw NxFirebaseException(e.code).message;
     } on PlatformException catch (e) {
@@ -158,10 +159,18 @@ class ProductRepository extends GetxController {
     }
   }
 
+  /// Testing
+  Future<void> testUpload(ProductModel product) async{
+    try{
+      await _db.collection('Products').add(product.toJson());
+    }catch (e) {
+      rethrow;
+    }
+  }
+
   /// Upload dummy data to the Cloud Firebase
   Future<void> uploadDummyData(List<ProductModel> products) async {
     try {
-
       // Upload all the products along with their images
       final storage = Get.put(NxFirebaseStorageService());
 
@@ -211,28 +220,51 @@ class ProductRepository extends GetxController {
             variation.image = url;
           }
 
-          // store product in FireStore
-         await _db.collection('Products').add(product.toJson());
-         
-          // await _db
-          //     .collection('Products')
-          //     .doc(product.id)
-          //     .set(product.toJson());
         }
 
+        // store product in FireStore
+        await _db.collection('Products').doc(product.id).set(product.toJson());
+
       }
-    } on FirebaseException catch (e) {
+   } on FirebaseException catch (e) {
       throw e.message!;
-    }on SocketException catch (e) {
+    } on SocketException catch (e) {
       throw e.message;
     } on PlatformException catch (e) {
       throw e.message!;
     } catch (e) {
       throw e.toString();
-    } finally
-        {
-          // Stop Loading
-          NxFullScreenLoader.stopLoading();
-        }
+    } finally {
+      // Stop Loading
+      NxFullScreenLoader.stopLoading();
+    }
+  }
+
+  Future<void> uploadBrand(List<BrandModel> brands) async {
+    try {
+
+      final storage = Get.put(NxFirebaseStorageService());
+
+     for (var brand in brands){
+       final image = await  storage.getImageDataFromAssets(brand.image);
+
+       final url = await storage.uploadImageData('Brands/Images', image, brand.name);
+
+       brand.image = url;
+
+       await _db.collection('Brands').doc(brand.id).set(brand.toJson());
+     }
+   } on FirebaseException catch (e) {
+      throw e.message!;
+    } on SocketException catch (e) {
+      throw e.message;
+    } on PlatformException catch (e) {
+      throw e.message!;
+    } catch (e) {
+      throw e.toString();
+    } finally {
+      // Stop Loading
+      NxFullScreenLoader.stopLoading();
+    }
   }
 }

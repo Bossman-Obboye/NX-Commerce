@@ -1,11 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nx_commerce/features/shop/models/brand_category_model.dart';
 import 'package:nx_commerce/features/shop/models/product_model.dart';
 import 'package:nx_commerce/features/shop/screens/all_products/all_products.dart';
 import 'package:nx_commerce/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:nx_commerce/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:nx_commerce/features/shop/screens/home/widgets/promo_slider.dart';
+import 'package:nx_commerce/products_to_upload.dart';
 import 'package:nx_commerce/utils/constants/colors.dart';
+import 'package:nx_commerce/utils/constants/image_strings.dart';
 import 'package:nx_commerce/utils/constants/sizes.dart';
 import 'package:nx_commerce/utils/shimmer_effect/vertical_product_shimmer.dart';
 
@@ -76,6 +80,7 @@ class HomeScreen extends StatelessWidget {
             /// -- Body
 
             /// -- Promo Slider
+
             Padding(
               padding: const EdgeInsets.all(NxSizes.defaultSpace),
               child: Column(
@@ -91,7 +96,7 @@ class HomeScreen extends StatelessWidget {
                     showActionButton: true,
                     btnOnPressed: () => Get.to(() => AllProductsScreen(
                           title: 'Popular Products',
-                      futureMethod: controller.fetchAllFeaturedProducts(),
+                          futureMethod: controller.fetchAllFeaturedProducts(),
                         )),
                   ),
 
@@ -124,16 +129,21 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            ElevatedButton(onPressed: () async{
-              controller.uploadDummyProducts(productsToUpload);
-
-            }, child: const Padding(
-              padding:  EdgeInsets.all(8.0),
-              child:  Text('Fetch Banners'),
-            )),
+            // ElevatedButton(
+            //     onPressed: () async {
+            //       print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+            //       await controller.uploadDummyProducts(productsTo);
+            //       print('d***************************sd');
+            //     },
+            //     child: const Padding(
+            //       padding: EdgeInsets.all(8.0),
+            //       child: Text('Test'),
+            //     )),
           ],
         ),
       ),
     );
   }
 }
+
+final test = BrandCategoryModel(brandId: '003', categoryId: '5');

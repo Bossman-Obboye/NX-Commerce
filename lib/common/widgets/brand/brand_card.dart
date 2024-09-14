@@ -34,9 +34,6 @@ class NxBrandCard extends StatelessWidget {
                 isNetworkImage: true,
                 image: brand.image,
                 backgroundColor: Colors.transparent,
-                overlayColor: NxHelpers.isDarkMode(context)
-                    ? NxColors.white
-                    : NxColors.black,
               ),
             ),
             const SizedBox(

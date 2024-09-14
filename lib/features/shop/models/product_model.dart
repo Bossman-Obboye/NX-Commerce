@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:nx_commerce/utils/constants/enums.dart';
 import 'package:nx_commerce/utils/constants/image_strings.dart';
 
 import 'brand_model.dart';
@@ -117,21 +118,39 @@ class ProductModel {
 
 }
 
+final ProductModel demoProduct = ProductModel(
+  id: '001',
+  sku: 'jLhy',
+  title: 'Wiersoon Large Business Laptop Backpack- Black',
+  stock: 15,
+  price: 10,
+  isFeatured: true,
+  salePrice: 27,
+  thumbnail: NxImages.productImage36,
+  categoryId: '1',
+  description : 'Wiersoon Large Business Laptop Backpack- Black',
+  productType: ProductType.single.toString(),
+  brand: BrandModel(id: '1', image: NxImages.wiersoonBrand, name: "Wiersoon", productsCount: 321, isFeatured: true ),
+  images: [NxImages.productImage36, NxImages.productImage37, NxImages.productImage38, NxImages.productImage39, NxImages.productImage40],
+  productAttributes: [],
+  productVariations: [],
+);
+
 
 final productsToUpload = [ProductModel(
-id: '001',
+id: '005',
 sku: '',
-title: 'Wiersoon Large Business Laptop Backpack- Black',
+title: 'What aver it may be- Black',
 stock: 15,
-price: 120,
+price: 50,
 isFeatured: true,
-salePrice: 27,
-thumbnail: NxImages.productImage36,
-categoryId: '1',
-description : 'Wiersoon Large Business Laptop Backpack- Black',
-productType: 'single',
-brand: BrandModel(id: '1', image: NxImages.wiersoonBrand, name: "Wiersoon", productsCount: 321, isFeatured: true ),
-images: [NxImages.productImage36, NxImages.productImage37, NxImages.productImage38, NxImages.productImage39, NxImages.productImage40],
+salePrice: 7,
+thumbnail: NxImages.productImage50,
+categoryId: '3',
+description : 'What aver it may be- Black',
+productType: ProductType.single.toString(),
+brand: BrandModel(id: '4', image: NxImages.nikeBrand, name: "Nike", productsCount: 543, isFeatured: true ),
+images: [],
 productAttributes: [],
 productVariations: [],
 ),];

@@ -9,16 +9,22 @@ class NxCategoriesShimmer extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 80,
-      child: ListView.separated( itemCount: 8, separatorBuilder: (_,__) => const SizedBox(width: NxSizes.spaceBtwItems), itemBuilder: (_, __) => const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          /// Image
-          NxShimmerEffect(width: 55, height: 55, radius: 55),
-          SizedBox(height: NxSizes.spaceBtwItems / 2),
-          /// Text
-          NxShimmerEffect(width: 55, height: 8)
-        ],
-      )),
+      child: ListView.separated(
+          itemCount: 8,
+          scrollDirection: Axis.horizontal,
+          separatorBuilder: (_, __) =>
+              const SizedBox(width: NxSizes.spaceBtwItems),
+          itemBuilder: (_, __) => const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  /// Image
+                  NxShimmerEffect(width: 55, height: 55, radius: 55),
+                  SizedBox(height: NxSizes.spaceBtwItems / 2),
+
+                  /// Text
+                  NxShimmerEffect(width: 55, height: 8)
+                ],
+              )),
     );
   }
 }

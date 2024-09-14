@@ -164,13 +164,13 @@ class CartController extends GetxController {
   }
 
   void loadCartItems() {
-    final cartItemStrings =
-    NxLocalStorage.instance().readData<List<dynamic>>('cartItems');
-    if (cartItemStrings != null) {
-      cartItems.assignAll(cartItemStrings
-          .map((item) => CartItemModel.fromJson(item as Map<String, dynamic>)));
-      updateCartTotals();
-    }
+    // final cartItemStrings =
+    // NxLocalStorage.instance().readData<List<dynamic>>('cartItems');
+    // if (cartItemStrings != null) {
+    //   // cartItems.assignAll(cartItemStrings
+    //   //     .map((item) => CartItemModel.fromJson(item as Map<String, dynamic>)));
+    //   updateCartTotals();
+    // }
   }
 
   int getProductQuantityInCart(String productId) {

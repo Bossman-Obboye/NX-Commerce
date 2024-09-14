@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:get/get.dart';
+import 'package:nx_commerce/features/shop/models/brand_model.dart';
 import 'package:nx_commerce/features/shop/models/product_model.dart';
 import 'package:nx_commerce/utils/constants/enums.dart';
 import 'package:nx_commerce/utils/loaders/loaders.dart';
@@ -52,11 +53,52 @@ class ProductController extends GetxController {
       /// Upload Products
       await productRepository.uploadDummyData(prod);
 
-      /// Fetch Products
-      await fetchAllFeaturedProducts();
+      /// Display success
+      NxLoaders.successSnackBar(title: 'Congratulations');
+
+    }catch (e) {
+      print('------------------------------------------');
+      log(e.toString());
+     NxLoaders.errorSnackBar(title: 'Oh Snap', message: e.toString());
+    } finally {
+      /// Stop Loading
+      NxFullScreenLoader.stopLoading();
+    }
+  }
+
+
+  Future<void> uploadBrands(List<BrandModel> brands) async {
+    try{
+      /// Start Loading
+      NxFullScreenLoader.openLoadingDialog('Uploading Brands related data...', NxImages.darkAppLogo);
+
+      /// Upload Products
+      await productRepository.uploadBrand(brands);
 
       /// Display success
       NxLoaders.successSnackBar(title: 'Congratulations');
+
+    }catch (e) {
+      print('------------------------------------------');
+      log(e.toString());
+     NxLoaders.errorSnackBar(title: 'Oh Snap', message: e.toString());
+    } finally {
+      /// Stop Loading
+      NxFullScreenLoader.stopLoading();
+    }
+  }
+
+
+  Future<void> uploadDemoData(ProductModel demoProduct) async {
+    try{
+      /// Start Loading
+      NxFullScreenLoader.openLoadingDialog('Uploading Data', NxImages.darkAppLogo);
+
+      /// Upload Products
+      await productRepository.testUpload(demoProduct);
+
+      /// Display success
+      NxLoaders.successSnackBar(title: 'Congratulations', message: 'Demo Data uploaded successfully');
 
     }catch (e) {
       print('------------------------------------------');

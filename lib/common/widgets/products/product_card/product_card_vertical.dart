@@ -78,9 +78,7 @@ class NxProductCardVertical extends StatelessWidget {
               ]),
             ),
 
-            const SizedBox(
-              height: NxSizes.spaceBtwItems / 2,
-            ),
+            const Spacer(),
 
             /// -- Details
             Padding(
@@ -113,6 +111,7 @@ class NxProductCardVertical extends StatelessWidget {
                 /// -- Price
                 Flexible(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       if (product.productType ==
                               ProductType.single.toString() &&
