@@ -16,7 +16,10 @@ import 'package:nx_commerce/features/shop/screens/store/store.dart';
 import 'package:nx_commerce/features/shop/screens/wishlist/wishlist.dart';
 import 'package:nx_commerce/routes/routes.dart';
 
+
+
 class NxAppRoutes {
+
   static final pages = [
     GetPage(name: NxRoutes.home, page: () => const HomeScreen()),
     GetPage(name: NxRoutes.store, page: () => const StoreScreen()),
